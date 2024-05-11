@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Administrateurs</title>
+</head>
+<body>
+ <!--button-->
+ <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
+    <span class="sr-only">Open sidebar</span>
+    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+    </svg>
+ </button>
+
+
+  <!--sidebar-->
+ <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+    <div class="h-full flex flex-col px-3 py-4 overflow-y-auto bg-gray-50 bg-white">
+        <div class="m-2 text-xl lg:hidden md:hidden"><button class="float-end" id="buttonx">X</button></div>
+        <div class="m-2 mb-5 text-xl text-black font-bold no-italic"><span>Service gestion des  matériels  et équipements</span></div>
+       <ul class="space-y-2 font-medium">
+          <li>
+            <a href="{{route('home')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+                <img src="https://super.so/icon/dark/home.svg"/>
+                <span class="ms-3">Accueil</span>
+             </a>
+          </li>
+          
+         <li>
+            <a href="{{route('admin.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+               <img src="https://super.so/icon/dark/users.svg" alt="">
+               <span class="flex-1 ms-3 whitespace-nowrap">Gérer les utilisateurs</span>
+               
+            </a>
+         </li>
+         <!--<li>
+            <a href="{{route('role.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+               <img src="https://super.so/icon/dark/briefcase.svg" />
+               <span class="flex-1 ms-3 whitespace-nowrap">Gérer les roles</span>
+            </a>
+         </li>-->
+         <li>
+           <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+              <img src="https://super.so/icon/dark/log-out.svg" alt="">
+              <span class="flex-1 ms-3 whitespace-nowrap">Déconnecter</span>
+           </a>
+        </li>
+    </div>
+ </aside>
+ 
+
+
+
+
+
+
+
+
+ <div class="p-4  h-fill flex flex-col  sm:ml-64 bg-gray-300">
+ <!--titre-->
+  <div><h1 class="text-4xl text-black font-bold no-italic ">Les utilisateurs : </h1><br/></div>
+
+
+
+ <!--searchbar-->
+  <div class="">
+    <div class="">
+        <form method="get" action="{{route('admin.search')}}" class="flex flex-wrap justify-center w-full my-6  items-center ">   
+        @csrf
+        <div class="relative flex-wrap justify-center  flex  ">
+            
+            <input type="text" name="nom" class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="nom"  />
+            <input type="text" name="prenom" class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="prenom"  />
+            
+    
+                
+    
+                <select name="choix" class="rounded-lg h-10 p-2 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
+                    <option selected>Choisir un role</option>
+                    @foreach ($roles as $item)
+                    <option  value="{{$item->id}}">{{$item->nom}}</option>
+                    @endforeach
+                  </select>
+               
+    
+    
+    
+              <input type="text" name="division"  class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="division"  />
+              <input type="text" name="service" class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="service"  />
+            
+       
+    
+               <button type="submit" class="w-30 justify-center items-center   p-2.5 ms-2 m-2 text-sm font-medium text-white  rounded-lg border border-blue-700    bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+               <svg class="w-5 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+              </svg>
+            
+              </button>
+          </div>
+        </form>
+     </div>
+</div>
+
+
+
+ <br/>
+ <!--ajoutebuttom-->
+ <div class="flex flex-row-reverse ">
+     <a href="{{route('admin.fill')}}" class=" rounded-lg  h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700  text-white ">Ajouter un nouveau utilisateur</a>
+ </div>
+
+ @if (session()->has('success'))
+<div class=" my-6 text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center">
+    <span class="font-medium">{{ session('success') }}</span>
+</div>
+@endif
+
+
+<!--table-->
+<br/>
+<div>
+<div class="relative overflow-x-auto  sm:rounded-lg">
+    <br/>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
+        <thead class="text-xs text-black uppercase bg-gray-400 ">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Role
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nom
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Prenom
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tél
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Division
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Service
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($users as $item)
+           
+            <tr class=" bg-white  border-gray-600  hover:bg-gray-100">
+
+                
+                <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap text-black">
+                    {{ $item->id }}
+                </th>
+                <td class="px-6 py-4 text-black">
+              @foreach ($roles as $role)
+                  @if ($role->id==$item->roles_id)
+                 {{$role->nom}} 
+                  @endif
+              @endforeach
+                   
+                 </td>
+                <td class="px-6 py-4 text-black">
+                   {{ $item->nom}}
+                </td>
+                <td class="px-6 py-4 text-black">
+                    {{ $item->prenom}}
+                </td>
+                <td class="px-6 py-4 text-black">
+                    {{($item->tel)}}
+                </td>
+                <td class="px-6 py-4 text-black">
+                    {{ $item->email}}
+                </td>
+                <td class="px-6 py-4 text-black">
+                    {{ $item->division}}
+                </td>
+                <td class="px-6 py-4 text-black">
+                    {{$item->service}}
+                </td>
+                <td class="px-6 py-4 text-right flex">
+                    <a href="{{route('admin.filledit',[ 'id' => $item->id ] )}}" class="font-medium  text-blue-500 hover:underline pr-2">Modifié</a>
+                    <form action="{{ route('admin.destroy',[ 'id' => $item->id ] ) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="font-medium text-blue-500 hover:underline pr-2">supprimé</button>
+                      </form>
+                    
+
+                </td>
+           
+
+              </tr>
+            
+      
+             @endforeach
+           
+        </tbody>
+    </table>
+</div>
+<!--pagination-->
+<div class="m-4">
+{{ $users->links() }}
+</div>
+
+
+</div>
+
+
+
+
+ <script>
+
+document.getElementById('buttonx').addEventListener('click',function(){ document.getElementById('default-sidebar').classList.toggle('hidden'); });
+
+document.querySelector('[data-drawer-toggle="default-sidebar"]').addEventListener('click', function() {
+document.getElementById('default-sidebar').classList.toggle('-translate-x-full');
+
+document.querySelector('[data-drawer-target="default-sidebar"]').addEventListener('click', function() {
+document.getElementById('default-sidebar').classList.toggle('hidden');
+});
+});
+</script>
+    
+</body>
+</html>
