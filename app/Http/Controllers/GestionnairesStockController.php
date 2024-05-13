@@ -66,14 +66,22 @@ public function destroy(Request $r)
     return redirect()->back()->with('success','supprimé avec succès');
   }
 
+  public function fill()
+  {
+    $categories = Categorie::all();
+    $marques =Marque::all();
+    return view('gestionnairestock.ajouter',['materiels'=> null,'marques'=>$marques ,'categories'=>$categories ]);
+  }
+
   public function fillEdit()
-  {}
+  {
+
+  }
 
   public function edit()
   {}
 
-  public function fill()
-  {}
+
 
   public function create()
   {}
