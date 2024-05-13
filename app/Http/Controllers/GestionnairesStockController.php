@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MaterielRequest;
 use App\Models\Categorie;
 use App\Models\Marque;
 use App\Models\Materiel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GestionnairesStockController extends Controller
 {
@@ -62,6 +64,7 @@ return view('gestionnairestock.home', ['materiels' =>$materiels,'marques'=>$marq
 public function destroy(Request $r)
   {
     $destroyMateriel=Materiel::find($r['id']);
+    Storage::delete($destroyMateriel->image);
     $destroyMateriel->delete();
     return redirect()->back()->with('success','supprimé avec succès');
   }
@@ -73,17 +76,37 @@ public function destroy(Request $r)
     return view('gestionnairestock.ajouter',['materiels'=> null,'marques'=>$marques ,'categories'=>$categories ]);
   }
 
+  public function create(MaterielRequest $a)
+  {
+    $r=$a->validated();
+    
+    $fileName=$a->file('image')->getClientOriginalName();
+    $filePath = $a->file('image')->storeAs('uploads', $fileName, 'public');
+
+    Materiel::insert([
+        'nom'=> $r['nom'],
+        'model'=>$r['model'],
+        'description'=>$r['description'],
+        'quantite'=>$r['quantite'],
+        'barcode'=>$r['barcode'],
+        'date'=>$r['date'],
+        'categories_id' =>$r['categories_id'] ,
+        'marques_id'=>$r['marques_id'] ,
+        'image'=> "/storage"."/".$filePath 
+      ]); 
+      
+
+      return redirect()->route('GestionnairesStock.index')
+      ->with('success','ajouté avec succès');
+  }
+
+
   public function fillEdit()
   {
 
   }
 
   public function edit()
-  {}
-
-
-
-  public function create()
   {}
 
   public function display($id)

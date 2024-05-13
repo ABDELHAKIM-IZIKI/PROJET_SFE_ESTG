@@ -7,7 +7,7 @@ Ajouter un nouveau matériel ou équipement :
 @section('content')
 
 <div class="h-full">
-    <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto">
+    <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
         @csrf
         <div class="mb-5">
             <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom :</label>
@@ -82,7 +82,7 @@ Ajouter un nouveau matériel ou équipement :
 
         <div class="mb-5">
             <label for="image" class="block mb-2 text-sm font-medium text-black">Choisir une image :</label>
-            <input class="w-full h-10 text-sm border border-gray-300 rounded-lg cursor-pointer bg-white text-black focus:outline-none placeholder-black" accept="image/png, image/jpeg, image/jpg" type="file" id="image" name="image" />
+            <input class="appearance-none w-full h-10 px-3 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer bg-white text-black placeholder-gray-500 focus:outline-none focus:border-blue-500" accept="image/png, image/jpeg, image/jpg" type="file" id="image" name="image" />
             <span class="text-sm">PNG, JPG ou JPEG (MAX. 600x600px)</span>
             @error('image')
             <span class="text-red-600">{{ $message }}</span>
