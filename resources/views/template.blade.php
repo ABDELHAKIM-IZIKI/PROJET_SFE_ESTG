@@ -49,13 +49,16 @@
 
 
 
- <div class=" h-fill  flex flex-col sm:ml-64 bg-gray-300">
+ <div class=" h-screen  flex flex-col sm:ml-64 bg-gray-300">
     
  <!--titre-->
 <h1 class="text-4xl m-4 text-black font-bold no-italic ">@yield('title')</h1><br/>
 
- <!--content-->
 
+
+
+
+ <!--content-->
 @yield('content') 
 
 

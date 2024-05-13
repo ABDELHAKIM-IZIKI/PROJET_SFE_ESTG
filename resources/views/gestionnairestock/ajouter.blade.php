@@ -6,7 +6,7 @@ Ajouter un nouveau matériel ou équipement :
 
 @section('content')
 
-<div class="h-full">
+<div class="bg-gray-300">
     <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
         @csrf
         <div class="mb-5">

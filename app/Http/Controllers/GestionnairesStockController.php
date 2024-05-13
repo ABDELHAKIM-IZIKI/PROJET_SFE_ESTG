@@ -6,7 +6,9 @@ use App\Http\Requests\MaterielRequest;
 use App\Models\Categorie;
 use App\Models\Marque;
 use App\Models\Materiel;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Storage;
 
 class GestionnairesStockController extends Controller
@@ -66,7 +68,7 @@ public function destroy(Request $r)
     $destroyMateriel=Materiel::find($r['id']);
     Storage::delete($destroyMateriel->image);
     $destroyMateriel->delete();
-    return redirect()->back()->with('success','supprimé avec succès');
+    return redirect()->back()->with('success','Supprimé avec succès');
   }
 
   public function fill()
@@ -97,7 +99,7 @@ public function destroy(Request $r)
       
 
       return redirect()->route('GestionnairesStock.index')
-      ->with('success','ajouté avec succès');
+      ->with('success','Ajouté avec succès');
   }
 
 

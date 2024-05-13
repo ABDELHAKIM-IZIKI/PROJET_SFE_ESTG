@@ -61,11 +61,16 @@ d’équipement :
 </div>
 <br/>
 
-
+ <!--successajoute-->
+ @if (session()->has('success'))
+ <div class=" mx-4 my-6 text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center">
+     <span class="font-medium">{{ session('success') }}</span>
+ </div>
+ @endif
 
 
 <!--Display items-->
-<div class="justify-center ml-4">
+<div class="justify-center  bg-gray-300">
 <div class="p-4  flex flex-wrap pr-0">
 
     @foreach($materiels as $item)
