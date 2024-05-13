@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MaterielRequest;
+use App\Http\Requests\MaterielRequestUpdate;
 use App\Models\Categorie;
 use App\Models\Marque;
 use App\Models\Materiel;
@@ -103,14 +104,59 @@ public function destroy(Request $r)
   }
 
 
-  public function fillEdit()
+  public function fillEdit(Request $r)
   {
-
+    $materiel=Materiel::find($r['id']);
+    $categories = Categorie::all();
+    $marques =Marque::all();
+    return view('gestionnairestock.modifie',['materiels'=> $materiel ,'marques'=>$marques ,'categories'=>$categories]);
   }
 
-  public function edit()
-  {}
 
+  public function edit(MaterielRequestUpdate $a)
+  {  
+    
+    $r=$a->validated();
+    $materiel=Materiel::find($r['id']);
+    if($a->has('image')){
+     
+     $fileName=$a->file('image')->getClientOriginalName();
+     $filePath = $a->file('image')->storeAs('uploads', $fileName, 'public');
+
+     $materiel->update([
+      'nom'=> $r['nom'],
+      'model'=>$r['model'],
+      'description'=>$r['description'],
+      'quantite'=>$r['quantite'],
+      'barcode'=>$r['barcode'],
+      'date'=>$r['date'],
+      'categories_id' =>$r['categories_id'] ,
+      'marques_id'=>$r['marques_id'] ,
+      'image'=> "/storage"."/".$filePath 
+    ]);
+ 
+    return redirect()->route('GestionnairesStock.index')
+      ->with('success','modifié avec succès');
+    }else{
+      
+      $materiel->update([
+        'nom'=> $r['nom'],
+        'model'=>$r['model'],
+        'description'=>$r['description'],
+        'quantite'=>$r['quantite'],
+        'barcode'=>$r['barcode'],
+        'date'=>$r['date'],
+        'categories_id' =>$r['categories_id'] ,
+        'marques_id'=>$r['marques_id'] 
+      ]);
+   
+      return redirect()->route('GestionnairesStock.index')
+        ->with('success','modifié avec succès');
+    }
+  }
+
+  
+  
   public function display($id)
   {}
 

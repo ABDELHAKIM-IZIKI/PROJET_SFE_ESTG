@@ -22,6 +22,7 @@ class MaterielRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' =>'min:1|max:120',
             'nom'=>'required|min:3|max:120',
         'model'=>'required|min:3|max:40',
         'description'=>'min:3|max:255|nullable',

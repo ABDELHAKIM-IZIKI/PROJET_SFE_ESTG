@@ -1,14 +1,17 @@
 @extends('gestionnairestock.templateGS')
 
 @section('title')
-Ajouter un nouveau matériel ou équipement :
+Modifier le  matériel ou l'équipement :
 @endsection
 
 @section('content')
 
-<div class="bg-gray-300">
-    <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
+<div class="mt-4 bg-gray-300">
+    <form method="POST" action="{{ route('gestionnairestock.edit') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
         @csrf
+
+        <input value="{{ $materiels['id'] }}" type="number" class="hidden"  name="id"/>
+
         <div class="mb-5">
             <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom :</label>
             <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
@@ -98,7 +101,7 @@ Ajouter un nouveau matériel ou équipement :
         </div>
 
         <div class="flex items-start mb-5">
-            <button type="submit" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Ajouté</button>
+            <button type="submit" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Modifié</button>
         </div>
     </form>
 </div>

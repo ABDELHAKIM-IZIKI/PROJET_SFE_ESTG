@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\GestionnairesStockController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,9 @@ Route::post('/MonSite/GestionnaireStock/crée', [GestionnairesStockController::c
 Route::get('/MonSite/GestionnaireStock/Materiel-{id}', [GestionnairesStockController::class ,'display'])->name('GestionnairesStock.display');
 Route::post('/MonSite/GestionnaireStock/affectation', [GestionnairesStockController::class ,'refer'])->name('gestionnairestock.refer');
 
+
+//Categorie
+Route::get('/MonSite/GestionnaireStock/Categorie', [CategorieController::class ,'index'])->name('Categorie.index');
 
 
 Route::get('/test', function(){
