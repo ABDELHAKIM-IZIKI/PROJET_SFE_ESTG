@@ -2,6 +2,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\GestionnairesStockController;
+use App\Http\Controllers\MarqueController;
+use App\Http\Controllers\RegistreController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -45,6 +47,21 @@ Route::post('/MonSite/GestionnaireStock/affectation', [GestionnairesStockControl
 
 //Categorie
 Route::get('/MonSite/GestionnaireStock/Categorie', [CategorieController::class ,'index'])->name('Categorie.index');
+Route::get('/MonSite/GestionnaireStock/Categorie/recherche', [CategorieController::class ,'search'])->name('Categorie.search');
+Route::delete('/MonSite/GestionnaireStock/Categorie/supprimé', [CategorieController::class ,'destroy'])->name('Categorie.destroy');
+Route::post('/MonSite/GestionnaireStock/Categorie/crée', [CategorieController::class ,'create'])->name('Categorie.create');
+Route::get('/MonSite/GestionnaireStock/Categorie/remplir-modifie', [CategorieController::class ,'fillEdit'])->name('Categorie.filledit');
+Route::post('/MonSite/GestionnaireStock/Categorie/modifie', [CategorieController::class ,'edit'])->name('Categorie.edit');
+
+
+
+
+
+//Registre
+Route::get('/MonSite/GestionnaireStock/Registre', [RegistreController::class ,'index'])->name('Registre.index');
+
+//Marque
+Route::get('/MonSite/GestionnaireStock/Marque', [MarqueController::class ,'index'])->name('Marque.index');
 
 
 Route::get('/test', function(){

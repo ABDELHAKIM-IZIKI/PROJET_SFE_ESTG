@@ -11,21 +11,21 @@ GestionnaireStock
     </a>
  </li>
  <li>
-    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+    <a href="{{route('Registre.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
        <img src="https://super.so/icon/dark/clipboard.svg" alt="">
        <span class="flex-1 ms-3 whitespace-nowrap">Gérer registre</span>
        
     </a>
  </li>
  <li>
-    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+    <a href="{{route('Categorie.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
        <img src="https://super.so/icon/dark/list.svg" alt="">
        <span class="flex-1 ms-3 whitespace-nowrap">Gérer les categories</span>
        
     </a>
  </li>
  <li>
-    <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
+    <a href="{{route('Marque.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
        <img src="https://super.so/icon/dark/tag.svg" alt="">
        <span class="flex-1 ms-3 whitespace-nowrap">Gérer les marques</span>
        
