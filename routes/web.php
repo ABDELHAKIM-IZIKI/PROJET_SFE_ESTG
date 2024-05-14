@@ -50,7 +50,6 @@ Route::get('/MonSite/GestionnaireStock/Categorie', [CategorieController::class ,
 Route::get('/MonSite/GestionnaireStock/Categorie/recherche', [CategorieController::class ,'search'])->name('Categorie.search');
 Route::delete('/MonSite/GestionnaireStock/Categorie/supprimé', [CategorieController::class ,'destroy'])->name('Categorie.destroy');
 Route::post('/MonSite/GestionnaireStock/Categorie/crée', [CategorieController::class ,'create'])->name('Categorie.create');
-Route::get('/MonSite/GestionnaireStock/Categorie/remplir-modifie', [CategorieController::class ,'fillEdit'])->name('Categorie.filledit');
 Route::post('/MonSite/GestionnaireStock/Categorie/modifie', [CategorieController::class ,'edit'])->name('Categorie.edit');
 
 
