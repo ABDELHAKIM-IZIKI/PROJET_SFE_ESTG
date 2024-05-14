@@ -53,14 +53,18 @@ Route::post('/MonSite/GestionnaireStock/Categorie/crée', [CategorieController::
 Route::post('/MonSite/GestionnaireStock/Categorie/modifie', [CategorieController::class ,'edit'])->name('Categorie.edit');
 
 
-
+//Marque
+Route::get('/MonSite/GestionnaireStock/Marque', [MarqueController::class ,'index'])->name('Marque.index');
+Route::get('/MonSite/GestionnaireStock/Marque/recherche', [MarqueController::class ,'search'])->name('Marque.search');
+Route::delete('/MonSite/GestionnaireStock/Marque/supprimé', [MarqueController::class ,'destroy'])->name('Marque.destroy');
+Route::post('/MonSite/GestionnaireStock/Marque/crée', [MarqueController::class ,'create'])->name('Marque.create');
+Route::post('/MonSite/GestionnaireStock/Marque/modifie', [MarqueController::class ,'edit'])->name('Marque.edit');
 
 
 //Registre
 Route::get('/MonSite/GestionnaireStock/Registre', [RegistreController::class ,'index'])->name('Registre.index');
 
-//Marque
-Route::get('/MonSite/GestionnaireStock/Marque', [MarqueController::class ,'index'])->name('Marque.index');
+
 
 
 Route::get('/test', function(){

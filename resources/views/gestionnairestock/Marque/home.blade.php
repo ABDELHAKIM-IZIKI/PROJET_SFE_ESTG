@@ -9,12 +9,12 @@ Les marques :
 <div class="flex flex-col">
     <!--searchbar-->
     <div class="mx-2 ">
-        <form method="get" action="{{route('Categorie.search')}}" class="flex m-6 items-center">
+        <form method="get" action="{{route('Marque.search')}}" class="flex m-6 items-center">
             @csrf
             <div class="relative flex">
                 <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 </div>
-                <input type="text" name="nom" class="rounded-lg p-3 h-10 mx-2  border-gray-600 bg-white-400 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="nom" />
+                <input type="text" name="nom" class="rounded-lg p-3 h-10 mx-2  border-gray-600 bg-white-400 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="nom" />
 
                 <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -32,7 +32,7 @@ Les marques :
     <div class="">
 
         <div class="flex flex-row-reverse mx-4 my-3">
-            <a id="openCreate" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Ajouter un nouveau Categorie</a>
+            <a id="openCreate" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Ajouter un nouveau Marque</a>
         </div>
 
         <div id="Create" class="drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden p-5 ">
@@ -42,10 +42,11 @@ Les marques :
                 <span class=""></span>
                 <span id="closeCreate" class=" float-right m-2 p-0.5  rounded-lg w-7 my-4 hover:bg-gray-400"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
                 </div>
-                <label  class="flex-1 block m-3 text-sm font-medium text-black">Enter un nom de nouveau Categorie :</label>
+                
+                <label  class="flex-1 block m-3 text-sm font-medium text-black">Enter un nom de nouveau Marque :</label>
                 
                 <div class="flex-1">
-                    <form method="post" action="{{route('Categorie.create')}}" class="flex  m-2 mb-5 ">
+                    <form method="post" action="{{route('Marque.create')}}" class="flex  m-2 mb-5 ">
                         @csrf
 
                         <input type="text" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " />
@@ -81,7 +82,7 @@ Les marques :
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nom de categorie
+                                Nom de Marque
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
@@ -89,7 +90,7 @@ Les marques :
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($categories as $item)
+                        @foreach ($Marques as $item)
 
                         <tr class="bg-gray-100 border-gray-600 hover:bg-gray-200">
 
@@ -102,19 +103,20 @@ Les marques :
                             </td>
                             <td class="px-6 py-4 text-right flex">
                                 
-                                <button id="openupdate-{{$item->id}}" class="font-medium text-blue-500 hover:underline pr-2">Modifié</button>
                                 
-                                <div id="update-{{$item->id}}" class="drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden p-5 ">
-                                    <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                                <button id="openupdate-{{$item->id}}" class="font-medium text-blue-500 hover:underline pr-2">Modifié</button>
+                             
+                                <div id="update-{{$item->id}}" class="text-left drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden p-5 ">
+                                    <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 ">
                                     
                                       <div class="flex-1">
                                       <span class=""></span>
                                       <span id="closeupdate-{{$item->id}}" class=" float-right m-2 p-0.5  rounded-lg w-7 my-4 hover:bg-gray-400"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
                                       </div>
-                                      <label  class="flex-1 block m-3 text-sm font-medium text-black">Modifié le nom de Categorie :</label>
+                                      <label  class="flex-1 block m-3 text-sm font-medium text-black">Modifié le nom de Marque :</label>
                                       
                                       <div class="flex-1">
-                                          <form method="post" action="{{route('Categorie.edit', [ 'id' => $item->id ])}}" class="flex  m-2 mb-5 ">
+                                          <form method="post" action="{{route('Marque.edit', [ 'id' => $item->id ])}}" class="flex  m-2 mb-5 ">
                                               @csrf
                       
                                               <input type="text" value="{{$item->nom}}" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " />
@@ -129,10 +131,8 @@ Les marques :
                                       </div>
                                   </div>
                               </div>
-                             
-                                
-                                
-                                <form action="{{ route('Categorie.destroy',[ 'id' => $item->id ] ) }}" method="post">
+                            
+                              <form action="{{ route('Marque.destroy',[ 'id' => $item->id ] ) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="font-medium text-blue-500 hover:underline pr-2">supprimé</button>
@@ -142,6 +142,8 @@ Les marques :
 
 
                         </tr>
+
+                       
    
                         <script>
                             var modal{{$item->id}} = document.getElementById("update-{{$item->id}}");
@@ -164,7 +166,7 @@ Les marques :
             </div>
             <!--pagination-->
             <div class="m-4">
-                {{ $categories->links() }}
+                {{ $Marques->links() }}
             </div>
         </div>
     </div>

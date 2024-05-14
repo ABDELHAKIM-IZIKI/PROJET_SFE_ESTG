@@ -27,10 +27,10 @@ Ajouter un nouveau matériel ou équipement :
 
         <div class="mb-5">
             <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque :</label>
-            <select id="marques_id" name="marques_id" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+            <select id="marques_id" name="marques_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
                 <option value="" selected></option>
                 @foreach ($marques as $item)
-                <option value="{{ $item->id }}" {{ isset($user['marques_id']) && $user['marques_id'] == $item->id ? 'selected' : '' }}>{{ $item->nom }}</option>
+                <option value="{{ $item->id }}">{{ $item->nom }}</option>
                 @endforeach
             </select>
             @error('marques_id')
@@ -40,10 +40,10 @@ Ajouter un nouveau matériel ou équipement :
 
         <div class="mb-5">
             <label for="categories_id" class="block mb-2 text-sm font-medium text-black">Choisir une catégorie :</label>
-            <select id="categories_id" name="categories_id" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+            <select id="categories_id" name="categories_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
                 <option value="" selected></option>
                 @foreach ($categories as $item)
-                <option value="{{ $item->id }}" {{ isset($user['categories_id']) && $user['categories_id'] == $item->id ? 'selected' : '' }}>{{ $item->nom }}</option>
+                <option value="{{ $item->id }}"></option>
                 @endforeach
             </select>
             @error('categories_id')

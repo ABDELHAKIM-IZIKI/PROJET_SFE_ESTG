@@ -123,6 +123,10 @@ public function destroy(Request $r)
      $fileName=$a->file('image')->getClientOriginalName();
      $filePath = $a->file('image')->storeAs('uploads', $fileName, 'public');
 
+     $materiel->categories_id=$r['categories_id'];
+     $materiel->marques_id=$r['marques_id'];
+     $materiel->save();
+
      $materiel->update([
       'nom'=> $r['nom'],
       'model'=>$r['model'],
@@ -130,8 +134,6 @@ public function destroy(Request $r)
       'quantite'=>$r['quantite'],
       'barcode'=>$r['barcode'],
       'date'=>$r['date'],
-      'categories_id' =>$r['categories_id'] ,
-      'marques_id'=>$r['marques_id'] ,
       'image'=> "/storage"."/".$filePath 
     ]);
  
@@ -139,6 +141,10 @@ public function destroy(Request $r)
       ->with('success','modifié avec succès');
     }else{
       
+      $materiel->categories_id=$r['categories_id'];
+      $materiel->marques_id=$r['marques_id'];
+      $materiel->save();
+
       $materiel->update([
         'nom'=> $r['nom'],
         'model'=>$r['model'],
@@ -146,8 +152,6 @@ public function destroy(Request $r)
         'quantite'=>$r['quantite'],
         'barcode'=>$r['barcode'],
         'date'=>$r['date'],
-        'categories_id' =>$r['categories_id'] ,
-        'marques_id'=>$r['marques_id'] 
       ]);
    
       return redirect()->route('GestionnairesStock.index')

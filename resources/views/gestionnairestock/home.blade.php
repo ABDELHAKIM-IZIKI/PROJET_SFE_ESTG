@@ -84,10 +84,14 @@ d’équipement :
 
      <div class="px-5 pb-5 start-0 flex flex-col">
         <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">{{$item->nom}}</h5>
-        <span class="text-m font-semibold tracking-tight text-gray-800">Marque : 
+        <span class="text-m font-semibold tracking-tight text-gray-800"> 
             @foreach ($marques as $marque)
-            @if($item->id==$marque->id) {{$marque->nom}} @endif
-            @if($item->id==null)  ---  @endif
+            @if($item->id==$marque->id)
+            <span>Marque : {{$marque->nom}} </span>
+              @endif
+            @if($item->id==null)  
+            <span>Marque : --- </span>
+              @endif
             @endforeach</span>
         <span class="text-m font-semibold tracking-tight text-gray-800">Model : {{$item->model}} </span>
         <span class="text-m font-semibold tracking-tight text-gray-800">Date : {{$item->date}} </span>

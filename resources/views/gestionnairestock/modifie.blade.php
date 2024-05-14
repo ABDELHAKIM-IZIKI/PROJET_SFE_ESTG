@@ -31,23 +31,53 @@ Modifier le  matériel ou l'équipement :
         <div class="mb-5">
             <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque :</label>
             <select id="marques_id" name="marques_id" class="w-full  rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
-                <option value="" selected></option>
+               
+                @if($materiels['marques_id']!=null)
                 @foreach ($marques as $item)
-                <option value="{{ $item->id }}"  {{ isset($user['marques_id']) && $user['marques_id'] == $item->id ? 'selected' : '' }}>{{ $item->nom }}</option>
+                @if($materiels['marques_id'] == $item->id) 
+                <option  value="{{$item->id}}" selected>{{$item->nom}}</option>
+                @endif
+                @if($materiels['marques_id'] != $item->id) 
+                <option  value="{{$item->id}}" >{{$item->nom}}</option>
+                @endif
                 @endforeach
-            </select>
-            @error('marques_id')
-            <span class="text-red-600">{{ $message }}</span>
-            @enderror
+                @endif
+
+                @if($materiels['marques_id']==null)
+                <option  value="" selected></option>
+                @foreach ($marques as $item) 
+                <option  value="{{$item->id}}" >{{$item->nom}}</option>
+                @endforeach
+                @endif
+              </select>  
+              @error('marques_id')
+              <span  class="text-red-600">{{ $message }}</span>
+               @enderror
         </div>
 
         <div class="mb-5">
             <label for="categories_id" class="block mb-2  text-sm font-medium text-black">Choisir une catégorie :</label>
             <select id="categories_id" name="categories_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
-                <option value="" selected></option>
+              
+
+                @if($materiels['categories_id']!=null)
                 @foreach ($categories as $item)
-                <option value="{{ $item->id }}"  {{ isset($user['categories_id']) && $user['categories_id'] == $item->id ? 'selected' : '' }}>{{ $item->nom }}</option>
+                @if($materiels['categories_id'] == $item->id) 
+                <option  value="{{$item->id}}" selected>{{$item->nom}}</option>
+                @endif
+                @if($materiels['categories_id'] != $item->id) 
+                <option  value="{{$item->id}}" >{{$item->nom}}</option>
+                @endif
                 @endforeach
+                @endif
+
+                @if($materiels['categories_id']==null)
+                <option  value="" selected></option>
+                @foreach ($categories as $item) 
+                <option  value="{{$item->id}}" >{{$item->nom}}</option>
+                @endforeach
+                @endif
+                
             </select>
             @error('categories_id')
             <span class="text-red-600">{{ $message }}</span>
