@@ -17,8 +17,8 @@ class GestionnairesStockController extends Controller
     public function index()
 {
     $materiels = Materiel::paginate(8);
-    $categories = Categorie::all();
-    $marques =Marque::all();
+    $categories = Categorie::orderBy('nom')->get();
+    $marques =Marque::orderBy('nom')->get();
         return view('gestionnairestock.home', ['materiels' =>$materiels ,'marques'=>$marques ,'categories'=>$categories ]);
 }
 
@@ -55,8 +55,8 @@ class GestionnairesStockController extends Controller
 }
   
 
-$categories = Categorie::all();
-$marques =Marque::all();
+$categories = Categorie::orderBy('nom')->get();
+$marques =Marque::orderBy('nom')->get();
 $materiels=$q->paginate(10);
 
 return view('gestionnairestock.home', ['materiels' =>$materiels,'marques'=>$marques ,'categories'=>$categories ]);
@@ -74,8 +74,8 @@ public function destroy(Request $r)
 
   public function fill()
   {
-    $categories = Categorie::all();
-    $marques =Marque::all();
+    $categories = Categorie::orderBy('nom')->get();
+    $marques =Marque::orderBy('nom')->get();
     return view('gestionnairestock.ajouter',['materiels'=> null,'marques'=>$marques ,'categories'=>$categories ]);
   }
 
@@ -107,8 +107,8 @@ public function destroy(Request $r)
   public function fillEdit(Request $r)
   {
     $materiel=Materiel::find($r['id']);
-    $categories = Categorie::all();
-    $marques =Marque::all();
+    $categories = Categorie::orderBy('nom')->get();
+    $marques =Marque::orderBy('nom')->get();
     return view('gestionnairestock.modifie',['materiels'=> $materiel ,'marques'=>$marques ,'categories'=>$categories]);
   }
 

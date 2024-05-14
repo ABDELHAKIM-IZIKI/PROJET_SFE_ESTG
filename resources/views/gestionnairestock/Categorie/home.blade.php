@@ -1,7 +1,7 @@
 @extends('gestionnairestock.templateGS')
 
 @section('title')
-Les Categories :
+Les categories :
 @endsection
 
 @section('content')
@@ -101,14 +101,15 @@ Les Categories :
                                 {{ $item->nom}}
                             </td>
                             <td class="px-6 py-4 text-right flex">
-                                <a id="openupdate" class="font-medium text-blue-500 hover:underline pr-2">Modifié</a>
                                 
-                                <div id="update" class="drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden p-5 ">
+                                <button id="openupdate-{{$item->id}}" class="font-medium text-blue-500 hover:underline pr-2">Modifié</button>
+                                
+                                <div id="update-{{$item->id}}" class="drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden p-5 ">
                                     <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
                                     
                                       <div class="flex-1">
                                       <span class=""></span>
-                                      <span id="closeupdate" class=" float-right m-2 p-0.5  rounded-lg w-7 my-4 hover:bg-gray-400"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
+                                      <span id="closeupdate-{{$item->id}}" class=" float-right m-2 p-0.5  rounded-lg w-7 my-4 hover:bg-gray-400"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></span>
                                       </div>
                                       <label  class="flex-1 block m-3 text-sm font-medium text-black">Modifié le nom de Categorie :</label>
                                       
@@ -119,8 +120,7 @@ Les Categories :
                                               <input type="text" value="{{$item->nom}}" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " />
                                              
                                               <button type="submit" class="p-1.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
-                                              </button>
+                                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg></button>
                       
                                           </form>
                                           @error('nom')
@@ -129,7 +129,7 @@ Les Categories :
                                       </div>
                                   </div>
                               </div>
-                                
+                             
                                 
                                 
                                 <form action="{{ route('Categorie.destroy',[ 'id' => $item->id ] ) }}" method="post">
@@ -142,7 +142,20 @@ Les Categories :
 
 
                         </tr>
+   
+                        <script>
+                            var modal{{$item->id}} = document.getElementById("update-{{$item->id}}");
+                            var btn{{$item->id}} = document.getElementById("openupdate-{{$item->id}}");
+                            var span{{$item->id}} = document.getElementById("closeupdate-{{$item->id}}");
 
+                             btn{{$item->id}}.onclick = function() {
+                             modal{{$item->id}}.classList.remove("hidden");
+                             }
+
+                              span{{$item->id}}.onclick = function() {
+                              modal{{$item->id}}.classList.add("hidden");
+                             }
+                     </script>
 
                         @endforeach
 
@@ -158,30 +171,16 @@ Les Categories :
 </div>
 </div>
 <script>
-    var modal1 = document.getElementById("Create");
-    var btn1 = document.getElementById("openCreate");
-    var span1 = document.getElementById("closeCreate");
+    var modal = document.getElementById("Create");
+    var btn = document.getElementById("openCreate");
+    var span = document.getElementById("closeCreate");
 
-    btn1.onclick = function() {
-        modal1.classList.remove("hidden");
+    btn.onclick = function() {
+        modal.classList.remove("hidden");
     }
 
-    span1.onclick = function() {
-        modal1.classList.add("hidden");
-    }
-
-
-
-    var modal2 = document.getElementById("update");
-    var btn2 = document.getElementById("openupdate");
-    var span2 = document.getElementById("closeupdate");
-
-    btn2.onclick = function() {
-        modal2.classList.remove("hidden");
-    }
-
-    span2.onclick = function() {
-        modal2.classList.add("hidden");
+    span.onclick = function() {
+        modal.classList.add("hidden");
     }
 
 </script>
