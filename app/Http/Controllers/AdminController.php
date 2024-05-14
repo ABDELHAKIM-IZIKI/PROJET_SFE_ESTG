@@ -15,7 +15,8 @@ class AdminController extends Controller
     { 
       $roles =Role::all();
       $users = User::paginate(10);
-      return view('admin.Home', ['users'=>$users , 'roles'=>$roles] );
+  
+      return view('admin.Home', ['users'=>$users , 'roles'=>$roles   ] );
     }
 
 
@@ -52,7 +53,7 @@ class AdminController extends Controller
 
       $roles =Role::all();
       $users=$q->paginate(10);
-      return view('admin.Home', ['users' =>$users,'roles'=>$roles]);
+      return view('admin.Home', ['users' =>$users,'roles'=>$roles  ]);
   }
   
   public function fill(){

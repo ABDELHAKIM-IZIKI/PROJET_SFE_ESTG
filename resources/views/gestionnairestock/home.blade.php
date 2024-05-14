@@ -84,18 +84,21 @@ d’équipement :
 
      <div class="px-5 pb-5 start-0 flex flex-col">
         <h5 class="text-xl font-semibold tracking-tight text-gray-900 ">{{$item->nom}}</h5>
-        <span class="text-m font-semibold tracking-tight text-gray-800"> 
-            @foreach ($marques as $marque)
-            @if($item->id==$marque->id)
-            <span>Marque : {{$marque->nom}} </span>
-              @endif
-            @if($item->id==null)  
-            <span>Marque : --- </span>
-              @endif
-            @endforeach</span>
+        <span class="text-m font-semibold tracking-tight text-gray-800"> Marque :
+         <?php
+            foreach ($marques as $marque) {
+               if ($item->marques_id == $marque->id) {
+                echo " {$marque->nom} " ;
+               }  
+            } 
+            ?>
+        </span>
         <span class="text-m font-semibold tracking-tight text-gray-800">Model : {{$item->model}} </span>
         <span class="text-m font-semibold tracking-tight text-gray-800">Date : {{$item->date}} </span>
-        <span class="bg-blue-100 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800  float-right"> Quantité : {{$item->quantite}} </span>
+        <div>
+        <span></span>
+        <span class="bg-blue-100 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800  float-end"> Quantité : {{$item->quantite}} </span>
+        </div>
      </div>
         <div class="mr-3 flex float-right items-center">
             <a href="GestionnairesStock.refer" class="text-white items-center font-medium rounded-lg text-xs h-9 px-1.5 pt-0.5 pb-1 m-1.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">Affecté à <br/> fonctionnaire</a>

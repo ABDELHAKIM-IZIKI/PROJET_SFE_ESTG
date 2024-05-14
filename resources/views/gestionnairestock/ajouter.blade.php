@@ -28,7 +28,7 @@ Ajouter un nouveau matériel ou équipement :
         <div class="mb-5">
             <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque :</label>
             <select id="marques_id" name="marques_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
-                <option value="" selected></option>
+                <option value="" >---</option>
                 @foreach ($marques as $item)
                 <option value="{{ $item->id }}">{{ $item->nom }}</option>
                 @endforeach
@@ -41,9 +41,9 @@ Ajouter un nouveau matériel ou équipement :
         <div class="mb-5">
             <label for="categories_id" class="block mb-2 text-sm font-medium text-black">Choisir une catégorie :</label>
             <select id="categories_id" name="categories_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
-                <option value="" selected></option>
+                <option value="" >---</option>
                 @foreach ($categories as $item)
-                <option value="{{ $item->id }}"></option>
+                <option value="{{ $item->id }}">{{ $item->nom }}</option>
                 @endforeach
             </select>
             @error('categories_id')
