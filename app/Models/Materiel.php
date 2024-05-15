@@ -19,5 +19,15 @@ class Materiel extends Model
         'marques_id',
         'image',
     ];
+
+    public function categorie()
+    {
+        return $this->belongsTo(Categorie::class, 'categorie_id');
+    }
+
+    public function caracteristique()
+    {
+        return $this->hasMany(Caracteristique::class);
+    }
     
 }

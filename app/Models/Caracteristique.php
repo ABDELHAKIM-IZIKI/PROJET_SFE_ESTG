@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Caracteristique extends Model
 {
     use HasFactory;
+
+    public function materiel()
+    {
+        return $this->belongsTo(Materiel::class,'materiels_id');
+    }
 }

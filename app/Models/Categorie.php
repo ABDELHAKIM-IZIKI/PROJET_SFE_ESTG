@@ -13,4 +13,9 @@ class Categorie extends Model
         'nom',
         'id'
     ];
+
+    public function materiel()
+    {
+        return $this->hasMany(Materiel::class);
+    }
 }
