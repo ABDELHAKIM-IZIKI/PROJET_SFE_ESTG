@@ -10,7 +10,7 @@ Ajouter un nouveau matériel ou équipement :
     <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
         @csrf
         <div class="mb-5">
-            <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom :</label>
+            <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom : <span class="text-red-600">*</span></label>
             <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
             @error('nom')
             <span class="text-red-600">{{ $message }}</span>
@@ -18,7 +18,7 @@ Ajouter un nouveau matériel ou équipement :
         </div>
 
         <div class="mb-5">
-            <label for="model" class="block mb-2 text-sm font-medium text-black">Model :</label>
+            <label for="model" class="block mb-2 text-sm font-medium text-black">Model : <span class="text-red-600">*</span></label>
             <input value="{{ $materiels['model'] ?? '' }}" type="text" id="model" name="model" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
             @error('model')
             <span class="text-red-600">{{ $message }}</span>
@@ -60,7 +60,7 @@ Ajouter un nouveau matériel ou équipement :
         </div>
 
         <div class="mb-5">
-            <label for="quantite" class="block mb-2 text-sm font-medium text-black">Quantité :</label>
+            <label for="quantite" class="block mb-2 text-sm font-medium text-black">Quantité : <span class="text-red-600">*</span></label>
             <input value="{{ $materiels['quantite'] ?? '' }}" type="number" id="quantite" name="quantite" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
             @error('quantite')
             <span class="text-red-600">{{ $message }}</span>
@@ -81,7 +81,7 @@ Ajouter un nouveau matériel ou équipement :
         </div>
 
         <div class="mb-5">
-            <label for="image" class="block mb-2 text-sm font-medium text-black">Choisir une image :</label>
+            <label for="image" class="block mb-2 text-sm font-medium text-black">Choisir une image : <span class="text-red-600">*</span></label>
             <input class="appearance-none w-full h-10 px-3 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer bg-white text-black placeholder-gray-500 focus:outline-none focus:border-blue-500" accept="image/png, image/jpeg, image/jpg" type="file" id="image" name="image" />
             <span class="text-sm">PNG, JPG ou JPEG (MAX. 600x600px)</span>
             @error('image')

@@ -7,17 +7,18 @@
 @section('content')
 
 <!--image-->
-<div class="flex flex-col bg-gray-300 p-4 lg:px-40 ">
+<div class="flex flex-col bg-gray-300 p-4 lg:px-40  ">
         
-   <div class="mb-4 px-50 content-center bg-red-200" >
+   <div class="mb-5 content-center  mx-auto " >
        <figure class="max-w-lg">
-        <img class="h-auto w-80 rounded-lg" src="{{asset($materiel->image)}}" alt="image description">
+        <img class="h-64 object-contain rounded-lg" src="{{asset($materiel->image)}}" alt="image description">
         </figure>
   </div>
 
   <!--display-->
- <div class="flex flex-col ">
+ <div class="flex flex-col  px-auto ">
 	
+   
        <div  class=" mt-2"> 
           <label class="font-medium text-black uppercase ">Categorie : </label><label>{{$nomcategorie['nom'] ?? ''}}</label>
        </div>
@@ -37,27 +38,28 @@
         <label class="font-medium text-black uppercase ">Quantité : </label><label>{{$materiel['quantite']}}</label>
         </div>
                 
-        <div class=" mt-2"> 
+        <div class=" mt-2 "> 
         <label class="font-medium text-black uppercase">Date : </label><label>{{$materiel['date']}}</label>
         <div>
-
-        <div class="flex flex-col mt-2 ">
+       
+@if(!empty($materiel['description']))
+        <div class="flex flex-col mt-6 ">
         <label class="font-medium text-black uppercase">Description : </label>
-        <p class="font-medium lg:pr-20">{{$materiel['description']}}</p>
+        <p class="font-medium lg:px-20">{{$materiel['description']}}</p>
         </div> 
-     
+@endif    
 
   @if(!empty($caracteristiques[0]))
       
-  
-
-        <div class=" flex flex-col mt-2  lg:pr-20">
-            <label class="font-medium text-black uppercase">Caracteristiques :  </label>
+ 
+  <label class="font-medium text-black uppercase">Caracteristiques :  </label>
             <div class="relative overflow-x-auto">
+ <div class=" flex flex-col mt-2 lg:px-20  ">
+          
 
                 
         <!--table-->
-    <table class="w-full text-sm text-left rtl:text-right text-gray-700 mt-2">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-700 mt-2 ">
         <thead class="text-xs text-gray-600 uppercase bg-gray-200 ">
             <tr>
                 <th scope="col" class="px-6 py-3">
