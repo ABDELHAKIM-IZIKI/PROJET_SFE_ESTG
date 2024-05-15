@@ -167,7 +167,7 @@ public function destroy(Request $r)
     $nomcategorie=$materiel->categorie()->first();
     $nommarque=$materiel->marque()->first();
     $caracteristiques=$materiel->caracteristique()->get();
-    return view('gestionnairestock.Affiche',['materiels' =>$materiel ,'nommarque'=>$nommarque ,'nomcategorie'=>$nomcategorie ,'caracteristiques'=>$caracteristiques]);
+    return view('gestionnairestock.Affiche',['materiel' =>$materiel ,'nommarque'=>$nommarque ,'nomcategorie'=>$nomcategorie ,'caracteristiques'=>$caracteristiques]);
   }
 
   public function refer()

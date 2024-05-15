@@ -52,7 +52,7 @@
  <div class=" h-screen  flex flex-col sm:ml-64 bg-gray-300">
     
  <!--titre-->
-<h1 class="text-4xl m-4 text-black font-bold no-italic ">@yield('title')</h1><br/>
+<h1 class="lg:text-4xl text-3xl m-4 text-black font-bold no-italic ">@yield('title')</h1><br/>
 
 
 

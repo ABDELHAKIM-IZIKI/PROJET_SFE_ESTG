@@ -1,60 +1,64 @@
 @extends('gestionnairestock.templateGS')
 
 @section('title')
-{{$materiels->nom }}
+{{$materiel->nom }}
 @endsection
 
 @section('content')
 
 <!--image-->
-<div class="flex flex-col">
+<div class="flex flex-col bg-gray-300 p-4 lg:px-40 ">
         
-   <div>
+   <div class="mb-4 px-50 content-center bg-red-200" >
        <figure class="max-w-lg">
-        <img class="h-auto max-w-full rounded-lg" src="{{asset($materiels->image)}}" alt="image description">
+        <img class="h-auto w-80 rounded-lg" src="{{asset($materiel->image)}}" alt="image description">
         </figure>
   </div>
 
   <!--display-->
- <div class="flex flex-col">
+ <div class="flex flex-col ">
 	
-       <div> 
-          <label class="text-xs text-black">Categorie :</label><label>{{$nomcategorie}}</label>
+       <div  class=" mt-2"> 
+          <label class="font-medium text-black uppercase ">Categorie : </label><label>{{$nomcategorie['nom'] ?? ''}}</label>
        </div>
-       <div> 
-       <label class="text-xs text-black">Marque :</label><label>{{$nommarque}}</label>
+       <div  class=" mt-2"> 
+       <label class="font-medium text-black uppercase ">Marque : </label><label>{{$nommarque['nom']?? ''}}</label>
        <div>
        
-        <div> 
-        <label class="text-xs text-black">Model :</label><label>{{$materiel['model']}}</label>
+        <div  class=" mt-2"> 
+        <label class="font-medium text-black uppercase">Model : </label><label>{{$materiel['model']}}</label>
         </div>
         
-        <div> 
-         <label class="text-xs text-black">Barcode :</label><label>{{$materiel['barcode']}}</label>
+        <div class=" mt-2"> 
+         <label class="font-medium text-black uppercase ">Barcode : </label><label>{{$materiel['barcode']}}</label>
         <div>
         
-        <div> 
-        <label class="text-xs text-black">Quantité :</label><label>{{$materiel['quantite']}}</label>
+        <div  class=" mt-2"> 
+        <label class="font-medium text-black uppercase ">Quantité : </label><label>{{$materiel['quantite']}}</label>
         </div>
                 
-        <div> 
-        <label class="text-xs text-black">Date :</label><label>{{$materiel['date']}}</label>
+        <div class=" mt-2"> 
+        <label class="font-medium text-black uppercase">Date : </label><label>{{$materiel['date']}}</label>
         <div>
 
-        <div class="flex flex-col">
-        <label class="text-xs text-black">Quantité :</label>
-        <p>{{$materiel['description']}}</p>
+        <div class="flex flex-col mt-2 ">
+        <label class="font-medium text-black uppercase">Description : </label>
+        <p class="font-medium lg:pr-20">{{$materiel['description']}}</p>
         </div> 
      
 
-        <div class="flex flex-col">
-            <label class="text-xs text-black">Caracteristiques :  </label>
+  @if(!empty($caracteristiques[0]))
+      
+  
+
+        <div class=" flex flex-col mt-2  lg:pr-20">
+            <label class="font-medium text-black uppercase">Caracteristiques :  </label>
             <div class="relative overflow-x-auto">
 
                 
         <!--table-->
-    <table class=" text-sm text-left rtl:text-right text-gray-500 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-700 mt-2">
+        <thead class="text-xs text-gray-600 uppercase bg-gray-200 ">
             <tr>
                 <th scope="col" class="px-6 py-3">
                    Nom
@@ -66,11 +70,11 @@
         </thead>
         <tbody>
             @foreach ($caracteristiques as $item)
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white border-b  ">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                     {{$item->nom}}
                 </th>
-                <td class="px-6 py-4">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                     {{$item->valeur}}
                 </td>
             </tr>
@@ -78,6 +82,7 @@
         </tbody>
     </table>
 </div>  
+@endif 
 </div>
  
 

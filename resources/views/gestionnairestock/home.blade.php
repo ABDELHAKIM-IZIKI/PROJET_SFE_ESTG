@@ -78,7 +78,7 @@ d’équipement :
    <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2 ">
 
   
-       <a href="route('GestionnairesStock.display')">
+       <a href="{{route('GestionnairesStock.display',['id'=>$item->id])}}">
         <img class="p-8  object-contain w-64 h-64  rounded-t-lg" src="{{ asset($item->image) }}" alt="product image" />
       </a>
 

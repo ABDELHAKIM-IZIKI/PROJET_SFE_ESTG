@@ -22,12 +22,17 @@ class Materiel extends Model
 
     public function categorie()
     {
-        return $this->belongsTo(Categorie::class, 'categorie_id');
+        return $this->belongsTo(Categorie::class, 'categories_id');
+    }
+
+    public function marque()
+    {
+        return $this->belongsTo(Marque::class, 'marques_id');
     }
 
     public function caracteristique()
     {
-        return $this->hasMany(Caracteristique::class);
+        return $this->hasMany(Caracteristique::class,'materiels_id');
     }
     
 }
