@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class RegistreController extends Controller
 {
     public function index(){
-
-        return view('gestionnairestock.Registre.home',['Categorie'=> Registre::paginate(15) ]);
+      
+        return view('gestionnairestock.Registre.home',['registres'=> Registre::paginate(15) ]);
     }
 
     public function search(Request $r)
@@ -23,8 +23,9 @@ class RegistreController extends Controller
          $q->orwhereHas('materiel',  function ($query) use ($valeur )  {  $query->where('nom', 'like',  $valeur )->orWhere('model','like', $valeur ); } );
          $q->orwhere('lieu','like', $valeur );
     }
-
+      
       $registres=$q->paginate(15);
+     
       return view('gestionnairestock.Registre.home', ['registres'=>$registres]);
   }
 }

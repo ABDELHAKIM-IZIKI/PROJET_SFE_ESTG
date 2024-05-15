@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Etat;
 use App\Models\Materiel;
+use App\Models\Registre;
 use App\Models\User;
 use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,14 +20,8 @@ class UserSeed extends Seeder
     {
       
 
-         Materiel::insert(
-            ['nom'=>'TP-Link Routeur ADSL2+ WiFi N300 Mbps',
-            'image'=>'assets/imageMateriel/p_1_1_4_4_1144-TP-Link-Routeur-ADSL2-WiFi-N-300-Mbps.jpg',
-            'model'=>'TD-W8961N',
-              'quantite'=>10 ,
-              'date'=>date('Y/m/d')
-            ]
-        );
+      //Registre::insert(['users_id'=>17 , 'materiels_id'=>25 ,'etats_id'=> 1 , 'lieu'=>'tilila','date'=>date('Y:m:d'),'QR'=>'test' ]);
+         
 
 
 
