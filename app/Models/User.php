@@ -52,4 +52,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class,'roles_id');
     }
      */
+
+     public function registre()
+    {
+        return $this->hasMany(Registre::class);
+    }
 }

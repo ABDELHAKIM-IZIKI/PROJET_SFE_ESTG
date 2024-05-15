@@ -9,7 +9,7 @@ Ajouter un nouveau matériel ou équipement :
 <div class="bg-gray-300">
     <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
         @csrf
-        <div class="mb-5">
+        <div class="mb-5 mr-2 ">
             <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom : <span class="text-red-600">*</span></label>
             <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
             @error('nom')
@@ -17,7 +17,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="model" class="block mb-2 text-sm font-medium text-black">Model : <span class="text-red-600">*</span></label>
             <input value="{{ $materiels['model'] ?? '' }}" type="text" id="model" name="model" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
             @error('model')
@@ -25,7 +25,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque :</label>
             <select id="marques_id" name="marques_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
                 <option value="" >---</option>
@@ -38,7 +38,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="categories_id" class="block mb-2 text-sm font-medium text-black">Choisir une catégorie :</label>
             <select id="categories_id" name="categories_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
                 <option value="" >---</option>
@@ -51,7 +51,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="description" class="block mb-2 text-sm font-medium text-black">Description :</label>
             <textarea id="description" class="w-full rounded-lg p-3 h-40 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" name="description">{{ $materiels['description'] ?? '' }}</textarea>
             @error('description')
@@ -59,7 +59,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="quantite" class="block mb-2 text-sm font-medium text-black">Quantité : <span class="text-red-600">*</span></label>
             <input value="{{ $materiels['quantite'] ?? '' }}" type="number" id="quantite" name="quantite" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
             @error('quantite')
@@ -67,7 +67,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="barcode" class="block mb-2 text-sm font-medium text-black">Barcode :</label>
             <div class="flex">
                 <input value="{{ $materiels['barcode'] ?? '' }}" type="text" id="barcode" name="barcode" class="w-full rounded-l-lg p-3 h-10  bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
@@ -80,7 +80,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="image" class="block mb-2 text-sm font-medium text-black">Choisir une image : <span class="text-red-600">*</span></label>
             <input class="appearance-none w-full h-10 px-3 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer bg-white text-black placeholder-gray-500 focus:outline-none focus:border-blue-500" accept="image/png, image/jpeg, image/jpg" type="file" id="image" name="image" />
             <span class="text-sm">PNG, JPG ou JPEG (MAX. 600x600px)</span>
@@ -89,7 +89,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="mb-5">
+        <div class="mb-5 mr-2">
             <label for="date" class="block mb-2 text-sm font-medium text-black">Date :</label>
             <input type="date" value="{{ $materiels['date'] ?? '' }}" id="date" name="date" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" />
             @error('date')
@@ -97,7 +97,7 @@ Ajouter un nouveau matériel ou équipement :
             @enderror
         </div>
 
-        <div class="flex items-start mb-5">
+        <div class="float-right mb-5 ">
             <button type="submit" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Ajouté</button>
         </div>
     </form>

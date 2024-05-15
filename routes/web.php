@@ -61,9 +61,9 @@ Route::post('/MonSite/GestionnaireStock/Marque/crée', [MarqueController::class 
 Route::post('/MonSite/GestionnaireStock/Marque/modifie', [MarqueController::class ,'edit'])->name('Marque.edit');
 
 
-//Registre
+//Registre   
 Route::get('/MonSite/GestionnaireStock/Registre', [RegistreController::class ,'index'])->name('Registre.index');
-
+Route::get('/MonSite/GestionnaireStock/Registre/recherche', [RegistreController::class ,'search'])->name('Registre.search');
 
 
 

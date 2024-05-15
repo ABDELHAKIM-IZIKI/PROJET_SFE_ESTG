@@ -35,4 +35,9 @@ class Materiel extends Model
         return $this->hasMany(Caracteristique::class,'materiels_id');
     }
     
+    public function registre()
+    {
+        return $this->hasMany(Registre::class);
+    }
+
 }

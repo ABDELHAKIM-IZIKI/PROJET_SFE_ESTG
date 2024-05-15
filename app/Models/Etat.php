@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Etat extends Model
 {
     use HasFactory;
+
+    public function registre()
+    {
+        return $this->hasMany(Registre::class);
+    }
 }

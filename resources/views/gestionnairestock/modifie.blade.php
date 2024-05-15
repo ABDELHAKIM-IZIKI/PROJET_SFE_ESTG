@@ -130,7 +130,7 @@ Modifier le  matériel ou l'équipement :
             @enderror
         </div>
 
-        <div class="flex items-start mb-5">
+        <div class="float-right mb-5">
             <button type="submit" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Modifié</button>
         </div>
     </form>
