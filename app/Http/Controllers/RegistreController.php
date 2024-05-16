@@ -36,13 +36,13 @@ dd($id);
   }
 
   public function downloadQR($id){
-    
+
     $data = QrCode::size(512)
     ->format('png') 
     ->merge('/public/assets/images/Logo_Agadir.png')
     ->errorCorrection('M')
     ->generate(
-        'http://192.168.100.138:8000/MonSite/GestionnaireStock/Registre'.$id
+        route('Registre.display',$id)
     );
 
     $filename = 'QRcode-' . $id . '.png';
