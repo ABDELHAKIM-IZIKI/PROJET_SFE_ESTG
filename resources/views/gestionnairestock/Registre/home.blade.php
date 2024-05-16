@@ -57,7 +57,7 @@ Le Registre :
             <tbody>
                 @foreach ($registres as $item)
 
-                <tr class="bg-gray-100 border-gray-600 hover:bg-gray-200">
+                <tr class="bg-gray-100 border-gray-600 hover:bg-gray-200 z-0">
 
 
                     <td class="px-6 py-4 text-black">
@@ -73,19 +73,18 @@ Le Registre :
                         {{$item->materiel->model}}
                     </td>
                     <td class="px-6 py-4 text-black">
-                        lieu
+                        {{$item->lieu}} 
                     </td>
                     <td class="px-6 py-4 text-black">
-                        date
+                        {{$item->date}}   
                     </td>
 
                     <td class="px-6 py-4 text-right flex">
                         
                         
-                        <a id="$$$$$$$" class="font-medium text-blue-500 hover:underline pr-2">Affiche</a>
-                        <button class="flex justify-content font-medium text-blue-500 hover:underline pr-2"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"/></svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M520-120v-80h80v80h-80Zm-80-80v-200h80v200h-80Zm320-120v-160h80v160h-80Zm-80-160v-80h80v80h-80Zm-480 80v-80h80v80h-80Zm-80-80v-80h80v80h-80Zm360-280v-80h80v80h-80ZM180-660h120v-120H180v120Zm-60 60v-240h240v240H120Zm60 420h120v-120H180v120Zm-60 60v-240h240v240H120Zm540-540h120v-120H660v120Zm-60 60v-240h240v240H600Zm80 480v-120h-80v-80h160v120h80v80H680ZM520-400v-80h160v80H520Zm-160 0v-80h-80v-80h240v80h-80v80h-80Zm40-200v-160h80v80h80v80H400Zm-190-90v-60h60v60h-60Zm0 480v-60h60v60h-60Zm480-480v-60h60v60h-60Z"/></svg>
-                        </button>
+                        <a href="{{route('Registre.display', $item->id )}}" class="font-medium text-blue-500 hover:underline p-2 mr-2 hover:bg-gray-300 rounded-lg">Affiche</a>
+                        <a href="{{route('Registre.downloadQR', $item->id )}}" class="w-9 h-9 p-1 hover:bg-gray-300 rounded-lg"><img src="{{asset('assets\images\download_11414370.png')}}" alt=""></a>
+    
                     
                     
                     </td>
