@@ -31,8 +31,10 @@ class RegistreController extends Controller
   }
 
   public function display($id){
-dd($id);
 
+    $registre=Registre::find($id);
+
+    return view('gestionnairestock.Registre.Affiche', ['registre'=>$registre ]);
   }
 
   public function downloadQR($id){

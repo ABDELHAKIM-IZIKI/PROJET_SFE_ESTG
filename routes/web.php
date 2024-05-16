@@ -70,6 +70,7 @@ Route::get('/MonSite/GestionnaireStock/Registre/registre-downloadQR-{id}', [Regi
 
 
 
+
 Route::get('/test', function(){
     return view('test');
 });

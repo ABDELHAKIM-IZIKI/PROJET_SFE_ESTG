@@ -6,14 +6,15 @@
 
 @section('content')
 
-<!--image-->
+
 <div class="flex flex-col bg-gray-300 p-4 lg:px-40  ">
-        
-   <div class="mb-5 content-center  mx-auto " >
-       <figure class="max-w-lg">
-        <img class="h-64 object-contain rounded-lg" src="{{asset($materiel->image)}}" alt="image description">
-        </figure>
-  </div>
+     
+    <!--image-->
+    <div class="mb-5 content-center  mx-auto " >
+        <figure class="max-w-lg">
+         <img class="h-64 object-contain rounded-lg" src="{{asset($materiel->image)}}" alt="image description">
+         </figure>
+   </div>
 
   <!--display-->
  <div class="flex flex-col  px-auto ">
