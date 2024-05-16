@@ -65,7 +65,7 @@ Route::post('/MonSite/GestionnaireStock/Marque/modifie', [MarqueController::clas
 Route::get('/MonSite/GestionnaireStock/Registre', [RegistreController::class ,'index'])->name('Registre.index');
 Route::get('/MonSite/GestionnaireStock/Registre/recherche', [RegistreController::class ,'search'])->name('Registre.search');
 Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
-Route::get('/MonSite/GestionnaireStock/Registre-downloadQR-{id}', [RegistreController::class ,'downloadQR'])->name('Registre.downloadQR');
+Route::get('/MonSite/GestionnaireStock/Registre/registre-downloadQR-{id}', [RegistreController::class ,'downloadQR'])->name('Registre.downloadQR');
 
 
 
