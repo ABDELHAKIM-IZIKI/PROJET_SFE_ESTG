@@ -92,4 +92,5 @@ public function edit(RequestRegistreUpdate $a){
   );
   return redirect()->route('Registre.index')->with('success','Modifié avec succès');
 }
+
 }

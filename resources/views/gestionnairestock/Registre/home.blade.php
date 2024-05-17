@@ -26,7 +26,7 @@ Le Registre :
 
 <!--successmessage-->
 @if (session()->has('success'))
-<div class=" mx-4 my-6 text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center z-0">
+<div class=" mx-4  text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center z-0">
     <span class="font-medium">{{ session('success') }}</span>
 </div>
 @endif
