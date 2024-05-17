@@ -27,8 +27,8 @@ Affectation materiel ou équipement :
              <!-- Table -->
   
              
-
-             <table class="wrelative overflow-x-auto  sm:rounded-lg">
+<div class="wrelative overflow-x-auto  sm:rounded-lg  bg-gray-500 ">
+             <table class=" text-sm text-left rtl:text-right text-gray-500 ">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">Nom</th>
@@ -52,7 +52,7 @@ Affectation materiel ou équipement :
                     @endforeach
                 </tbody>
             </table>
-
+</div>
 
 
             <!-- Pagination -->
