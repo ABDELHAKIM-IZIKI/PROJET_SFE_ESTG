@@ -15,7 +15,8 @@ class Registre extends Model
         'etats_id' ,
     'rapport' ,
     'lieu',
-    'date'
+    'date',
+    'id'
     ];
 
     public function user(){

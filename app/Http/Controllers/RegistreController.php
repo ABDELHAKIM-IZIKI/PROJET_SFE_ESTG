@@ -72,6 +72,7 @@ class RegistreController extends Controller
 }
 
 public function destroy($id){
+
   $destroyRegistre=Registre::find($id);
     $destroyRegistre->delete();
     return redirect()->route('Registre.index')->with('success','Supprimé avec succès');
@@ -103,11 +104,17 @@ public function filleAffectation($id){
                                                        'etats'=>Etat::all()]);
 }
 
-public function refer(Request $r){
+public function refer(RequestRegistre $r){
   //$r=$a->validated();
   //dd( $r);
   
-  Registre::insert($r);
+  Registre::insert(['users_id'=>$r['users_id'],
+  'materiels_id'=>$r['materiels_id'],
+  'etats_id' =>$r['etats_id'],
+  'rapport'=>$r['rapport'],
+'lieu'=>$r['lieu'],
+'date'=>$r['date']]
+);
 
   return redirect()->route('Registre.index')->with('success','Affectation avec succès');
 }
