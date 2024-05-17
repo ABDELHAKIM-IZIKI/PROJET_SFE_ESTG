@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestRegistre;
 use App\Http\Requests\RequestRegistreUpdate;
 use App\Models\Etat;
+use App\Models\Materiel;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use App\Models\Registre;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class RegistreController extends Controller
@@ -92,5 +95,23 @@ public function edit(RequestRegistreUpdate $a){
   );
   return redirect()->route('Registre.index')->with('success','Modifié avec succès');
 }
+
+public function filleAffectation($id){
+
+  return view('gestionnairestock.Registre.Ajouter' , ['materiels_id' => $id , 
+                                                      'users' => User::orderBy('nom')->orderBy('prenom')->paginate(5),
+                                                       'etats'=>Etat::all()]);
+}
+
+public function refer(RequestRegistre $a){
+  $r=$a->validated();
+  dd( $r);
+  
+  Registre::insert($r);
+
+  return redirect()->route('Registre.index')->with('success','Affectation avec succès');
+}
+
+
 
 }

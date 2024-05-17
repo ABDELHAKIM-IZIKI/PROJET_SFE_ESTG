@@ -42,7 +42,7 @@ Route::post('/MonSite/GestionnaireStock/modifie', [GestionnairesStockController:
 Route::get('/MonSite/GestionnaireStock/remplir', [GestionnairesStockController::class ,'fill'])->name('gestionnairestock.fill');
 Route::post('/MonSite/GestionnaireStock/crée', [GestionnairesStockController::class ,'create'])->name('gestionnairestock.create');
 Route::get('/MonSite/GestionnaireStock/Materiel-{id}', [GestionnairesStockController::class ,'display'])->name('GestionnairesStock.display');
-Route::post('/MonSite/GestionnaireStock/affectation', [GestionnairesStockController::class ,'refer'])->name('gestionnairestock.refer');
+
 
 
 //Categorie
@@ -69,6 +69,8 @@ Route::get('/MonSite/GestionnaireStock/Registre/registre-downloadQR-{id}', [Regi
 Route::delete('/MonSite/GestionnaireStock/Registre/supprimé', [RegistreController::class ,'destroy'])->name('Registre.destroy'); 
 Route::get('/MonSite/GestionnaireStock/Registre/remplir-modifie-{id}', [RegistreController::class ,'filledit'])->name('Registre.filledit');
 Route::post('/MonSite/GestionnaireStock/Registre/modifie', [RegistreController::class ,'edit'])->name('Registre.edit');
+Route::get('/MonSite/GestionnaireStock/Registre/remplir-affectation-{id}', [RegistreController::class ,'filleAffectation'])->name('Registre.filleAffectation');
+Route::post('/MonSite/GestionnaireStock/Registre/affectation', [RegistreController::class ,'refer'])->name('Registre.refer');
 
 
 Route::get('/test', function(){

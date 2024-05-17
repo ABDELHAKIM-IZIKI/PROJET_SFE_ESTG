@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MaterielRequest;
 use App\Http\Requests\MaterielRequestUpdate;
 use App\Models\Categorie;
+use App\Models\Etat;
 use App\Models\Marque;
 use App\Models\Materiel;
 
