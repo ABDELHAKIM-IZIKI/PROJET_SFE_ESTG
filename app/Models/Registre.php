@@ -10,6 +10,12 @@ class Registre extends Model
     use HasFactory;
 
     protected $fillable = [
+        'users_id',
+        'materiels_id',
+        'etats_id' ,
+    'rapport' ,
+    'lieu',
+    'date'
     ];
 
     public function user(){

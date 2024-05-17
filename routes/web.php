@@ -66,9 +66,9 @@ Route::get('/MonSite/GestionnaireStock/Registre', [RegistreController::class ,'i
 Route::get('/MonSite/GestionnaireStock/Registre/recherche', [RegistreController::class ,'search'])->name('Registre.search');
 Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
 Route::get('/MonSite/GestionnaireStock/Registre/registre-downloadQR-{id}', [RegistreController::class ,'downloadQR'])->name('Registre.downloadQR');
-
-
-
+Route::delete('/MonSite/GestionnaireStock/Registre/supprimé', [RegistreController::class ,'destroy'])->name('Registre.destroy'); 
+Route::get('/MonSite/GestionnaireStock/Registre/remplir-modifie-{id}', [RegistreController::class ,'filledit'])->name('Registre.filledit');
+Route::post('/MonSite/GestionnaireStock/Registre/modifie', [RegistreController::class ,'edit'])->name('Registre.edit');
 
 
 Route::get('/test', function(){

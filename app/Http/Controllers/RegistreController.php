@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\RequestRegistreUpdate;
+use App\Models\Etat;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use App\Models\Registre;
@@ -20,7 +23,7 @@ class RegistreController extends Controller
       
       if ($r->has('valeur')) { 
         $valeur = "%".$r->input('valeur')."%";
-         $q->whereHas('user',  function ($query) use ($valeur )  {  $query->where('nom', 'like',  $valeur )->orWhere('prenom','like', $valeur ); } ); 
+         $q->whereHas('Registre',  function ($query) use ($valeur )  {  $query->where('nom', 'like',  $valeur )->orWhere('prenom','like', $valeur ); } ); 
          $q->orwhereHas('materiel',  function ($query) use ($valeur )  {  $query->where('nom', 'like',  $valeur )->orWhere('model','like', $valeur ); } );
          $q->orwhere('lieu','like', $valeur );
     }
@@ -63,5 +66,30 @@ class RegistreController extends Controller
     return  response()->download($filePath, $filename, $headers);
  
  
+}
+
+public function destroy($id){
+  $destroyRegistre=Registre::find($id);
+    $destroyRegistre->delete();
+    return redirect()->route('Registre.index')->with('success','Supprimé avec succès');
+}
+
+public function filledit($id){
+  $registre=Registre::find($id);
+  $etat=Etat::all();
+  return view('gestionnairestock.Registre.modifie', ['registre'=>$registre ,'etat' => $etat]);
+}
+
+public function edit(RequestRegistreUpdate $a){
+  
+  $r=$a->validated();
+  $registreupdate=Registre::find($r['id']);
+  $registreupdate->update([
+    'etats_id' =>$r['etats_id'],
+    'rapport' =>$r['rapport'],
+    'lieu' =>$r['lieu'],
+    'date' =>$r['date']]
+  );
+  return redirect()->route('Registre.index')->with('success','Modifié avec succès');
 }
 }
