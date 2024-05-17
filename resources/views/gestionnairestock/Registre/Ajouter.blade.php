@@ -7,74 +7,66 @@ Affectation materiel ou équipement :
 @section('content')
 <div class="flex flex-col bg-gray-300 ">
 
+   
+ <!--searchbar-->
+ <div class="mb-4 mx-auto  ">
+    <form method="get" action="{{route('Registre.SearchUser' )}}" class="flex   ">
+       
+        <div class="relative flex ">
+            <div class="flex items-center  pointer-events-none">
+            </div>
+             <input value="{{$materiels_id}}" type="number" name="id" class="hidden"/>
+            <input type="text" name="valeur" class=" min-w-full rounded-lg p-3 h-10 mx-2  border-gray-600 bg-white-400 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="recherche" />
+            
+            <button type="submit" class="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+            </button>
+        </div>
+    </form>
+</div>
+
 
     <div class="flex flex-col mx-auto px-5 ">
         <form action="{{ route('Registre.refer') }}" method="post" class="">
             @csrf
 
             
-            <div class=" my-3">
-                <div class="relative   sm:rounded-lg">
-                    <table class=" overflow-x-scroll text-sm text-left rtl:text-right text-gray-500 ">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-400 ">
+            <div class="my-3">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-400">
                             <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    Nom
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Prenom
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Division
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Service
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Action
-                                </th>
+                                <th scope="col" class="px-6 py-3">Nom</th>
+                                <th scope="col" class="px-6 py-3">Prenom</th>
+                                <th scope="col" class="px-6 py-3">Division</th>
+                                <th scope="col" class="px-6 py-3">Service</th>
+                                <th scope="col" class="px-6 py-3">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $item)
-    
-                            <tr class="bg-gray-100 border-gray-600 hover:bg-gray-200">
-    
-    
-                                <td class="px-6 py-4 text-black">
-                                    {{ $item->nom}}
+                            <tr class="bg-gray-100 border-b border-gray-200 hover:bg-gray-200">
+                                <td class="px-6 py-4 text-black">{{ $item->nom }}</td>
+                                <td class="px-6 py-4 text-black">{{ $item->prenom }}</td>
+                                <td class="px-6 py-4 text-black">{{ $item->division }}</td>
+                                <td class="px-6 py-4 text-black">{{ $item->service }}</td>
+                                <td class="px-6 py-4">
+                                    <input type="radio" value="{{ $item->id }}" name="users_id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
                                 </td>
-                                <td class="px-6 py-4 text-black">
-                                    {{ $item->prenom}}
-                                </td>
-                                <td class="px-6 py-4 text-black">
-                                    {{ $item->division}}
-                                </td>
-                                <td class="px-6 py-4 text-black">
-                                    {{ $item->service}}
-                                </td>
-                               
-                                <td class="px-6 py-4 ">
-                                    
-                                    <input  type="radio" value="{{$item->id}}" name="users_id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-
-                                </td>
-    
-    
                             </tr>
-    
-                           
-       
                             @endforeach
-    
                         </tbody>
                     </table>
                 </div>
-                <!--pagination-->
+                <!-- Pagination -->
                 <div class="m-4">
                     {{ $users->links() }}
+                    <input value="{{$materiels_id}}"  type="number" class="hidden"  name="materiels_id"/>
                 </div>
             </div>
+            
 
 
            

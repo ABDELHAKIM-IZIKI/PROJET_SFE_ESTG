@@ -22,6 +22,8 @@ class RequestRegistre extends FormRequest
     public function rules(): array
     {
         return [
+            "page"=> 'required',
+            "_token"=> 'required',
             'users_id'=>'required|min:1|max:120',
             'materiels_id'=>'required|min:1|max:120',
             'id'=>'required|min:1|max:120',

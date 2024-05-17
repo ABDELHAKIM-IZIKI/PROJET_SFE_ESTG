@@ -103,15 +103,30 @@ public function filleAffectation($id){
                                                        'etats'=>Etat::all()]);
 }
 
-public function refer(RequestRegistre $a){
-  $r=$a->validated();
-  dd( $r);
+public function refer(Request $r){
+  //$r=$a->validated();
+  //dd( $r);
   
   Registre::insert($r);
 
   return redirect()->route('Registre.index')->with('success','Affectation avec succès');
 }
 
+public function SearchUser(Request $r){
+  $q = User::query(); 
+  
+  
+  if ($r->has('valeur')) { 
+    $valeur = "%".$r->input('valeur')."%";
+     $q->where('nom','like', $valeur )->orWhere('prenom','like', $valeur )
+     ->orWhere('division','like', $valeur )->orWhere('service','like', $valeur );
 
+}
+
+return view('gestionnairestock.Registre.Ajouter' , ['materiels_id' => $r['id'] , 
+'users' =>  $q->paginate(5),
+ 'etats'=>Etat::all()]);
+
+}
 
 }

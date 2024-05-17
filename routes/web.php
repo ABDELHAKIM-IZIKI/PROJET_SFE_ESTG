@@ -71,8 +71,7 @@ Route::get('/MonSite/GestionnaireStock/Registre/remplir-modifie-{id}', [Registre
 Route::post('/MonSite/GestionnaireStock/Registre/modifie', [RegistreController::class ,'edit'])->name('Registre.edit');
 Route::get('/MonSite/GestionnaireStock/Registre/remplir-affectation-{id}', [RegistreController::class ,'filleAffectation'])->name('Registre.filleAffectation');
 Route::post('/MonSite/GestionnaireStock/Registre/affectation', [RegistreController::class ,'refer'])->name('Registre.refer');
-
-
+Route::get('/MonSite/GestionnaireStock/Registre/affectation/recherche', [RegistreController::class ,'SearchUser'])->name('Registre.SearchUser');
 Route::get('/test', function(){
     return view('test');
 });
