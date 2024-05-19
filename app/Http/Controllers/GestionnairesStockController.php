@@ -30,12 +30,12 @@ class GestionnairesStockController extends Controller
   $q = Materiel::query(); 
 
   
-  if($r->has('categories_id') && ($r->input('categories_id') != 'Choisir un categorie')){
+  if($r->has('categories_id') && ($r->input('categories_id') != 'Choisir une categorie')){
       $v = $r->input('categories_id');
       $q->where('categories_id','=', $v );
   }
 
-  if($r->has('marques_id') && ($r->input('marques_id') != 'Choisir un marque')){
+  if($r->has('marques_id') && ($r->input('marques_id') != 'Choisir une marque')){
       $v = $r->input('marques_id');
       $q->where('marques_id','=', $v );
   }

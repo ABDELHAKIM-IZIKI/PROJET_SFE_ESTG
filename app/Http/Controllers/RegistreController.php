@@ -47,7 +47,7 @@ class RegistreController extends Controller
 
     $data = QrCode::size(512)
     ->format('png') 
-    ->merge('/public/assets/images/Logo_Agadir.png')
+    ->merge('/public/assets/images/Logo_Agadir.jpg')
     ->errorCorrection('M')
     ->generate(
         route('Registre.display',$id)

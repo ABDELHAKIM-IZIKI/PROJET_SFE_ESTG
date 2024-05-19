@@ -7,48 +7,52 @@ d’équipement :
 
 
 @section('content')
+
+
 <!--searchbar-->
-<div class="">
-    <div class="">
-        <form method="get" action="{{route('gestionnairestock.search')}}" class="flex flex-wrap justify-center w-full my-6  items-center ">   
-        @csrf
-        <div class="relative flex-wrap justify-center  flex  ">
-            
-            <input type="text" name="nom" class="rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700 " placeholder="nom"  />
-            <input type="text" name="model" class="rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700 " placeholder="model"  />
-            
-            <select name="categories_id" class="items-center flex rounded-lg p-2 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700 ">
-            <option selected>Choisir un categorie</option>
-            <option value="">Avec no categorie</option>
-            @foreach ($categories as $item)
-            <option  value="{{$item->id}}">{{$item->nom}}</option>
-            @endforeach
-            </select>
 
-            <select name="marques_id" class="items-center flex rounded-lg p-2 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700 ">
-                <option selected>Choisir un marque</option>
-                <option value="">Avec no marque</option>
-                @foreach ($marques as $item)
-                <option  value="{{$item->id}}">{{$item->nom}}</option>
-                @endforeach
+    <div class="px-4 ">
+        <form method="get" action="{{route('gestionnairestock.search')}}" class="">   
+            @csrf
+            <div class=" flex flex-wrap  lg:flex-inline justify-center items-center  ">
+                
+
+                <div class="flex   w-full lg:w-1/2 m-1.5">
+                    <input type="text" name="valeur" class=" rounded-l-lg p-3 h-10 w-full bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="recherche par nom/model/barcode" />
+                    <button id="BARCODE" class="p-1.5 h-10 w-10 rounded-r-lg border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
+                            <path d="M40-120v-200h80v120h120v80H40Zm680 0v-80h120v-120h80v200H720ZM160-240v-480h80v480h-80Zm120 0v-480h40v480h-40Zm120 0v-480h80v480h-80Zm120 0v-480h120v480H520Zm160 0v-480h40v480h-40Zm80 0v-480h40v480h-40ZM40-640v-200h200v80H120v120H40Zm800 0v-120H720v-80h200v200h-80Z"/>
+                        </svg>
+                    </button>
+                </div> 
+                
+                <select name="categories_id" class="rounded-lg p-2 m-1.5 h-10 w-full md:w-40  bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+                    <option selected>Choisir une categorie</option>
+                    <option value="">Avec no catégorie</option>
+                    @foreach ($categories as $item)
+                    <option value="{{$item->id}}">{{$item->nom}}</option>
+                    @endforeach
                 </select>
-    <div class="flex m-2 ">
-            <input type="text" name="barcode" class="rounded-l-lg p-3 h-10 w-30 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700 " placeholder="barcode"  />
-           <button id="BARCODE" class="p-1.5 h-10  rounded-r-lg border border-blue-700    bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M40-120v-200h80v120h120v80H40Zm680 0v-80h120v-120h80v200H720ZM160-240v-480h80v480h-80Zm120 0v-480h40v480h-40Zm120 0v-480h80v480h-80Zm120 0v-480h120v480H520Zm160 0v-480h40v480h-40Zm80 0v-480h40v480h-40ZM40-640v-200h200v80H120v120H40Zm800 0v-120H720v-80h200v200h-80Z"/></svg>
-           </button>
-    </div>      
 
-               <button type="submit" class="w-30 justify-center items-center   p-2.5 ms-2 m-2 text-sm font-medium text-white  rounded-lg border border-blue-700    bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-               <svg class="w-5 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-              </svg>
-            
-              </button>
-          </div>
+                <select name="marques_id" class="rounded-lg p-2 m-1.5 h-10 w-full md:w-40  bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+                    <option selected>Choisir une marque</option>
+                    <option value="">Avec no marque</option>
+                    @foreach ($marques as $item)
+                    <option value="{{$item->id}}">{{$item->nom}}</option>
+                    @endforeach
+                </select>
+
+                    
+
+                <button type="submit" class="w-full md:w-auto  p-2.5 m-1.5 text-sm font-medium text-white rounded-lg border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                    <svg class="w-5 h-4 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                    </svg>
+                </button>
+            </div>
         </form>
-     </div>
-</div>
+    </div>
+
 <br/>
 
 
@@ -57,7 +61,8 @@ d’équipement :
 
 <!--ajouterbottun-->
 <div class="flex flex-row-reverse z-0 ">
-    <a href="{{route('gestionnairestock.fill')}}" class=" mr-4 rounded-lg  h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700  text-white ">Ajouter un nouveau utilisateur</a>
+    <a href="{{route('gestionnairestock.fill')}}" class=" mr-4 rounded-lg  h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700  text-white text-sm">Ajouter un nouveau Matériels ou équipement 
+    </a>
 </div>
 <br/>
 
@@ -70,8 +75,8 @@ d’équipement :
 
 
 <!--Display items-->
-<div class="justify-center  bg-gray-300 z-0">
-    <div class="p-4  flex flex-wrap pr-0 z-0">
+<div class="justify-center  bg-gray-300 z-0 ">
+    <div class="p-1.5  flex flex-wrap pr-0 z-0">
 
         @foreach($materiels as $item)
 

@@ -7,7 +7,7 @@ Le Registre :
 @section('content')
  <!--searchbar-->
  <div class="mx-2 items-center ">
-    <form method="get" action="{{route('Registre.search')}}" class="flex m-6  ">
+    <form method="get" action="{{route('Registre.search')}}" class="flex m-6  w-ful ">
         @csrf
         <div class="relative flex ">
             <div class="flex items-center ps-3 pointer-events-none">
