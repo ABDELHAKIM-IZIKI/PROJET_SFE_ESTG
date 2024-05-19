@@ -27,26 +27,12 @@ class AdminController extends Controller
       $q = User::query(); 
 
       
-      if($r->has('nom')){
-          $v = $r->input('nom');
-          $q->where('nom','like','%'.$v.'%');
+      if($r->has('valeur')){
+          $v = $r->input('valeur');
+          $q->where('nom','like','%'.$v.'%')->orwhere('prenom','like','%'.$v.'%')->orwhere('division','like','%'.$v.'%')
+          ->orwhere('service','like','%'.$v.'%');
       }
-  
-      if($r->has('prenom')){
-          $v = $r->input('prenom');
-          $q->where('prenom','like','%'.$v.'%');
-      }
-  
-      if($r->has('division')){
-          $v = $r->input('division');
-          $q->where('division','like','%'.$v.'%');
-      }
-  
-      if($r->has('service')){
-          $v = $r->input('service');
-          $q->where('service','like','%'.$v.'%');
-      }
-      
+
       if($r->has('choix') && ($r->input('choix') != 'Choisir un role')){
         $v = $r->input('choix');
         $q->where('roles_id','=',$v);}

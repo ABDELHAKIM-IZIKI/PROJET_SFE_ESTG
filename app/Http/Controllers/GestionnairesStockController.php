@@ -8,8 +8,9 @@ use App\Models\Categorie;
 use App\Models\Etat;
 use App\Models\Marque;
 use App\Models\Materiel;
-
+use App\Models\Registre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File as FacadesFile;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,11 @@ class GestionnairesStockController extends Controller
     $materiels = Materiel::paginate(8);
     $categories = Categorie::orderBy('nom')->get();
     $marques =Marque::orderBy('nom')->get();
-        return view('gestionnairestock.home', ['materiels' =>$materiels ,'marques'=>$marques ,'categories'=>$categories ]);
+    $dispoTab=Registre::select('materiels_id', Registre::raw('count(*) as a'))
+    ->groupBy('materiels_id')
+    ->get();
+ 
+        return view('gestionnairestock.home', ['materiels' =>$materiels ,'marques'=>$marques ,'categories'=>$categories ,   'dispoTab' =>  $dispoTab ]);
 }
 
 
@@ -40,20 +45,11 @@ class GestionnairesStockController extends Controller
       $q->where('marques_id','=', $v );
   }
 
-  if($r->has('nom') && ($r->input('nom') != null)){
-      $v = $r->input('nom');
-      $q->where('nom','like','%'.$v.'%');
+  if($r->has('valeur') && ($r->input('valeur') != null)){
+      $v = $r->input('valeur');
+      $q->where('nom','like','%'.$v.'%')->orWhere('model','like','%'.$v.'%')->orWhere('barcode','like','%'.$v.'%');
   }
 
-  if($r->has('model') && ($r->input('model') != null)){
-      $v = $r->input('model');
-      $q->where('model','like','%'.$v.'%');
-  }
-  
-  if($r->has('barcode') && ($r->input('barcode') != null)){
-    $v = $r->input('barcode');
-    $q->where('barcode','like','%'.$v.'%');
-}
   
 
 $categories = Categorie::orderBy('nom')->get();

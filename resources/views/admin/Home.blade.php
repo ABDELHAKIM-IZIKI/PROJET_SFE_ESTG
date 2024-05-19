@@ -60,54 +60,48 @@
 
 
 
- <div class="p-4  h-fill flex flex-col  sm:ml-64 bg-gray-300">
+ <div class="p-4  h-screen flex flex-col  sm:ml-64 bg-gray-300">
  <!--titre-->
   <div><h1 class="text-4xl text-black font-bold no-italic ">Les utilisateurs : </h1><br/></div>
 
 
 
  <!--searchbar-->
-  <div class="">
-    <div class="">
-        <form method="get" action="{{route('admin.search')}}" class="flex flex-wrap justify-center w-full my-6  items-center ">   
+
+ <div class="px-4 ">
+    <form method="get" action="{{route('admin.search')}}" class="">   
         @csrf
-        <div class="relative flex-wrap justify-center  flex  ">
+        <div class=" flex flex-wrap  lg:flex-inline justify-center items-center  ">
             
-            <input type="text" name="nom" class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="nom"  />
-            <input type="text" name="prenom" class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="prenom"  />
+
+            <div class="flex   w-full lg:w-1/2 m-1.5">
+                <input type="text" name="valeur" class=" rounded-lg p-3 h-10 w-full bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="recherche " />
+            </div> 
             
-    
+            <select name="choix" class="rounded-lg h-10 p-2 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
+                <option selected>Choisir un role</option>
+                @foreach ($roles as $item)
+                <option  value="{{$item->id}}">{{$item->nom}}</option>
+                @endforeach
+              </select>
+
+            
+
                 
-    
-                <select name="choix" class="rounded-lg h-10 p-2 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
-                    <option selected>Choisir un role</option>
-                    @foreach ($roles as $item)
-                    <option  value="{{$item->id}}">{{$item->nom}}</option>
-                    @endforeach
-                  </select>
-               
-    
-    
-    
-              <input type="text" name="division"  class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="division"  />
-              <input type="text" name="service" class="rounded-lg h-10 p-3 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500" placeholder="service"  />
-            
-       
-    
-               <button type="submit" class="w-30 justify-center items-center   p-2.5 ms-2 m-2 text-sm font-medium text-white  rounded-lg border border-blue-700    bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-               <svg class="w-5 h-4 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-              </svg>
-            
-              </button>
-          </div>
-        </form>
-     </div>
-</div>
+
+            <button type="submit" class="w-full md:w-auto  p-2.5 m-1.5 text-sm font-medium text-white rounded-lg border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                <svg class="w-5 h-4 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+            </button>
+        </div>
+    </form>
+
 
 
 
  <br/>
+
  <!--ajoutebuttom-->
  <div class="flex flex-row-reverse ">
      <a href="{{route('admin.fill')}}" class=" rounded-lg  h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700  text-white ">Ajouter un nouveau utilisateur</a>

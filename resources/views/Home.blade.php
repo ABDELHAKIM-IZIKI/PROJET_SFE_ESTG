@@ -29,16 +29,16 @@
 
 
 
-
-    <main class="flex flex-col bg-gray-200 p-20 ">
+<main class="h-screen">
+    <div class="flex flex-col  bg-gray-200 p-10">
         
         <div class="flex flex-col items-center justify-center">
             <img src="https://super.so/icon/dark/thumbs-up.svg" alt="check-circle" class=" h-10 w-10">
             <p class="p-10 text-center text-2xl items-center justify-center sm:text-m">Découvrez notre site web de gestion des matériels et équipements pour une allocation efficace et un suivi des ressources. Simplifiez vos opérations avec nos fonctionnalités.</p>
         </div>
-    </main>
+      </div>
 
-    <main class="flex items-center justify-center h-100" >
+    <div class="flex items-center justify-center " >
        
       <div class="no-italic lg:text-2xl sm:text-m">
         <h1 class="flex ">Bénéfice :</h1>
@@ -54,7 +54,6 @@
         <div class="flex flex-col items-center justify-center bg-white p-20">
             <img src="{{ asset('assets\images\12084832_20943993.jpg') }}" alt="12084832_20943993" class="h-60 ">
         </div>
-    </main>
-    
-  
+      </div>
+    </main> 
 </body>

@@ -34,7 +34,7 @@ d’équipement :
                     @endforeach
                 </select>
 
-                <select name="marques_id" class="rounded-lg p-2 m-1.5 h-10 w-full md:w-40  bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+                <select name="marques_id" class=" rounded-lg p-2 m-1.5 h-10 w-full md:w-40  bg-white border-gray-600 placeholder-gray-700 text-gray-700">
                     <option selected>Choisir une marque</option>
                     <option value="">Avec no marque</option>
                     @foreach ($marques as $item)
@@ -97,10 +97,55 @@ d’équipement :
                     </span>
                     <span class="text-m font-semibold tracking-tight text-gray-800">Model : {{$item->model}} </span>
                     <span class="text-m font-semibold tracking-tight text-gray-800">Date : {{$item->date}} </span>
-                    <div>
-                        <span></span>
-                        <span class="bg-blue-100 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800  float-end"> Quantité : {{$item->quantite}} </span>
+                    <div class="flex flex-col content-right">
+                        <span class="m-2 bg-blue-100 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 float-end">
+                            Quantité total : {{ $item->quantite }}
+                        </span>
+                    
+                      
+                        @php
+                        $etat = true ;
+                        @endphp 
+                        @foreach ($dispoTab as $item2)
+                        
+                            @if ($item2->materiels_id == $item->id)
+                                @php
+                                    $quantiteDisponible = $item->quantite - $item2->a;
+                                   
+                                @endphp
+
+                                @if ($quantiteDisponible > 0 )
+                                    <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
+                                        Quantité Disponible : {{ $quantiteDisponible }}
+                                    </span>
+                                    @php  $etat = false ;  @endphp
+                                @endif
+
+                                @if ($quantiteDisponible <= 0 )
+                                <span class="mx-2 text-white px-2.5 py-0.5 bg-red-500 rounded float-end">
+                                    Indisponible
+                                </span>
+                                @php  $etat = false ;  @endphp
+                                @endif
+
+                        
+                             
+
+                            @endif
+
+                            
+                            @if ( $etat )
+                            <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
+                            Quantité Disponible : {{ $item->quantite }}
+                           </span>
+                           @endif 
+
+                        @endforeach
                     </div>
+                    
+                    
+
+                    
                 </div>
                 <div class="mr-3 flex float-right items-center">
                    
