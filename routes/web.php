@@ -78,7 +78,8 @@ Route::get('/MonSite/GestionnaireStock/Registre/affectation/recherche', [Registr
 
 Route::get('/MonSite/GestionnaireStock/Fonctionnaire', [FonctionnaireController::class ,'index'])->name('Fonctionnaire.index');
 Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Reclamation', [FonctionnaireController::class ,'indexReclamation'])->name('Fonctionnaire.Reclamation.index');
-
+Route::post('/MonSite/GestionnaireStock/Fonctionnaire/Reclamé', [FonctionnaireController::class ,'Reclamé'])->name('Fonctionnaire.add');
+Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Recherche', [FonctionnaireController::class ,'search'])->name('Fonctionnaire.search');
 
 
 

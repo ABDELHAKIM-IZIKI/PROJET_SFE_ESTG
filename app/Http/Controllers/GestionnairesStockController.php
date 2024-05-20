@@ -167,8 +167,6 @@ public function destroy(Request $r)
     return view('gestionnairestock.Affiche',['materiel' =>$materiel ,'nommarque'=>$nommarque ,'nomcategorie'=>$nomcategorie ,'caracteristiques'=>$caracteristiques]);
   }
 
-  public function refer()
-  {}
 
 
 
