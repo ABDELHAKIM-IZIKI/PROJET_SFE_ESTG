@@ -34,6 +34,10 @@ class Registre extends Model
         return $this->belongsTo(Etat::class, 'etats_id');
     }
 
-
+    public function reclamation()
+    {
+        return $this->hasMany(Reclamation::class);
+    }
+    
     
 }

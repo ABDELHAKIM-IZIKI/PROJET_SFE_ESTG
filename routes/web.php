@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\FonctionnaireController;
 use App\Http\Controllers\GestionnairesStockController;
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\RegistreController;
@@ -72,6 +73,28 @@ Route::post('/MonSite/GestionnaireStock/Registre/modifie', [RegistreController::
 Route::get('/MonSite/GestionnaireStock/Registre/remplir-affectation-{id}', [RegistreController::class ,'filleAffectation'])->name('Registre.filleAffectation');
 Route::post('/MonSite/GestionnaireStock/Registre/affectation', [RegistreController::class ,'refer'])->name('Registre.refer');
 Route::get('/MonSite/GestionnaireStock/Registre/affectation/recherche', [RegistreController::class ,'SearchUser'])->name('Registre.SearchUser');
+
+//reclamation
+
+Route::get('/MonSite/GestionnaireStock/Fonctionnaire', [FonctionnaireController::class ,'index'])->name('Fonctionnaire.index');
+Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Reclamation', [FonctionnaireController::class ,'indexReclamation'])->name('Fonctionnaire.Reclamation.index');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Route::get('/test', function(){
     return view('test');
 });

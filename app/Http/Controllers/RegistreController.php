@@ -16,7 +16,7 @@ class RegistreController extends Controller
 {
     public function index(){
       
-        return view('gestionnairestock.Registre.home',['registres'=> Registre::paginate(15) ]);
+        return view('gestionnairestock.Registre.home',['registres'=> Registre::orderByDesc('id')->paginate(15) ]);
     }
 
     public function search(Request $r)
