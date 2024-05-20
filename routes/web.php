@@ -80,7 +80,7 @@ Route::get('/MonSite/GestionnaireStock/Fonctionnaire', [FonctionnaireController:
 Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Reclamation', [FonctionnaireController::class ,'indexReclamation'])->name('Fonctionnaire.Reclamation.index');
 Route::post('/MonSite/GestionnaireStock/Fonctionnaire/Reclamé', [FonctionnaireController::class ,'Reclamé'])->name('Fonctionnaire.add');
 Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Recherche', [FonctionnaireController::class ,'search'])->name('Fonctionnaire.search');
-
+Route::delete('/MonSite/GestionnaireStock/Fonctionnaire/supprimé-{id}', [FonctionnaireController::class ,'destroy'])->name('Fonctionnaire.destroy'); 
 
 
 

@@ -50,8 +50,15 @@ public function search(Request $r)
 }
    public function indexReclamation($id=17){
 
+    return view('Fonctionnaire.reclamation',['reclamation' => Reclamation::where('users_id',$id)  ]);
+   }
 
-    return view('Fonctionnaire.reclamation',['reclamation' => Reclamation::whereHas('registre',  function ($query) use ( $id  )  
-    {  $query->where('users_id', $id ); }  )->orderByDesc('id')->paginate(10) ]);
+   public function destroy($id){
+
+    $reclamation = Reclamation::find($id);
+    $reclamation->delete();
+   
+    return redirect()->back()->with('success','Supprimé avec succès');
+
    }
 }

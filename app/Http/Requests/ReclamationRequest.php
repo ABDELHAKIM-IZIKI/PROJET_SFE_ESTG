@@ -22,10 +22,13 @@ class ReclamationRequest extends FormRequest
     public function rules(): array
     {
         return [
+
+            'users_id' => 'required|min:1|max:120'  ,
            'registres_id' => 'required|min:1|max:120'  ,
            'reclamation'  => 'required|min:3|max:500' ,
            'date'=> 'required|date_format:Y-m-d H:i:s' ,
            'vue' => 'required|min:1'
+           
         ];
     }
 }
