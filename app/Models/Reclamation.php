@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reclamation extends Model
 {
     use HasFactory;
+    
     public function registre(){
 
         return $this->belongsTo(User::class, 'registres_id');

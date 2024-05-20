@@ -39,5 +39,5 @@ class Registre extends Model
         return $this->hasMany(Reclamation::class);
     }
     
-    
+   
 }

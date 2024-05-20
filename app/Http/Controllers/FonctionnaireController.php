@@ -49,8 +49,10 @@ public function search(Request $r)
 
 }
    public function indexReclamation($id=17){
-
-    return view('Fonctionnaire.reclamation',['reclamation' => Reclamation::where('users_id',$id)  ]);
+      $reclamation=Reclamation::where('users_id',$id)->get();
+      $registre=Registre::fin($reclamation->registres_id);
+     
+    return view('Fonctionnaire.reclamation',['reclamation' => $reclamation , 'registre' =>  $registre  ]);
    }
 
    public function destroy($id){
@@ -58,6 +60,7 @@ public function search(Request $r)
     $reclamation = Reclamation::find($id);
     $reclamation->delete();
    
+  
     return redirect()->back()->with('success','Supprimé avec succès');
 
    }
