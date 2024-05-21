@@ -3,6 +3,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FonctionnaireController;
 use App\Http\Controllers\GestionnairesStockController;
+use App\Http\Controllers\MaintenancierController;
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\RegistreController;
 use App\Http\Controllers\RoleController;
@@ -74,18 +75,19 @@ Route::get('/MonSite/GestionnaireStock/Registre/remplir-affectation-{id}', [Regi
 Route::post('/MonSite/GestionnaireStock/Registre/affectation', [RegistreController::class ,'refer'])->name('Registre.refer');
 Route::get('/MonSite/GestionnaireStock/Registre/affectation/recherche', [RegistreController::class ,'SearchUser'])->name('Registre.SearchUser');
 
-//reclamation
 
-Route::get('/MonSite/GestionnaireStock/Fonctionnaire', [FonctionnaireController::class ,'index'])->name('Fonctionnaire.index');
-Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Reclamation', [FonctionnaireController::class ,'indexReclamation'])->name('Fonctionnaire.Reclamation.index');
-Route::post('/MonSite/GestionnaireStock/Fonctionnaire/Reclamé', [FonctionnaireController::class ,'Reclamé'])->name('Fonctionnaire.add');
-Route::get('/MonSite/GestionnaireStock/Fonctionnaire/Recherche', [FonctionnaireController::class ,'search'])->name('Fonctionnaire.search');
-Route::delete('/MonSite/GestionnaireStock/Fonctionnaire/supprimé-{id}', [FonctionnaireController::class ,'destroy'])->name('Fonctionnaire.destroy'); 
+//Fonctionnaire
+Route::get('/MonSite/Fonctionnaire', [FonctionnaireController::class ,'index'])->name('Fonctionnaire.index');
+Route::get('/MonSite/Fonctionnaire/Reclamation', [FonctionnaireController::class ,'indexReclamation'])->name('Fonctionnaire.Reclamation.index');
+Route::post('/MonSite/Fonctionnaire/Reclamé', [FonctionnaireController::class ,'Reclamé'])->name('Fonctionnaire.add');
+Route::get('/MonSite/Fonctionnaire/Recherche', [FonctionnaireController::class ,'search'])->name('Fonctionnaire.search');
+Route::delete('/MonSite/Fonctionnaire/supprimé-{id}', [FonctionnaireController::class ,'destroy'])->name('Fonctionnaire.destroy'); 
 
-
-
-
-
+//Maintenancier     
+Route::get('/MonSite/Maintenancier', [MaintenancierController::class ,'index'])->name('Maintenancier.index');
+Route::delete('/MonSite/Maintenancier/supprimé-{id}', [MaintenancierController::class ,'destroy'])->name('Maintenancier.destroy');
+Route::post('/MonSite/Maintenancier/vue', [MaintenancierController::class ,'vue'])->name('Maintenancier.vue');
+Route::delete('/MonSite/Maintenancier/remove', [MaintenancierController::class ,'remove'])->name('Maintenancier.remove');
 
 
 

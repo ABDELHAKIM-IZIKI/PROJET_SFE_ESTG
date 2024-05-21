@@ -9,8 +9,13 @@ class Reclamation extends Model
 {
     use HasFactory;
     
+
+    protected $fillable = [
+        'vue',
+    ];
+
     public function registre(){
 
-        return $this->belongsTo(User::class, 'registres_id');
+        return $this->belongsTo(Registre::class, 'registres_id');
     }
 }

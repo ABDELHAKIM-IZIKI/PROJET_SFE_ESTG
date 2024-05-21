@@ -66,7 +66,7 @@ Mon équipement :
                                  <div class="flex flex-col mx-auto">
                                     <input type="number" value="{{$item->users_id}}" name="users_id" class="hidden">
                                     <input type="number" value="{{$item->id}}" name="registres_id" class="hidden">
-                                    <input type="number" value="0" name="vue" class="hidden">
+                                    <input type="number" value="1" name="vue" class="hidden">
                                   <?php  
                                   $today = date("Y-m-d H:i:s") ;
                                     echo '<input type="hidden" value="'.$today.'" name="date" >' ; 

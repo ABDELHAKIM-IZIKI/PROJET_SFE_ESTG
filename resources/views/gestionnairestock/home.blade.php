@@ -172,7 +172,7 @@ d’équipement :
                                     <button type="submit" class="mr-10 text-white font-medium rounded-lg text-sm h-9 w-10  p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                                         Oui</button>
                                 </form>
-                                <button id="closeRemove-{{$item->id}}" type="submit" class="text-white font-medium rounded-lg  w-10 text-sm h-9 p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                <button id="closeRemove-{{$item->id}}"  class="text-white font-medium rounded-lg  w-10 text-sm h-9 p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                                     No </button>
                             </div>
                         </div>

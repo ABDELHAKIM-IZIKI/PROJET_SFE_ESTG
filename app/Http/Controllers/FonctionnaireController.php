@@ -12,7 +12,7 @@ class FonctionnaireController extends Controller
 {
    public function index($id=17)
    { 
-      return  view('Fonctionnaire.home',['registres' => Registre::where('users_id',$id)->paginate(10)]);
+      return  view('Fonctionnaire.home',['registres' => Registre::where('users_id',$id)->orderBy('id')->paginate(10)]);
    }
 
 public function Reclamé(ReclamationRequest $a){
@@ -37,22 +37,18 @@ public function search(Request $r)
                 ->orWhere('marques_id','like', '%'.$v.'%' )
                 ->orwhere('nom','like','%'.$v.'%')
                 ->orWhere('barcode','like','%'.$v.'%')
-                ->whereHas('marque',  function ($query) use ( $v  )
+                ->orwhereHas('marque',  function ($query) use ( $v  )
                 {  $query->where('nom', 'like','%'.$v.'%' ); } ); 
             } );
     }
-
-
-    $q->paginate(10);
   
-  return view('Fonctionnaire.home',['registres' => $q ]);
+  return view('Fonctionnaire.home',['registres' =>  $q->paginate(10)]);
 
 }
    public function indexReclamation($id=17){
-      $reclamation=Reclamation::where('users_id',$id)->get();
-      $registre=Registre::fin($reclamation->registres_id);
-     
-    return view('Fonctionnaire.reclamation',['reclamation' => $reclamation , 'registre' =>  $registre  ]);
+      $reclamation=Reclamation::where('users_id',$id)->orderByDesc('id')->get();
+   
+    return view('Fonctionnaire.reclamation',['reclamation' => $reclamation ]);
    }
 
    public function destroy($id){
