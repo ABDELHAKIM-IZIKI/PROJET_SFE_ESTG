@@ -35,12 +35,12 @@ Mon équipement :
 @endif
 
 <!--Display items-->
-<div class="justify-center  bg-gray-300 z-0 ">
-    <div class="p-1.5  flex flex-wrap pr-0 z-0">
+<div class="justify-center  bg-gray-300  ">
+    <div class="p-1.5  flex flex-wrap pr-0 ">
 
         @foreach($registres as $item)
 
-            <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2 z-0 ">
+            <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2">
                 <a href="{{route('GestionnairesStock.display',['id'=>$item->id])}}">
                     <img class="p-8  object-contain w-64 h-64  rounded-t-lg" src="{{ asset($item->materiel->image) }}" alt="product image" />
                 </a>
@@ -60,7 +60,7 @@ Mon équipement :
 
                     <!--RemoveModal-->
                     <div id="Remove-{{$item->id}}" class="drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden p-5  ">
-                        <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50  overflow-y-auto p-10">
+                        <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg   overflow-y-auto p-10">
                             <form action="{{ route('Fonctionnaire.add',[ 'id' => $item->id ] ) }}" method="post">
                              @csrf
                                  <div class="flex flex-col mx-auto">
@@ -73,7 +73,7 @@ Mon équipement :
                                     ?>
                                     <div>
                                         <label class="font-medium text-black uppercase">Entrer votre reclamation :</label>
-                                        <textarea id="description" class="w-full rounded-lg p-3 h-60 m-2 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" name="reclamation"></textarea>
+                                        <textarea id="description" class="w-full rounded-lg p-3 h-60 m-2 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" required name="reclamation"></textarea>
                                         @error('reclamation')
                                         <span class="text-red-600">{{ $message }}</span>
                                         @enderror

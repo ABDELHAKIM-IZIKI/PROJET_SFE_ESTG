@@ -133,16 +133,18 @@ Boîte de réception de reclamation :
                            
                             <form action="{{ route('Maintenancier.remove') }}" method="post">
                                 @csrf 
-                            <div class="m-4 flex flex-col justify-end">
+                                @method('DELETE')
+                            <div class="m-5 flex flex-col justify-end ">
 
-                                <input type="number" value="{{$item->id}}" name="id" class="hidden">
+                                <input type="number" value="{{$item->id}}" name="reclamastion_id" class="hidden">
+                                <input type="number" value="{{$item->registre->id}}" name="registre_id" class="hidden">
 
 
                              <div>
                                 
                                 <div>
                                     <label class="font-medium text-black uppercase">Etat de matériel :<span  class="text-red-600">*</span></label>
-                                    <select name="etats_id" class="w-full rounded-lg p-2 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+                                    <select name="etat" class="w-full rounded-lg p-2 h-10 bg-gray-200 border-black  text-black" required>
                                         <option value="" selected></option>
                                         @foreach ($etats as $etat)
                                         <option value="{{$etat->id}}">{{$etat->nom}}</option>
@@ -155,8 +157,8 @@ Boîte de réception de reclamation :
 
 
                                 <div class="mb-5 mr-2">
-                                    <label for="description" class="block mb-2 text-sm font-medium text-black">Rapport :</label>
-                                    <textarea id="description" class="w-full rounded-lg p-3 h-40 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" name="description">{{ $materiels['description'] ?? '' }}</textarea>
+                                    <label  class="block mb-2 text-sm font-medium text-black">Rapport :</label>
+                                    <textarea class="w-full rounded-lg p-3 h-40 m-2 bg-gray-200 border-black  text-black" name="rapport"></textarea>
                                     @error('rapport')
                                     <span class="text-red-600">{{ $message }}</span>
                                     @enderror
@@ -166,21 +168,19 @@ Boîte de réception de reclamation :
                                 
                             </div>
                             
-                            <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded z-50  overflow-y-auto p-5">
-                                <div class="text-m font-semibold tracking-tight text-gray-800 mb-10">
+                               <div class="text-m font-semibold tracking-tight text-gray-800 mb-10 mx-auto">
                                     Êtes-vous sûr de vouloir supprimer la reclamation ?
                                 </div>
                                 <div class="flex mx-auto">
-                                    <form action="{{ route('gestionnairestock.destroy' ) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
                                         <button type="submit" class="mr-10 text-white font-medium rounded-lg text-sm h-9 w-10  p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                                             Oui</button>
-                                    </form>
-                                    <a id="closeRemove-{{$item->id}}"  class="text-white font-medium rounded-lg  w-10 text-sm h-9 p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
-                                        No </a>
+
+
+                                    <button id="closeremove-{{$item->id}}" type="button"  class="text-white font-medium rounded-lg  w-10 text-sm h-9 p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                        No </button>
+
                                 </div>
-                            </div>
+                           
 
                             </form>
 
@@ -210,16 +210,16 @@ Boîte de réception de reclamation :
                   modal{{$item->id}}.classList.add("hidden");
                  }
 
-                 var modal{{$item->id}} = document.getElementById("remove-{{$item->id}}");
-                var btn{{$item->id}} = document.getElementById("openremove-{{$item->id}}");
-                var span{{$item->id}} = document.getElementById("closeremove-{{$item->id}}");
+                 var modala{{$item->id}} = document.getElementById("remove-{{$item->id}}");
+                var btna{{$item->id}} = document.getElementById("openremove-{{$item->id}}");
+                var spana{{$item->id}} = document.getElementById("closeremove-{{$item->id}}");
 
-                 btn{{$item->id}}.onclick = function() {
-                 modal{{$item->id}}.classList.remove("hidden");
+                 btna{{$item->id}}.onclick = function() {
+                 modala{{$item->id}}.classList.remove("hidden");
                  }
 
-                  span{{$item->id}}.onclick = function() {
-                  modal{{$item->id}}.classList.add("hidden");
+                  spana{{$item->id}}.onclick = function() {
+                  modala{{$item->id}}.classList.add("hidden");
                  }
          </script>
 

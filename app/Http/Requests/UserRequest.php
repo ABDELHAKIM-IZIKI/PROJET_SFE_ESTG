@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
         'nom'=>'required|min:3|max:40',
         'roles_id'=>'required|min:1',
         'prenom'=>'required|min:3|max:40',
-        'tel'=>'min:10',
+        'tel'=>'required|min:10',
         'division'=>'required|min:3|max:40',
         'service'=>'required|min:3|max:40',
         'email'=>'required|min:3|max:40|email',

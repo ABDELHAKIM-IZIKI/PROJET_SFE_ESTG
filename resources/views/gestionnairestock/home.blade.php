@@ -75,12 +75,12 @@ d’équipement :
 
 
 <!--Display items-->
-<div class="justify-center  bg-gray-300 z-0 ">
-    <div class="p-1.5  flex flex-wrap pr-0 z-0">
+<div class="justify-center  bg-gray-300 ">
+    <div class="p-1.5  flex flex-wrap pr-0">
 
         @foreach($materiels as $item)
 
-            <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2 z-0 ">
+            <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2  ">
                 <a href="{{route('GestionnairesStock.display',['id'=>$item->id])}}">
                     <img class="p-8  object-contain w-64 h-64  rounded-t-lg" src="{{ asset($item->image) }}" alt="product image" />
                 </a>

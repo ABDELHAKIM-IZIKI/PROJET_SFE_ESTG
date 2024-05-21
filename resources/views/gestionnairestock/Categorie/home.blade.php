@@ -48,7 +48,7 @@ Les Categories :
                     <form method="post" action="{{route('Categorie.create')}}" class="flex  m-2 mb-5 ">
                         @csrf
 
-                        <input type="text" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " />
+                        <input type="text" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " required/>
                        
                         <button type="submit" class="p-1.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
@@ -117,7 +117,7 @@ Les Categories :
                                           <form method="post" action="{{route('Categorie.edit', [ 'id' => $item->id ])}}" class="flex  m-2 mb-5 ">
                                               @csrf
                       
-                                              <input type="text" value="{{$item->nom}}" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " />
+                                              <input type="text" value="{{$item->nom}}" name="nom" class="w-full rounded-lg p-3 h-10 mx-2 bg-gray-300 border-gray-600 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder=" " required/>
                                              
                                               <button type="submit" class="p-1.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg></button>

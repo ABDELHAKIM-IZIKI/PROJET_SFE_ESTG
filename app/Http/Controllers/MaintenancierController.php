@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReclamationMantenancierRequest;
 use App\Models\Etat;
 use App\Models\Reclamation;
+use App\Models\Registre;
 use Illuminate\Http\Request;
 
 class MaintenancierController extends Controller
@@ -17,17 +18,10 @@ class MaintenancierController extends Controller
          return view('Maintenancier.reclamation' , ['reclamation'=> $reclamation ,'etats' => Etat::all() ]);
     }
 
-    public function destroy($id)
-    {
-        $reclamation = Reclamation::find($id);
-        $reclamation->delete();
-       
-      
-        return redirect()->back()->with('success','Supprimé avec succès');
-    }
 
-    public function vue(ReclamationMantenancierRequest $r)
-    {     $va=$r->validated();
+
+    public function vue(Request $r)
+    {    
 
         $reclamation = Reclamation::find($r['id']);
         $reclamation->update( 
@@ -36,4 +30,19 @@ class MaintenancierController extends Controller
         return redirect()->back(); 
     }
 
+    public function remove(ReclamationMantenancierRequest $r)
+{
+    $va=$r->validated();
+   
+    $registre=Registre::find($va['registre_id']);
+    $registre->update([
+        'etats_id' => $va['etat'] ,
+        'rapport' => $va['rapport'] 
+    ]);
+
+    $reclamation=Reclamation::find($va['reclamastion_id']);
+    $reclamation->delete();
+
+    return redirect()->back()->with('success','Supprimé avec succès');
+}
 }

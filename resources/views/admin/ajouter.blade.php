@@ -63,8 +63,8 @@
     <form method="POST" action="{{route('admin.create')}}" class="max-w-sm mx-auto">
         @csrf
         <div class="mb-5">
-          <label for="Nom" class="block mb-2 text-sm font-medium text-black ">Nom</label>
-          <input value="{{ $user['nom'] ?? ''}}" type="text" id="Nom" name="nom"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se nom"  />
+          <label for="Nom" class="block mb-2 text-sm font-medium text-black ">Nom  <span  class="text-red-600">*</span></label>
+          <input value="{{ $user['nom'] ?? ''}}" type="text" id="Nom" name="nom"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se nom" required />
           @error('nom')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror
@@ -72,16 +72,16 @@
 
 
         <div class="mb-5">
-          <label for="Prenom" class="block mb-2 text-sm font-medium text-black ">Prenom</label>
-          <input value="{{ $user['prenom'] ?? ''}}" type="text" id="Prenom" name="prenom"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se prenom"  />
+          <label for="Prenom" class="block mb-2 text-sm font-medium text-black ">Prenom <span  class="text-red-600">*</span></label>
+          <input value="{{ $user['prenom'] ?? ''}}" type="text" id="Prenom" name="prenom"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se prenom" required />
           @error('prenom')
           <span  class="text-red-600">{{ $message }}</span>
           @enderror
         </div>
           
         <div class="mb-5">
-            <label for="role" class="block mb-2 text-sm font-medium text-black ">Choisir un role</label>
-            <select id="role" name="roles_id"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700"  >
+            <label for="role" class="block mb-2 text-sm font-medium text-black ">Choisir un role <span  class="text-red-600">*</span></label>
+            <select id="role" name="roles_id"  class="w-full rounded-lg p-2 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" required >
                @if (empty($user['roles_id']))         
                <option value="" selected></option>
                 @foreach ($roles as $item)
@@ -116,48 +116,48 @@
         </div>
 
         <div class="mb-5">
-            <label for="Division" class="block mb-2 text-sm font-medium text-black ">Division</label>
-            <input  value="{{ $user['division'] ?? ''}}" type="text" id="Division"  name="division" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se téléphone"  />
+            <label for="Division" class="block mb-2 text-sm font-medium text-black ">Division <span  class="text-red-600">*</span></label>
+            <input  value="{{ $user['division'] ?? ''}}" type="text" id="Division"  name="division" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se téléphone" required />
             @error('division')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
           <div class="mb-5">
-            <label for="Service" class="block mb-2 text-sm font-medium text-black ">Service</label>
-            <input  value="{{ $user['service'] ?? ''}}" type="text" id="Service" name="service"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se téléphone"  />
+            <label for="Service" class="block mb-2 text-sm font-medium text-black ">Service <span  class="text-red-600">*</span></label>
+            <input  value="{{ $user['service'] ?? ''}}" type="text" id="Service" name="service"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se téléphone" required />
             @error('service')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="mb-5">
-            <label for="Tel" class="block mb-2 text-sm font-medium text-black ">N° Téléphone</label>
-            <input  value="{{ $user['tel'] ?? ''}}" type="text" id="Tel" name="tel" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se téléphone"  />
+            <label for="Tel" class="block mb-2 text-sm font-medium text-black ">N° Téléphone <span  class="text-red-600">*</span></label>
+            <input  value="{{ $user['tel'] ?? ''}}" type="text" id="Tel" name="tel" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se téléphone" required/>
             @error('tel')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
           <div class="mb-5">
-            <label for="email" class="block mb-2 text-sm font-medium text-black ">Email</label>
-            <input  value="{{ $user['email'] ?? ''}}" type="email" id="email" name="email" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se email"  />
+            <label for="email" class="block mb-2 text-sm font-medium text-black ">Email <span  class="text-red-600">*</span></label>
+            <input  value="{{ $user['email'] ?? ''}}" type="email" id="email" name="email" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se email" required />
             @error('email')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
          
           <div class="mb-5">
-            <label for="password" class="block mb-2 text-sm font-medium text-black ">Mot de passe </label>
-            <input  type="password" id="password" name="password" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  />
+            <label for="password" class="block mb-2 text-sm font-medium text-black ">Mot de passe <span  class="text-red-600">*</span></label>
+            <input  type="password" id="password" name="password" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required/>
              @error('password')
              <span class="text-red-600">{{ $message }}</span>
              @enderror
           </div>
 
           <div class="mb-5">
-            <label for="Cpassword" class="block mb-2 text-sm font-medium text-black ">Confirmation de Mots de passe </label>
-            <input type="password" id="Cpassword" name="Cpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  />
+            <label for="Cpassword" class="block mb-2 text-sm font-medium text-black ">Confirmation de Mots de passe <span  class="text-red-600">*</span></label>
+            <input type="password" id="Cpassword" name="Cpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required />
             @error('Cpassword')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror

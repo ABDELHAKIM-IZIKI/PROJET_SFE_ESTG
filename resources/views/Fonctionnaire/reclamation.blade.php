@@ -75,7 +75,7 @@ Mon réclamation :
                             </div>
                             <div class="flex flex-col mx-5 mb-5">
                                 <label class="font-medium text-black uppercase my-2">Votre réclamation :</label>
-                                <textarea class="rounded-lg h-60   z-60  bg-gray-100 border-gray-600  text-gray-700  p-2 " readonly>@php echo $item->reclamation."\n \n ,". $item->date @endphp </textarea>
+                                <textarea class="rounded-lg h-60   z-60  bg-gray-100 border-gray-600  text-gray-700  p-2 " readonly  >@php echo $item->reclamation @endphp </textarea>
                             </div>
                         </div>
                     </div>

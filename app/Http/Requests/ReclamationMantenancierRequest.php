@@ -22,9 +22,10 @@ class ReclamationMantenancierRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'etat' => 'required|min:3|max:40' ,
+            'etat' => 'required|min:1' ,
             'rapport' => 'min:3|max:120|nullable' ,
-            'id' => 'required|min:1' 
+            'registre_id' => 'required|min:1' ,
+            'reclamastion_id' => 'required|min:1' 
         ];
     }
 }
