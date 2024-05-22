@@ -104,43 +104,41 @@ d’équipement :
                     
                       
                         @php
-                        $etat = true ;
-                        @endphp 
-                        @foreach ($dispoTab as $item2)
-                        
-                            @if ($item2->materiels_id == $item->id)
-                                @php
-                                    $quantiteDisponible = $item->quantite - $item2->a;
-                                   
-                                @endphp
+    $etat = true;
+@endphp
 
-                                @if ($quantiteDisponible > 0 )
-                                    <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
-                                        Quantité Disponible : {{ $quantiteDisponible }}
-                                    </span>
-                                    @php  $etat = false ;  @endphp
-                                @endif
+@foreach ($dispoTab as $item2)
+    @if ($item2->materiels_id == $item->id)
+        @php
+            $quantiteDisponible = $item->quantite - $item2->a;
+        @endphp
 
-                                @if ($quantiteDisponible <= 0 )
-                                <span class="mx-2 text-white px-2.5 py-0.5 bg-red-500 rounded float-end">
-                                    Indisponible
-                                </span>
-                                @php  $etat = false ;  @endphp
-                                @endif
+        @if ($quantiteDisponible > 0)
+            <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
+                Quantité Disponible : {{ $quantiteDisponible }}
+            </span>
+            @php
+                $etat = false;
+            @endphp
+        @endif
 
-                        
-                             
+        @if ($quantiteDisponible <= 0)
+            <span class="mx-2 text-white px-2.5 py-0.5 bg-red-500 rounded float-end">
+                Indisponible
+            </span>
+            @php
+                $etat = false;
+            @endphp
+        @endif
+    @endif
+@endforeach
 
-                            @endif
+@if ($etat)
+    <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
+        Quantité Disponible : {{ $item->quantite }}
+    </span>
+@endif
 
-                            
-                            @if ( $etat )
-                            <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
-                            Quantité Disponible : {{ $item->quantite }}
-                           </span>
-                           @endif 
-
-                        @endforeach
                     </div>
                     
                     
@@ -206,7 +204,7 @@ d’équipement :
     
     </div>
 
-
+ 
 
 
     

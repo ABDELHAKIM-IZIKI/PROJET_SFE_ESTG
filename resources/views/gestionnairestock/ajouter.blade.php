@@ -11,7 +11,7 @@ Ajouter un nouveau matériel ou équipement :
         @csrf
         <div class="mb-5 mr-2 ">
             <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom : <span class="text-red-600">*</span></label>
-            <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
+            <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" required/>
             @error('nom')
             <span class="text-red-600">{{ $message }}</span>
             @enderror
@@ -19,15 +19,15 @@ Ajouter un nouveau matériel ou équipement :
 
         <div class="mb-5 mr-2">
             <label for="model" class="block mb-2 text-sm font-medium text-black">Model : <span class="text-red-600">*</span></label>
-            <input value="{{ $materiels['model'] ?? '' }}" type="text" id="model" name="model" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
+            <input value="{{ $materiels['model'] ?? '' }}" type="text" id="model" name="model" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" required />
             @error('model')
             <span class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="mb-5 mr-2">
-            <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque :</label>
-            <select id="marques_id" name="marques_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+            <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque : <span class="text-red-600">*</span></label>
+            <select id="marques_id" name="marques_id" class="w-full rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" required>
                 <option value="" >---</option>
                 @foreach ($marques as $item)
                 <option value="{{ $item->id }}">{{ $item->nom }}</option>
@@ -61,7 +61,7 @@ Ajouter un nouveau matériel ou équipement :
 
         <div class="mb-5 mr-2">
             <label for="quantite" class="block mb-2 text-sm font-medium text-black">Quantité : <span class="text-red-600">*</span></label>
-            <input value="{{ $materiels['quantite'] ?? '' }}" type="number" id="quantite" name="quantite" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
+            <input value="{{ $materiels['quantite'] ?? '' }}" type="number" id="quantite" name="quantite" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" required />
             @error('quantite')
             <span class="text-red-600">{{ $message }}</span>
             @enderror
@@ -82,7 +82,7 @@ Ajouter un nouveau matériel ou équipement :
 
         <div class="mb-5 mr-2">
             <label for="image" class="block mb-2 text-sm font-medium text-black">Choisir une image : <span class="text-red-600">*</span></label>
-            <input class="appearance-none w-full h-10 px-3 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer bg-white text-black placeholder-gray-500 focus:outline-none focus:border-blue-500" accept="image/png, image/jpeg, image/jpg" type="file" id="image" name="image" />
+            <input class="appearance-none w-full h-10 px-3 py-2 text-sm border border-gray-300 rounded-lg cursor-pointer bg-white text-black placeholder-gray-500 focus:outline-none focus:border-blue-500" accept="image/png, image/jpeg, image/jpg" type="file" id="image" name="image" required/>
             <span class="text-sm">PNG, JPG ou JPEG (MAX. 600x600px)</span>
             @error('image')
             <span class="text-red-600">{{ $message }}</span>

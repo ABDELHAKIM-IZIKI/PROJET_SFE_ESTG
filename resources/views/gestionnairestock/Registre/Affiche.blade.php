@@ -24,7 +24,7 @@ Le registre de #ID{{$registre->id}} :
 <div class="flex flex-col  mx-auto ">
 	
    
-    <div  class=" mt-2"> 
+    <div  class=" mt-2">  
        <label class="font-medium text-black uppercase ">Fonctionaire  : </label><label>{{$registre->user->nom}} {{$registre->user->prenom}}</label>
     </div>
     <div  class=" mt-2"> 

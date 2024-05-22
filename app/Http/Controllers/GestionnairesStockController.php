@@ -24,7 +24,7 @@ class GestionnairesStockController extends Controller
     $dispoTab=Registre::select('materiels_id', Registre::raw('count(*) as a'))
     ->groupBy('materiels_id')
     ->get();
- 
+
         return view('gestionnairestock.home', ['materiels' =>$materiels ,'marques'=>$marques ,'categories'=>$categories ,   'dispoTab' =>  $dispoTab ]);
 }
 
@@ -55,8 +55,12 @@ class GestionnairesStockController extends Controller
 $categories = Categorie::orderBy('nom')->get();
 $marques =Marque::orderBy('nom')->get();
 $materiels=$q->paginate(10);
+$dispoTab=Registre::select('materiels_id', Registre::raw('count(*) as a'))
+->groupBy('materiels_id')
+->get();
 
-return view('gestionnairestock.home', ['materiels' =>$materiels,'marques'=>$marques ,'categories'=>$categories ]);
+
+return view('gestionnairestock.home', ['materiels' =>$materiels,'marques'=>$marques ,'categories'=>$categories , 'dispoTab' =>  $dispoTab  ]);
 
 }
 
