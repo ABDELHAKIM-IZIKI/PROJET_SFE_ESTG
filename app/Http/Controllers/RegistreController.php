@@ -99,8 +99,10 @@ public function edit(RequestRegistreUpdate $a){
 
 public function filleAffectation($id){
 
+  $registreUsersIds = Registre::where('materiels_id','=',$id)->pluck('users_id')->toArray();
+
   return view('gestionnairestock.Registre.Ajouter' , ['materiels_id' => $id , 
-                                                      'users' => User::orderBy('nom')->orderBy('prenom')->paginate(5),
+                                                      'users' => User::orderBy('nom')->orderBy('prenom')->whereNotIn('id', $registreUsersIds )->paginate(5) ,
                                                        'etats'=>Etat::all()]);
 }
 
@@ -136,4 +138,4 @@ return view('gestionnairestock.Registre.Ajouter' , ['materiels_id' => $r['id'] ,
 
 }
 
-}
+} 

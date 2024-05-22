@@ -77,7 +77,7 @@ public function destroy(Request $r)
   {
     $categories = Categorie::orderBy('nom')->get();
     $marques =Marque::orderBy('nom')->get();
-    return view('gestionnairestock.ajouter',['materiels'=> null,'marques'=>$marques ,'categories'=>$categories ]);
+    return view('gestionnairestock.ajouter',['materiels'=> null,'marques'=>$marques ,'categories'=>$categories ,'Caracteristique' => null ]);
   }
 
   public function create(MaterielRequest $a)

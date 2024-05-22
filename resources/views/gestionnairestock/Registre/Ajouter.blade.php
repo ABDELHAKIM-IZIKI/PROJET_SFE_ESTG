@@ -44,7 +44,7 @@ Affectation matériel ou équipement :
                             <td class="px-6 py-4 text-black">{{ $item->division }}</td>
                             <td class="px-6 py-4 text-black">{{ $item->service }}</td>
                             <td class="px-6 py-4">
-                                <input type="radio" value="{{ $item->id }}" name="users_id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                                <input type="radio" value="{{ $item->id }}" name="users_id" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500" required>
                             </td>
                         </tr>
                         @endforeach
@@ -63,8 +63,8 @@ Affectation matériel ou équipement :
                 <input value="{{$materiels_id}}" type="number" class="hidden" name="materiels_id"/>
                 
                 <div>
-                    <label class="font-medium text-black uppercase">État de matériel :</label>
-                    <select name="etats_id" class="w-full rounded-lg p-2 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+                    <label class="font-medium text-black uppercase">État de matériel : <span class="text-red-600">*</span></label>
+                    <select name="etats_id" class="w-full rounded-lg p-2 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700" required>
                         <option value="" selected></option>
                         @foreach ($etats as $item)
                         <option value="{{$item->id}}">{{$item->nom}}</option>
@@ -76,16 +76,16 @@ Affectation matériel ou équipement :
                 </div>
 
                 <div>
-                    <label class="font-medium text-black uppercase">Lieu de matériel ou Fonctionnaire :</label>
-                    <input type="text" class="w-full rounded-lg p-3 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700" name="lieu"/>
+                    <label class="font-medium text-black uppercase">Lieu de matériel ou Fonctionnaire : <span class="text-red-600">*</span></label>
+                    <input type="text" class="w-full rounded-lg p-3 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700" name="lieu" required/>
                     @error('lieu')
                     <span class="text-red-600">{{ $message }}</span>
                     @enderror
                 </div>
 
                 <div>
-                    <label class="font-medium text-black uppercase">Date d'affectation :</label>
-                    <input type="date" id="date" name="date" class="w-full rounded-lg p-3 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700"/>
+                    <label class="font-medium text-black uppercase">Date d'affectation : <span class="text-red-600">*</span></label>
+                    <input type="date" id="date" name="date" class="w-full rounded-lg p-3 h-10 bg-white border-gray-600 placeholder-gray-700 text-gray-700" required/>
                     @error('date')
                     <span class="text-red-600">{{ $message }}</span>
                     @enderror

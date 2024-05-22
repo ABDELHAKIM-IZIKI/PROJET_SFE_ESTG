@@ -76,11 +76,11 @@ d’équipement :
 
 <!--Display items-->
 <div class="justify-center  bg-gray-300 ">
-    <div class="p-1.5  flex flex-wrap pr-0">
+    <div class="p-1.5  flex flex-wrap pr-0 ">
 
         @foreach($materiels as $item)
 
-            <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2  ">
+            <div class="w-96  bg-white    rounded-lg shadow   p-2 m-2  hover:border-black border-2  border-solid">
                 <a href="{{route('GestionnairesStock.display',['id'=>$item->id])}}">
                     <img class="p-8  object-contain w-64 h-64  rounded-t-lg" src="{{ asset($item->image) }}" alt="product image" />
                 </a>
@@ -104,6 +104,7 @@ d’équipement :
                     
                       
                         @php
+    $quantiteDisponible = $item->quantite;
     $etat = true;
 @endphp
 
@@ -136,6 +137,7 @@ d’équipement :
 @if ($etat)
     <span class="mx-2 bg-blue-200 text-blue-800 text-m font-semibold px-2.5 py-0.5 rounded float-end">
         Quantité Disponible : {{ $item->quantite }}
+     
     </span>
 @endif
 
@@ -146,11 +148,11 @@ d’équipement :
                     
                 </div>
                 <div class="mr-3 flex float-right items-center">
-                   
+                   @if (!$quantiteDisponible <= 0)
                     <a href="{{route('Registre.filleAffectation',['id' => $item->id])}}" class="text-white font-medium rounded-lg text-sm h-9  p-1.5 m-1.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                         Affecté à fonctionnaire
                     </a>
-                    
+                    @endif
                     <a href="{{route('gestionnairestock.filledit',['id' => $item->id])}}" class="text-white font-medium rounded-lg text-sm h-9  p-1.5 m-1.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
                     </a>

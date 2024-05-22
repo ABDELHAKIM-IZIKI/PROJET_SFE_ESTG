@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CaracteristiqueController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FonctionnaireController;
 use App\Http\Controllers\GestionnairesStockController;
@@ -44,6 +45,7 @@ Route::post('/MonSite/GestionnaireStock/modifie', [GestionnairesStockController:
 Route::get('/MonSite/GestionnaireStock/remplir', [GestionnairesStockController::class ,'fill'])->name('gestionnairestock.fill');
 Route::post('/MonSite/GestionnaireStock/crée', [GestionnairesStockController::class ,'create'])->name('gestionnairestock.create');
 Route::get('/MonSite/GestionnaireStock/Materiel-{id}', [GestionnairesStockController::class ,'display'])->name('GestionnairesStock.display');
+
 
 
 
