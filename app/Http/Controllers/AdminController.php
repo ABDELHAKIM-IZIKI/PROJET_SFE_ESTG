@@ -16,7 +16,7 @@ class AdminController extends Controller
       $roles =Role::all();
       $users = User::paginate(10);
   
-      return view('admin.Home', ['users'=>$users , 'roles'=>$roles   ] );
+      return view('admin.Home', ['users'=>$users , 'roles'=>$roles ,'adminpassword' => null    ] );
     }
 
 
@@ -80,9 +80,19 @@ class AdminController extends Controller
   
   public function destroy(Request $r)
   {
+    
+    $useradmin=User::find($id=1);
+
+    if(Hash::check($r['adminpassword'] ,$useradmin->password)){
+
     $destroyUser=User::find($r['id']);
     $destroyUser->delete();
     return redirect()->back()->with('success','supprimé avec succès');
+
+    }else{
+      
+      return redirect()->back()->with('success','Mot de passe incorrect ,  échec à supprimer');
+    }
   }
   
   public function fillEdit(Request $r)
@@ -91,10 +101,9 @@ class AdminController extends Controller
     $roles=Role::all();
     return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>null , 'hidden' =>'hidden' ,'adminpassword' =>null]);
   }
-  public function edit(Request $r)
+  public function edit(UserRequestUpdate $r)
   {
  
-    dd($r);
     
     $user=User::find($r['id']);
 

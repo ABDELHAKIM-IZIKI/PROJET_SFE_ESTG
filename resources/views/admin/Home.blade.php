@@ -185,14 +185,57 @@
                     {{$item->service}}
                 </td>
                 <td class="px-6 py-4 text-right flex">
-                    <a href="{{route('admin.filledit',[ 'id' => $item->id ] )}}" class="font-medium  text-blue-500 hover:underline pr-2">Modifié</a>
-                    <form action="{{ route('admin.destroy',[ 'id' => $item->id ] ) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="font-medium text-blue-500 hover:underline pr-2">supprimé</button>
-                      </form>
+                    <a href="{{route('admin.filledit',[ 'id' => $item->id ] )}}" class="rounded-lg text-sm h-9  p-1.5 m-1.5 hover:bg-white"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg></a>
                     
+                    <button id="openRemove-{{$item->id}}"  class=" rounded-lg text-sm h-9  p-1.5 m-1.5 hover:bg-white ">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
 
+                      <div id="Remove-{{$item->id}}" class="drop-shadow-2xl fixed inset-0 z-50 flex items-center justify-center hidden fixed  ">
+                        <div class="flex flex-col modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50  overflow-y-auto p-10">
+                           
+    
+                                <form action="{{ route('admin.destroy',[ 'id' => $item->id ] ) }}" method="post" class="flex flex-col items-center ustify-center">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <div class="text-m font-semibold tracking-tight text-gray-800 mb-10">
+                                        Êtes-vous sûr de vouloir supprimer le  utilisateur {{ $item->nom}} {{ $item->prenom }} ?
+                                    </div>
+
+                                    <div class=" mb-5">
+                                        <label for="password" class="block mb-2 text-sm font-medium text-black ">Votre Mot de passe admin<span  class="text-red-600">*</span></label>
+                                        <input  type="password" id="password" name="adminpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-gray-300 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required/>
+                                         @if ($adminpassword)
+                                          <span class="font-medium text-red-600">{{ $adminpassword }}</span>
+                                          @endif
+                                    </div>
+                                    
+                                    
+                                    <div class=" mb-5 ">
+                                    <button type="submit" class="mr-10 text-white font-medium rounded-lg text-sm h-9 w-10  p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                        Oui</button>
+
+                                        <button id="closeRemove-{{$item->id}}" type="button" class="text-white font-medium rounded-lg  w-10 text-sm h-9 p-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                                            No </button>
+                                    </div>
+                                </form>
+                             
+                        
+                        </div>
+                        <script>
+                            var modal{{$item->id}} = document.getElementById("Remove-{{$item->id}}");
+                            var btn{{$item->id}} = document.getElementById("openRemove-{{$item->id}}");
+                            var span{{$item->id}} = document.getElementById("closeRemove-{{$item->id}}");
+    
+                            btn{{$item->id}}.onclick = function() {
+                                modal{{$item->id}}.classList.remove("hidden");
+                            }
+    
+                            span{{$item->id}}.onclick = function() {
+                                modal{{$item->id}}.classList.add("hidden");
+                            }
+    
+                        </script>
                 </td>
            
 
