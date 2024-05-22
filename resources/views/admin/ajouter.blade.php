@@ -58,7 +58,7 @@
  <div class="p-4 h-fill flex flex-col sm:ml-64 bg-gray-300">
  <!--titre-->
   <div><h1 class="text-4xl text-black font-bold no-italic ">Ajouter un nouveau utilisateur : </h1><br/></div>
-<!--form-->
+<!--form--> 
 <div>
     <form method="POST" action="{{route('admin.create')}}" class="max-w-sm mx-auto">
         @csrf
@@ -147,12 +147,24 @@
             @enderror
         </div>
          
+        <div class="mb-5">
+          <label for="password" class="block mb-2 text-sm font-medium text-black ">Votre Mot de passe admin<span  class="text-red-600">*</span></label>
+          <input  type="password" id="password" name="adminpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required/>
+           @error('adminpassword')
+           <span class="text-red-600">{{ $message }}</span>
+           @enderror
+           @if ($adminpassword)
+            <span class="font-medium text-red-600">{{ $adminpassword }}</span>
+            @endif
+        </div>
+
           <div class="mb-5">
             <label for="password" class="block mb-2 text-sm font-medium text-black ">Mot de passe <span  class="text-red-600">*</span></label>
             <input  type="password" id="password" name="password" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required/>
              @error('password')
              <span class="text-red-600">{{ $message }}</span>
              @enderror
+             
           </div>
 
           <div class="mb-5">

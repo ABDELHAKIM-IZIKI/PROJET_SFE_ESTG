@@ -23,7 +23,7 @@ class UserRequestUpdate extends FormRequest
     {
         
             return [
-                'id' =>'max:400',
+                'id' =>'required|max:400',
                 'nom'=>'required|min:3|max:40',
                 'roles_id'=>'required|min:1',
                 'prenom'=>'required|min:3|max:40',
@@ -32,7 +32,8 @@ class UserRequestUpdate extends FormRequest
                 'service'=>'required|min:3|max:40',
                 'email'=>'required|min:3|max:40|email',
                 'password'=>'min:8|max:30|nullable',
-                'Cpassword'=>'min:8|max:30|nullable'
+                'Cpassword'=>'min:8|max:30|nullable',
+                'adminpassword'=>'min:8|max:30|nullable'
                 ];
         
     }

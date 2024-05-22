@@ -22,34 +22,37 @@ class AdminController extends Controller
 
     
     public function search(Request $r)
+
     {
       
       $q = User::query(); 
 
       
-      if($r->has('valeur')){
+      if($r->has('valeur') && ($r->input('valeur') != null )){
           $v = $r->input('valeur');
           $q->where('nom','like','%'.$v.'%')->orwhere('prenom','like','%'.$v.'%')->orwhere('division','like','%'.$v.'%')
           ->orwhere('service','like','%'.$v.'%');
       }
 
-      if($r->has('choix') && ($r->input('choix') != 'Choisir un role')){
+      if($r->has('choix') && ($r->input('choix') != null )){
         $v = $r->input('choix');
         $q->where('roles_id','=',$v);}
 
       $roles =Role::all();
-      $users=$q->paginate(10);
-      return view('admin.Home', ['users' =>$users,'roles'=>$roles  ]);
+      return view('admin.Home', ['users' =>$q->paginate(10) ,'roles'=>$roles  ]);
   }
   
   public function fill(){
     $roles=Role::all();
-    return view('admin.ajouter',['roles'=>$roles ,'user'=> null,'CpasswordMessage' =>null]);
+    return view('admin.ajouter',['roles'=>$roles ,'user'=> null,'CpasswordMessage' =>null ,'adminpassword' => null]);
   }
 
-  public function create(UserRequest $a){
-    $r=$a->validated();
-    if($r['password']==$r['Cpassword']){
+  public function create(UserRequest $r){
+ 
+    $useradmin=User::find($id=1);
+
+    if(Hash::check($r['adminpassword'] ,$useradmin->password)){
+    if($r['password']==$r['Cpassword'] ){
     
     User::insert([
       'roles_id'=>$r['roles_id'],
@@ -68,6 +71,11 @@ class AdminController extends Controller
         $roles=Role::all();
         return view('admin.ajouter',['roles'=>$roles ,'user'=> $r ,'CpasswordMessage' => "le mot de passe  c'est pas le méme"]);
       }
+
+    }else{
+        $roles=Role::all();
+        return view('admin.ajouter',['roles'=>$roles ,'user'=> $r ,'adminpassword' => "Mot de passe incorrect" , 'CpasswordMessage'=>null]);
+    }
   }
   
   public function destroy(Request $r)
@@ -81,16 +89,17 @@ class AdminController extends Controller
   {
     $user=User::find($r['id']);
     $roles=Role::all();
-    return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>null , 'hidden' =>'hidden']);
+    return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>null , 'hidden' =>'hidden' ,'adminpassword' =>null]);
   }
-  public function edit(UserRequestUpdate $r)
+  public function edit(Request $r)
   {
  
-    
+    dd($r);
     
     $user=User::find($r['id']);
 
- if(empty($r['password']) && empty($r['Cpassword'])){
+ 
+  if(empty($r['password']) && empty($r['Cpassword']) && empty($r['adminpassword'])){
  
   $user->roles_id = $r['roles_id'] ;
   $user->save();
@@ -109,6 +118,9 @@ class AdminController extends Controller
   return redirect()->route('admin.index')
       ->with('success','modifié avec succès');
 }
+
+$useradmin=User::find($id=1);
+if(Hash::check($r['adminpassword'] ,$useradmin->password)){
 
 if($r['password']==$r['Cpassword']){
 
@@ -130,7 +142,13 @@ return redirect()->route('admin.index')
 }else{
  
         $roles=Role::all();
-        return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>"le mot de passe  c'est pas le méme" , 'hidden' =>null]);}
+        return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>"le mot de passe  c'est pas le méme" , 'hidden' =>null ,'adminpassword'=>null]);}
 
-  }
+  
+
+      }else{
+  $roles=Role::all();
+  return view('admin.Modifie',['roles'=>$roles ,'user'=> $r ,'adminpassword' => "Mot de passe incorrect" , 'CpasswordMessage'=>null , 'hidden' =>null]);
+}
+}
 }

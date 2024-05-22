@@ -30,7 +30,9 @@ class UserRequest extends FormRequest
         'service'=>'required|min:3|max:40',
         'email'=>'required|min:3|max:40|email',
         'password'=>'required|min:8|max:30',
-        'Cpassword'=>'required|min:8|max:30'
+        'Cpassword'=>'required|min:8|max:30',
+        'adminpassword'=>'required|min:8|max:30'
+        
         ];
     }
 }

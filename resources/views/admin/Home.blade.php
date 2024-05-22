@@ -59,8 +59,8 @@
 
 
 
-
- <div class="p-4  h-screen flex flex-col  sm:ml-64 bg-gray-300">
+ <div class="h-screen  sm:ml-64 bg-gray-300">
+ <div class="p-4  h-fill flex flex-col bg-gray-300 ">
  <!--titre-->
   <div><h1 class="text-4xl text-black font-bold no-italic ">Les utilisateurs : </h1><br/></div>
 
@@ -79,7 +79,7 @@
             </div> 
             
             <select name="choix" class="rounded-lg h-10 p-2 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500">
-                <option selected>Choisir un role</option>
+                <option value="" >Choisir un role</option>
                 @foreach ($roles as $item)
                 <option  value="{{$item->id}}">{{$item->nom}}</option>
                 @endforeach
@@ -104,21 +104,19 @@
 
  <!--ajoutebuttom-->
  <div class="flex flex-row-reverse ">
-     <a href="{{route('admin.fill')}}" class=" rounded-lg  h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700  text-white ">Ajouter un nouveau utilisateur</a>
+     <a href="{{route('admin.fill')}}" class=" rounded-lg  h-10 px-4 py-2 w-25 mx-2 my-2 bg-blue-600 hover:bg-blue-700  text-white ">Ajouter un nouveau utilisateur</a>
  </div>
 
  @if (session()->has('success'))
-<div class=" my-6 text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center">
+<div class=" my-3 text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center">
     <span class="font-medium">{{ session('success') }}</span>
 </div>
 @endif
 
 
 <!--table-->
-<br/>
-<div>
-<div class="relative overflow-x-auto  sm:rounded-lg">
-    <br/>
+<div class="relative overflow-x-auto my-2 sm:rounded-lg ">
+
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
         <thead class="text-xs text-black uppercase bg-gray-400 ">
             <tr>
@@ -157,7 +155,7 @@
             <tr class=" bg-white  border-gray-600  hover:bg-gray-100">
 
                 
-                <th scope="row" class="px-6 py-4 font-medium  whitespace-nowrap text-black">
+                <th scope="row" class="px-6  font-medium  whitespace-nowrap text-black">
                     {{ $item->id }}
                 </th>
                 <td class="px-6 py-4 text-black">
@@ -208,12 +206,13 @@
 </div>
 <!--pagination-->
 <div class="m-4">
-{{ $users->links() }}
-</div>
+    {{ $users->links() }}
+    </div>
 
 
 </div>
 
+</div>
 
 
 

@@ -76,7 +76,7 @@
             @enderror
         </div>
 
-
+ 
         <div class="mb-5">
           <label for="Prenom" class="block mb-2 text-sm font-medium text-black ">Prenom</label>
           <input value="{{ $user['prenom']}}" type="text" id="Prenom" name="prenom"  class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="se prenom"  />
@@ -144,16 +144,30 @@
 
 
       <div id='mdp' class='{{$hidden}}'>
+
+        <div class="mb-5">
+          <label for="password" class="block mb-2 text-sm font-medium text-black ">Votre Mot de passe admin<span  class="text-red-600">*</span></label>
+          <input  type="password" id="password" name="adminpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required/>
+           @error('adminpassword')
+           <span class="text-red-600">{{ $message }}</span>
+           @enderror
+           @if ($adminpassword)
+            <span class="font-medium text-red-600">{{ $adminpassword }}</span>
+            @endif
+        </div>
+
         <div id='mdp' class="mb-5  ">
-            <label for="password" class="block mb-2 text-sm font-medium text-black ">Changé le Mot de passe </label>
-            <input  type="password" id="password" name="password" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  />
+            <label for="password" class="block mb-2 text-sm font-medium text-black ">Changé le Mot de passe <span  class="text-red-600">*</span></label>
+            <input  type="password" id="password" name="password" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"   required/>
              @error('password')
              <span class="text-red-600">{{ $message }}</span>
              @enderror
           </div>
+
+
           <div class="mb-5">
-            <label for="Cpassword" class="block mb-2 text-sm font-medium text-black ">Confirmation de Mots de passe </label>
-            <input type="password" id="Cpassword" name="Cpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  />
+            <label for="Cpassword" class="block mb-2 text-sm font-medium text-black ">Confirmation de Mots de passe <span  class="text-red-600">*</span></label>
+            <input type="password" id="Cpassword" name="Cpassword" class="w-full rounded-lg p-3 h-10 w-30  m-2 bg-white-400 border-gray-600 placeholder-gray-700 text-gray-700" placeholder="********"  required />
             @error('Cpassword')
             <span  class="text-red-600">{{ $message }}</span>
             @enderror
