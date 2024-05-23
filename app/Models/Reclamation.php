@@ -16,6 +16,12 @@ class Reclamation extends Model
 
     public function registre(){
 
+       
         return $this->belongsTo(Registre::class, 'registres_id');
+    }
+
+    public function user(){
+
+        return $this->belongsTo(User::class, 'users_id');
     }
 }

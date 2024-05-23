@@ -90,8 +90,7 @@ Route::get('/MonSite/Maintenancier', [MaintenancierController::class ,'index'])-
 Route::delete('/MonSite/Maintenancier/supprimé-{id}', [MaintenancierController::class ,'destroy'])->name('Maintenancier.destroy');
 Route::post('/MonSite/Maintenancier/vue', [MaintenancierController::class ,'vue'])->name('Maintenancier.vue');
 Route::delete('/MonSite/Maintenancier/remove', [MaintenancierController::class ,'remove'])->name('Maintenancier.remove');
-
-
+Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController::class ,'search'])->name('Maintenancier.search');
 
 
 

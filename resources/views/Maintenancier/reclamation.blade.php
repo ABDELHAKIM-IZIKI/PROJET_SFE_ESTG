@@ -15,6 +15,28 @@ Boîte de réception de reclamation :
 </div>
 @endif
 
+
+<div class="px-4 ">
+    <form method="get" action="{{route('Maintenancier.search')}}" class="">   
+        @csrf
+        <div class=" flex flex-wrap  lg:flex-inline justify-center items-center  ">
+            
+
+            <div class="flex   w-full lg:w-1/2 m-1.5">
+                <input type="text" name="valeur" class=" rounded-lg p-3 h-10 w-full bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="recherche " />
+            </div> 
+
+            <button type="submit" class="w-full md:w-auto  p-2.5 m-1.5 text-sm font-medium text-white rounded-lg border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
+                <svg class="w-5 h-4 mx-auto" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                </svg>
+            </button>
+        </div>
+    </form>
+</div>
+
+
+<!--table-->
 <div class="mx-4 relative overflow-x-auto z-0">
     <br />
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
