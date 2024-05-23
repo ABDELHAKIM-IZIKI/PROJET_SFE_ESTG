@@ -45,8 +45,8 @@ Route::post('/MonSite/GestionnaireStock/modifie', [GestionnairesStockController:
 Route::get('/MonSite/GestionnaireStock/remplir', [GestionnairesStockController::class ,'fill'])->name('gestionnairestock.fill');
 Route::post('/MonSite/GestionnaireStock/crée', [GestionnairesStockController::class ,'create'])->name('gestionnairestock.create');
 Route::get('/MonSite/GestionnaireStock/Materiel-{id}', [GestionnairesStockController::class ,'display'])->name('GestionnairesStock.display');
-
-
+//Caracteristique 
+Route::delete('/MonSite/Caracteristique/supprimé/{id}', [CaracteristiqueController::class ,'delete'])->name('Caracteristique.delete');
 
 
 //Categorie

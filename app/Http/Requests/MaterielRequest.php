@@ -31,7 +31,9 @@ class MaterielRequest extends FormRequest
         'barcode'=>'min:3|max:40|nullable',
         'date'=>'date_format:Y-m-d|nullable',
         'categories_id' =>'min:1|max:20|nullable' ,
-        'marques_id'=>'min:1|max:20|nullable'
+        'marques_id'=>'min:1|max:20|nullable' ,
+        'caracteristiques.*.nom' => 'required|max:255',
+        'caracteristiques.*.valeur' => 'required|max:255',
         ];
     }
 }

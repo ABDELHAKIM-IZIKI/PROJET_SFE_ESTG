@@ -28,6 +28,7 @@ class RequestRegistre extends FormRequest
             'rapport'=>'min:3|max:120|nullable',
         'lieu'=>'required|min:3|max:40',
         'date'=>'required|date_format:Y-m-d',
+      
         ];
     }
 }

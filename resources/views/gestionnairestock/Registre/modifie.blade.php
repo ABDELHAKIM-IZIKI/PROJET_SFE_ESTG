@@ -99,6 +99,15 @@ Modifier le registre de #ID{{$registre->id}} :
              @enderror
         <div>
 
+
+
+         
+
+
+
+
+
+
             <div class="float-right mt-2 mb-4">
                 <button id="closeRemove" type="submit" class="text-white font-medium rounded-lg   text-sm p-1.5   text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                     Modifié </button>

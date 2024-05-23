@@ -6,7 +6,7 @@ Ajouter un nouveau matériel ou équipement :
 
 @section('content')
 
-<div class="bg-gray-300">
+<div class=" bg-gray-300">
     <form method="POST" action="{{ route('gestionnairestock.create') }}" class="max-w-sm mx-auto" enctype="multipart/form-data">
         @csrf
         <div class="mb-5 mr-2 ">
@@ -127,12 +127,11 @@ Ajouter un nouveau matériel ou équipement :
                         </tr>
                     </tbody>
                 </table>
-            </div>
+                </div>
                 <div class="m-3 mr-0 float-right">
                     <button type="button" onclick="addCaracteristique()" class="rounded-lg h-10 px-4 py-2 w-25  bg-blue-600 hover:bg-blue-700 text-white">Ajouter une caractéristique</button>
                 </div>
-           
-            
+        </div>
             <script>
                 let caracteristiqueIndex = 1;
         
@@ -162,15 +161,15 @@ Ajouter un nouveau matériel ou équipement :
             row.remove();
         }
             </script>
-        </div>
+       
       
-</div>
 
 
-        <div class="float-right mr-0 m-3 ">
+
+        <div class="float-right  m-5 ">
             <button type="submit" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Ajouté</button>
         </div>
     </form>
-</div>
 
+</div>
 @endsection

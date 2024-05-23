@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MaterielRequest;
 use App\Http\Requests\MaterielRequestUpdate;
+use App\Models\Caracteristique;
 use App\Models\Categorie;
 use App\Models\Etat;
 use App\Models\Marque;
@@ -87,7 +88,7 @@ public function destroy(Request $r)
     $fileName=$a->file('image')->getClientOriginalName();
     $filePath = $a->file('image')->storeAs('uploads', $fileName, 'public');
 
-    Materiel::insert([
+    $materiel = Materiel::create([
         'nom'=> $r['nom'],
         'model'=>$r['model'],
         'description'=>$r['description'],
@@ -98,6 +99,16 @@ public function destroy(Request $r)
         'marques_id'=>$r['marques_id'] ,
         'image'=> "/storage"."/".$filePath 
       ]); 
+
+
+      foreach($r['caracteristiques'] as $item ){
+       Caracteristique::insert([
+        'materiels_id' =>  $materiel->id ,
+        'nom' =>  $item['nom'] ,
+        'valeur' =>  $item['valeur'] 
+       ]);
+
+      }
       
 
       return redirect()->route('GestionnairesStock.index')
@@ -106,11 +117,11 @@ public function destroy(Request $r)
 
 
   public function fillEdit(Request $r)
-  {
+  { 
     $materiel=Materiel::find($r['id']);
     $categories = Categorie::orderBy('nom')->get();
     $marques =Marque::orderBy('nom')->get();
-    return view('gestionnairestock.modifie',['materiels'=> $materiel ,'marques'=>$marques ,'categories'=>$categories]);
+    return view('gestionnairestock.modifie',['materiels'=> $materiel ,'marques'=>$marques ,'categories'=>$categories ]);
   }
 
 
@@ -155,6 +166,26 @@ public function destroy(Request $r)
         'date'=>$r['date'],
       ]);
    
+
+      if($a->has('caracteristiques')){
+        foreach($a['caracteristiques'] as $item ){
+          
+          Caracteristique::insert([
+           'materiels_id' =>  $materiel->id ,
+           'nom' =>  $item['nom'] ,
+           'valeur' =>  $item['valeur'] 
+          ]);
+   
+         }
+      }
+
+
+
+
+
+
+      
+
       return redirect()->route('GestionnairesStock.index')
         ->with('success','modifié avec succès');
     }

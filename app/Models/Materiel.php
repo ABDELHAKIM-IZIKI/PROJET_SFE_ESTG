@@ -30,7 +30,7 @@ class Materiel extends Model
         return $this->belongsTo(Marque::class, 'marques_id');
     }
 
-    public function caracteristique()
+    public function caracteristiques()
     {
         return $this->hasMany(Caracteristique::class,'materiels_id');
     }
