@@ -7,6 +7,7 @@ Modifier le  matériel ou l'équipement :
 @section('content')
 
 <div class="p-4 bg-gray-300">
+    
     <form method="POST" action="{{ route('gestionnairestock.edit') }}" class="max-w-sm  mx-auto" enctype="multipart/form-data">
         @csrf
 
@@ -130,6 +131,12 @@ Modifier le  matériel ou l'équipement :
             @enderror
         </div>
 
+   <!--successajoute-->
+   @if (session()->has('success'))
+   <div class=" my-2  text-sm text-green-800 rounded-lg bg-green-100  p-3 items-center z-0">
+       <span class="font-medium">{{ session('success') }}</span>
+   </div>
+   @endif
 
         <div class="mb-5 mr-2">
            
@@ -148,18 +155,20 @@ Modifier le  matériel ou l'équipement :
                     @foreach ($materiels->caracteristiques as $item)
 <tr>
     <td class="p-1 text-black">
-        <input type="hidden" name="caracteristiques[{{$item['id']}}][id]" value="{{ $item['id'] }}">
-        <input type="text" name="caracteristiques[{{$item['id']}}][nom]" placeholder="Nom de la caractéristique" value="{{ $item['nom'] }}" class="p-2 rounded-lg h-10 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" required>
+        <input type="hidden" name="id" value="{{ $item['id'] }}">
+        <input type="text" name="nom" placeholder="Nom de la caractéristique" value="{{ $item['nom'] }}" class="p-2 rounded-lg h-10 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" required>
     </td>
     <td class="p-1 text-black">
-        <input type="text" name="caracteristiques[{{$item['id']}}][valeur]" placeholder="Valeur de la caractéristique" value="{{ $item['valeur'] }}" class="p-2 rounded-lg h-10 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" required>
+        <input type="text" name="valeur" placeholder="Valeur de la caractéristique" value="{{ $item['valeur'] }}" class="p-2 rounded-lg h-10 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" required>
     </td>
     <td class="p-1 items-center flex justify-center">
-        <button type="button" onclick="deleteCaracteristique({{ $item['id'] }})" class="rounded-lg p-2 bg-red-600 hover:bg-red-700">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF">
-                <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
-            </svg>
+        <form action="{{route('Caracteristique.delete' , $item['id'] )}}"  method="post">
+            @csrf
+            @method('DELETE')
+        <button type="submit"  class="rounded-lg p-2 bg-red-600 hover:bg-red-700">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
         </button>
+    </form>
     </td>
 </tr>
 @endforeach
@@ -197,31 +206,11 @@ Modifier le  matériel ou l'équipement :
         }
 
         function deleteCaracteristique(button) {
-    const row = button.parentElement.parentElement;
-    row.remove();
-}
-
-
-    function deleteCaracteristique(id) {
-        if (confirm('Are you sure you want to delete this characteristic?')) {
-            fetch(`{{ url('/MonSite/Caracteristique/supprimé') }}/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    location.reload();
-                } else {
-                    alert('Failed to delete characteristic.');
-                }
-            });
-        }
-    }
-
-
+           const row = button.parentElement.parentElement;
+           row.remove();
+         }
     </script>
+
 
 
 
@@ -229,7 +218,7 @@ Modifier le  matériel ou l'équipement :
             <button type="submit" class="rounded-lg h-10 px-4 py-2 w-25 mx-2 bg-blue-600 hover:bg-blue-700 text-white">Modifié</button>
         </div>
 
-    </form>
+  
 </div>
 
 @endsection

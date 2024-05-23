@@ -184,7 +184,7 @@ public function destroy(Request $r)
 
 
 
-      
+
 
       return redirect()->route('GestionnairesStock.index')
         ->with('success','modifié avec succès');
@@ -198,7 +198,7 @@ public function destroy(Request $r)
     $materiel=Materiel::find($r['id']);
     $nomcategorie=$materiel->categorie()->first();
     $nommarque=$materiel->marque()->first();
-    $caracteristiques=$materiel->caracteristique()->get();
+    $caracteristiques=$materiel->caracteristiques()->get();
     return view('gestionnairestock.Affiche',['materiel' =>$materiel ,'nommarque'=>$nommarque ,'nomcategorie'=>$nomcategorie ,'caracteristiques'=>$caracteristiques]);
   }
 
