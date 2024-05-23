@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CaracteristiqueController;
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\FonctionnaireController;
@@ -94,8 +95,9 @@ Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController
 
 
 
-
-
+//AUth
+Route::get('/MonSite/Login', [AuthController::class ,'login'])->name('Auth.login');  
+Route::post('/MonSite/Role', [AuthController::class ,'role'])->name('Auth.role');  
 
 
 

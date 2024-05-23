@@ -18,7 +18,7 @@ Boîte de réception de reclamation :
 
 <div class="px-4 ">
     <form method="get" action="{{route('Maintenancier.search')}}" class="">   
-        @csrf
+
         <div class=" flex flex-wrap  lg:flex-inline justify-center items-center  ">
             
 

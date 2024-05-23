@@ -21,13 +21,13 @@ class MaintenancierController extends Controller
 
      public function search(Request $r) {
     $q = Reclamation::query();
-
-    if ($r->has('valeur') && ($r->input('valeur') != null)) {
+    
+    if ( $r->has('valeur') && ($r->input('valeur') != null) ) {
         $v = '%' . $r->input('valeur') . '%';
         $q->orWhereHas('user', function ($query) use ($v) {
             $query->orWhere('nom', 'like', $v)
                   ->orWhere('prenom', 'like', $v)
-                  ->orWhere('division', 'like', $v) // Ensure 'division' exists in 'users' table
+                  ->orWhere('division', 'like', $v)
                   ->orWhere('service', 'like', $v);
         })
         ->orWhereHas('registre', function ($query) use ($v) {
@@ -38,9 +38,10 @@ class MaintenancierController extends Controller
                   });
         });
     }
-
-    $t = $q->orderByDesc('id')->orderByDesc('vue')->get();
-    return view('Maintenancier.reclamation', ['reclamation' => $t, 'etats' => Etat::all()]);
+  
+   $t= $q->orderByDesc('id')->orderByDesc('vue')->get();
+  
+    return view('Maintenancier.reclamation', ['reclamation' => $t , 'etats' => Etat::all()]);
 }
 
 
