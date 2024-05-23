@@ -127,7 +127,7 @@ public function destroy(Request $r)
 
   public function edit(MaterielRequestUpdate $a)
   {  
-    
+    dd($a);
     $r=$a->validated();
     $materiel=Materiel::find($r['id']);
     if($a->has('image')){

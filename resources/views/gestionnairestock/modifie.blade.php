@@ -14,24 +14,24 @@ Modifier le  matériel ou l'équipement :
         <input value="{{ $materiels['id'] }}" type="number" class="hidden"  name="id"/>
 
         <div class="mb-5">
-            <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom :</label>
-            <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
+            <label for="Nom" class="block mb-2 text-sm font-medium text-black">Nom : <span class="text-red-600">*</span></label>
+            <input value="{{ $materiels['nom'] ?? '' }}" type="text" id="Nom" name="nom" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" required/>
             @error('nom')
             <span class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="mb-5">
-            <label for="model" class="block mb-2 text-sm font-medium text-black">Model :</label>
-            <input value="{{ $materiels['model'] ?? '' }}" type="text" id="model" name="model" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
+            <label for="model" class="block mb-2 text-sm font-medium text-black">Model : <span class="text-red-600">*</span></label>
+            <input value="{{ $materiels['model'] ?? '' }}" type="text" id="model" name="model" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" required/>
             @error('model')
             <span class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
 
         <div class="mb-5">
-            <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque :</label>
-            <select id="marques_id" name="marques_id" class="w-full  rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700">
+            <label for="marques_id" class="block mb-2 text-sm font-medium text-black">Choisir une marque : <span class="text-red-600">*</span></label>
+            <select id="marques_id" name="marques_id" class="w-full  rounded-lg p-1 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" required>
                
                 @if($materiels['marques_id']!=null)
                 @foreach ($marques as $item)
@@ -94,8 +94,8 @@ Modifier le  matériel ou l'équipement :
         </div>
 
         <div class="mb-5">
-            <label for="quantite" class="block mb-2 text-sm font-medium text-black">Quantité :</label>
-            <input value="{{ $materiels['quantite'] ?? '' }}" type="number" id="quantite" name="quantite" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" />
+            <label for="quantite" class="block mb-2 text-sm font-medium text-black">Quantité : <span class="text-red-600">*</span></label>
+            <input value="{{ $materiels['quantite'] ?? '' }}" type="number" id="quantite" name="quantite" class="w-full rounded-lg p-3 h-10 m-2 bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="" required/>
             @error('quantite')
             <span class="text-red-600">{{ $message }}</span>
             @enderror
@@ -162,15 +162,15 @@ Modifier le  matériel ou l'équipement :
         <input type="text" name="valeur" placeholder="Valeur de la caractéristique" value="{{ $item['valeur'] }}" class="p-2 rounded-lg h-10 bg-gray-100 border-gray-600 placeholder-gray-700 text-gray-700" required>
     </td>
     <td class="p-1 items-center flex justify-center">
-        <form action="{{route('Caracteristique.delete' , $item['id'] )}}"  method="post">
-            @csrf
-            @method('DELETE')
-        <button type="submit"  class="rounded-lg p-2 bg-red-600 hover:bg-red-700">
+       
+        <button type="button"  class="rounded-lg p-2 bg-red-600 hover:bg-red-700">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg>
         </button>
-    </form>
+  
     </td>
+    
 </tr>
+
 @endforeach
 
                 </tbody>
