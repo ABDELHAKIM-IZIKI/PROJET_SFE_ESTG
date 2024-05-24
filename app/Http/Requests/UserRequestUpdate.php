@@ -30,7 +30,7 @@ class UserRequestUpdate extends FormRequest
                 'tel'=>'min:10',
                 'division'=>'required|min:3|max:40',
                 'service'=>'required|min:3|max:40',
-                'email'=>'required|min:3|max:40|email',
+                'email'=>'required|max:50|email',
                 'password'=>'min:8|max:30|nullable',
                 'Cpassword'=>'min:8|max:30|nullable',
                 'adminpassword'=>'min:8|max:30|nullable'

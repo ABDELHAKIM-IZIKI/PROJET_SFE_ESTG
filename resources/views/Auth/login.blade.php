@@ -4,7 +4,7 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-300">
    
 
-        <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.role') }}" method="POST" >
+        <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.login') }}" method="POST" >
             @csrf 
 
             <div>

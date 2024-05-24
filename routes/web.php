@@ -20,7 +20,7 @@ Route::get('/MonSite/Contact', [HomeController::class ,'contact'])->name('contac
 
 
 //Administrateur
-Route::middleware(['auth','role'])->group(function () {
+Route::middleware(['auth','role:Administrateur'])->group(function () {
 Route::get('/MonSite/Administrateur', [AdminController::class ,'index'])->name('admin.index');
 Route::get('/MonSite/Administrateur/recherche', [AdminController::class ,'search'])->name('admin.search');
 Route::get('/MonSite/Administrateur/remplir', [AdminController::class ,'fill'])->name('admin.fill');
@@ -40,7 +40,7 @@ Route::post('/MonSite/Administrateur/Role/modifie', [RoleController::class ,'edi
 
 
 
-Route::middleware(['auth','role'])->group(function () {
+Route::middleware(['auth','role:Gestionnaire de stock'])->group(function () {
 //GestionnairesStock 
 Route::get('/MonSite/GestionnaireStock', [GestionnairesStockController::class ,'index'])->name('GestionnairesStock.index');
 Route::get('/MonSite/GestionnaireStock/recherche', [GestionnairesStockController::class ,'search'])->name('gestionnairestock.search');
@@ -80,7 +80,7 @@ Route::get('/MonSite/GestionnaireStock/Registre/affectation/recherche', [Registr
 });
 
 
-Route::middleware(['auth','role'])->group(function () {
+Route::middleware(['auth','role:Fonctionnaire'])->group(function () {
 //Fonctionnaire
 Route::get('/MonSite/Fonctionnaire', [FonctionnaireController::class ,'index'])->name('Fonctionnaire.index');
 Route::get('/MonSite/Fonctionnaire/Reclamation', [FonctionnaireController::class ,'indexReclamation'])->name('Fonctionnaire.Reclamation.index');
@@ -91,7 +91,7 @@ Route::delete('/MonSite/Fonctionnaire/supprimé-{id}', [FonctionnaireController:
 
 
 
-Route::middleware(['auth','role'])->group(function () {
+Route::middleware(['auth','role:Maintenancier'])->group(function () {
 //Maintenancier     
 Route::get('/MonSite/Maintenancier', [MaintenancierController::class ,'index'])->name('Maintenancier.index');
 Route::delete('/MonSite/Maintenancier/supprimé-{id}', [MaintenancierController::class ,'destroy'])->name('Maintenancier.destroy');
@@ -102,11 +102,13 @@ Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController
 
 
 //AUth
-Route::get('/MonSite/Connexion', [AuthController::class ,'loginpage'])->name('Auth.loginpage');  
-Route::get('/MonSite/role', [AuthController::class ,'role'])->name('Auth.role');  
+Route::get('/MonSite/Connexion', [AuthController::class ,'loginpage'])->name('Auth.loginpage');   
+Route::post('/MonSite/Connexion/Login', [AuthController::class ,'login'])->name('Auth.login');
 Route::get('/MonSite/Modifie_MDP', [AuthController::class ,'Modifie_MDP'])->name('Auth.Modifie_MDP');  
 Route::get('/MonSite/MDP_Confirmation', [AuthController::class ,'MDP_Confirmation'])->name('Auth.MDP_Confirmation');
 
+//role Banned  
+Route::get('/MonSite/Error', [AuthController::class ,'Banned'])->name('Banned');
 
 Route::get('/test', function(){
     return view('test');

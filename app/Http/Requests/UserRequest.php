@@ -28,7 +28,7 @@ class UserRequest extends FormRequest
         'tel'=>'required|min:10',
         'division'=>'required|min:3|max:40',
         'service'=>'required|min:3|max:40',
-        'email'=>'required|min:3|max:40|email',
+        'email'=>'required|max:50|email',
         'password'=>'required|min:8|max:30',
         'Cpassword'=>'required|min:8|max:30',
         'adminpassword'=>'required|min:8|max:30'
