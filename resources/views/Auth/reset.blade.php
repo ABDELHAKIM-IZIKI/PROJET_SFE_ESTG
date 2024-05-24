@@ -27,7 +27,7 @@
         @endif
       
         <div class="flex items-center mb-5">
-            <a href="{{ route('Auth.login') }}" class="hover:bg-gray-300 p-1 rounded-lg text-blue-700">Retour à la page de connexion ?</a>
+            <a href="{{ route('Auth.loginpage') }}" class="hover:bg-gray-300 p-1 rounded-lg text-blue-700">Retour à la page de connexion ?</a>
         </div>
 
         <div class="text-right">
