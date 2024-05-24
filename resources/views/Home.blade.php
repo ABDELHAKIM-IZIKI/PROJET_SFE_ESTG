@@ -18,7 +18,7 @@
                 <a href="{{route('home')}}" class="flex"><img src="https://super.so/icon/dark/home.svg" class="mx-2" ><span>Accueil</span></a>
               </li>
               <li class="m-2">  
-                <a href="{{route('Auth.login')}}" class="flex"> <img src="https://super.so/icon/dark/user.svg" class="mx-2" alt="user"><span>Mon Espace</span></a>
+                <a href="{{route('Auth.loginpage')}}" class="flex"> <img src="https://super.so/icon/dark/user.svg" class="mx-2" alt="user"><span>Mon Espace</span></a>
               </li>
             </ul>
 

@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-  public function loginpage(){
+  public function loginpage(Request $request){
+
+    
 
     return view('Auth.login');
   }
 
   public function login(){
 
-    return view('Auth.login');
+    return null ;
   }
  
-  public function logout(Request $request): RedirectResponse
+  public function logout(Request $request)
   {
       Auth::logout();
    
@@ -24,7 +26,7 @@ class AuthController extends Controller
    
       $request->session()->regenerateToken();
    
-      return redirect('/');
+      return redirect()->route('home');
   }
 
   public function Modifie_MDP(){
@@ -39,24 +41,7 @@ class AuthController extends Controller
   }
 
   
-  public function role(LoginRequest $request): RedirectResponse
-  {  Auth::gu
-    
-        $request->authenticate();
-
-        $request->session()->regenerate();
-        
-        $url = "";
-        if($request->user()->role === "admin"){
-            $url = "admin/dashboard";
-        }elseif($request->user()->role === "agent"){
-            $url = "agent/dashboard";
-        }else{
-            $url = "dashboard";  
-        }
-
-        return redirect()->intended($url);
-    }
+ 
  
 
 
