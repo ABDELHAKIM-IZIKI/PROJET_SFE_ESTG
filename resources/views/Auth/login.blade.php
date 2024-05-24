@@ -10,11 +10,17 @@
             <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Votre E-mail:</label>
                 <input type="email" id="email" name="email" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="test@gmail.com" required>
+                @error('email')
+           <span class="text-red-600">{{ $message }}</span>
+           @enderror
             </div>
 
             <div class="mb-5">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Votre mot de passe:</label>
                 <input type="password" id="password" name="password" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="*********" required>
+                @error('password')
+           <span class="text-red-600">{{ $message }}</span>
+           @enderror
             </div>
 
             <div class="flex  mb-5">
