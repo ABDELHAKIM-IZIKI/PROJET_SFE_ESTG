@@ -75,7 +75,7 @@
             
 
             <div class="flex   w-full lg:w-1/2 m-1.5">
-                <input type="text" name="valeur" class=" rounded-lg p-3 h-10 w-full bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="recherche " />
+                <input type="search" name="valeur" class=" rounded-lg p-3 h-10 w-full bg-white border-gray-600 placeholder-gray-700 text-gray-700" placeholder="recherche " />
             </div> 
             
             <select name="choix" class="rounded-lg h-10 p-2 w-30  m-2 bg-white-400 border-white-600 placeholder-gray-700 text-gray-700 focus:ring-blue-500 focus:border-blue-500">

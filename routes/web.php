@@ -97,8 +97,9 @@ Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController
 
 //AUth
 Route::get('/MonSite/Login', [AuthController::class ,'login'])->name('Auth.login');  
-Route::get('/MonSite/Role', [AuthController::class ,'role'])->name('Auth.role');  
-
+Route::get('/MonSite/role', [AuthController::class ,'role'])->name('Auth.role');  
+Route::get('/MonSite/Modifie_MDP', [AuthController::class ,'Modifie_MDP'])->name('Auth.Modifie_MDP');  
+Route::get('/MonSite/MDP_Confirmation', [AuthController::class ,'MDP_Confirmation'])->name('Auth.MDP_Confirmation');
 
 
 Route::get('/test', function(){

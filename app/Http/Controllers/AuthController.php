@@ -11,8 +11,20 @@ class AuthController extends Controller
     return view('Auth.login');
   }
 
-  public function role(){
+  public function Modifie_MDP(){
 
     return view('Auth.reset');
+  }
+
+
+  public function MDP_Confirmation()
+  {
+    return view('Auth.ConfirmationReset');
+  }
+
+  
+  public function role(){
+
+    return  null ;
   }
 }

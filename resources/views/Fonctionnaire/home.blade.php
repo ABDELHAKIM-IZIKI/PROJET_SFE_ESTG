@@ -15,7 +15,7 @@ Mon équipement :
             <div class="flex  ps-3 pointer-events-none">
             </div>
 
-            <input type="text" name="valeur" class="w-full rounded-l-lg p-3 h-10   border-gray-600 bg-white-400 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="recherche " />
+            <input type="search" name="valeur" class="w-full rounded-l-lg p-3 h-10   border-gray-600 bg-white-400 placeholder-gray-400 text-black focus:ring-blue-500 focus:border-blue-500" placeholder="recherche " />
             
             <button type="submit" class="p-2.5 rounded-r-lg text-sm font-medium text-white   border border-blue-700  bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
                 <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

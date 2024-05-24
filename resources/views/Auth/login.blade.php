@@ -5,7 +5,7 @@
    
 
         <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.role') }}" method="POST" >
-            @csrf <!-- Ensure CSRF token is included for form security -->
+            @csrf 
 
             <div>
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Votre E-mail:</label>
@@ -18,7 +18,7 @@
             </div>
 
             <div class="flex  mb-5">
-                <a href="{{ route('Auth.role') }}" class="text-blue-700 hover:bg-gray-300 p-1 rounded-lg mr-3">Mot de passe oublié?</a>
+                <a href="{{ route('Auth.Modifie_MDP') }}" class="text-blue-700 hover:bg-gray-300 p-1 rounded-lg mr-3">Mot de passe oublié?</a>
             </div> 
 
             <div class="text-right">
