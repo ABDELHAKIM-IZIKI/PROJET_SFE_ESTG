@@ -31,7 +31,7 @@
       
 
             <div class="flex  mb-5">
-                <a href="{{ route('Auth.Modifie_MDP') }}" class="text-blue-700 hover:bg-gray-300 p-1 rounded-lg mr-3">Mot de passe oublié?</a>
+                <a href="{{ route('Auth.pageReset') }}" class="text-blue-700 hover:bg-gray-300 p-1 rounded-lg mr-3">Mot de passe oublié?</a>
             </div> 
 
             <div class="text-right">

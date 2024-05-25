@@ -19,7 +19,8 @@ class AuthController extends Controller
   }
 
 
-  public function login(Request $request){
+  public function login(Request $request)
+  {
 
     $validator =  $request->validate([  'email' => 'required|max:50|email', 'password' => 'required|min:8|max:30']);
    
@@ -67,23 +68,10 @@ class AuthController extends Controller
     
     return redirect()->route('home'); 
 }
-
-
-
-  public function Modifie_MDP(){
-
-    return view('Auth.reset');
-  }
-
-
-  public function MDP_Confirmation()
-  {
-    return view('Auth.ConfirmationReset');
-  }
-
-  
  
- public function Banned(){
+ 
+ public function Banned()
+ {
 
   return view('Auth.Banned');
  }

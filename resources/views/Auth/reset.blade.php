@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="min-h-screen flex items-center justify-center bg-gray-300">
-    <form class="max-w-sm w-full p-10 bg-white rounded-lg shadow-md" action="{{ route('Auth.role') }}" method="POST">
+    <form class="max-w-sm w-full p-10 bg-white rounded-lg shadow-md" action="{{ route('Auth.sendCode') }}" method="POST">
         @csrf
 
         <div class="mb-5">
@@ -20,9 +20,9 @@
             @enderror
         </div>
         
-        @if (!session()->has('success'))
+        @if (session()->has('success'))
         <div class=" my-3 text-sm text-red-500 rounded-lg">
-            <span class="font-medium">Aucun compte utilise cette adresse e-mail</span>
+            <span class="font-medium">{{ session('success')}}</span>
         </div>
         @endif
       
