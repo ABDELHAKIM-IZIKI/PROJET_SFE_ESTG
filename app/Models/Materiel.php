@@ -37,7 +37,7 @@ class Materiel extends Model
     
     public function registre()
     {
-        return $this->hasMany(Registre::class);
+        return $this->hasMany(Registre::class,'registres_id');
     }
 
 }

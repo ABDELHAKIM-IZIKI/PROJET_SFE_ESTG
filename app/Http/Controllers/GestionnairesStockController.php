@@ -195,11 +195,10 @@ public function destroy(Request $r)
   
   public function display(Request $r)
   {
-    $materiel=Materiel::find($r['id']);
-    $nomcategorie=$materiel->categorie()->first();
-    $nommarque=$materiel->marque()->first();
-    $caracteristiques=$materiel->caracteristiques()->get();
-    return view('gestionnairestock.Affiche',['materiel' =>$materiel ,'nommarque'=>$nommarque ,'nomcategorie'=>$nomcategorie ,'caracteristiques'=>$caracteristiques]);
+
+      $materiel=Materiel::find($r['id']);
+
+    return view('gestionnairestock.Affiche',['materiel' => $materiel ]);
   }
 
 

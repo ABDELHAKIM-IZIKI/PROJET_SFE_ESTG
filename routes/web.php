@@ -86,6 +86,7 @@ Route::get('/MonSite/Fonctionnaire/Reclamation', [FonctionnaireController::class
 Route::post('/MonSite/Fonctionnaire/Reclamé', [FonctionnaireController::class ,'Reclamé'])->name('Fonctionnaire.add');
 Route::get('/MonSite/Fonctionnaire/Recherche', [FonctionnaireController::class ,'search'])->name('Fonctionnaire.search');
 Route::delete('/MonSite/Fonctionnaire/supprimé-{id}', [FonctionnaireController::class ,'destroy'])->name('Fonctionnaire.destroy'); 
+Route::get('/MonSite/Fonctionnaire/Registre/Materiel-{id}', [FonctionnaireController::class ,'displayM'])->name('Fonctionnaire.displayM');
 });
 
 
@@ -97,7 +98,10 @@ Route::delete('/MonSite/Maintenancier/supprimé-{id}', [MaintenancierController:
 Route::post('/MonSite/Maintenancier/vue', [MaintenancierController::class ,'vue'])->name('Maintenancier.vue');
 Route::delete('/MonSite/Maintenancier/remove', [MaintenancierController::class ,'remove'])->name('Maintenancier.remove');
 Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController::class ,'search'])->name('Maintenancier.search');
+Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
 });
+
+
 
 
 //AUth

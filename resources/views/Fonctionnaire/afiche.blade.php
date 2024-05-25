@@ -1,4 +1,4 @@
-@extends('gestionnairestock.templateGS')
+@extends('Fonctionnaire.templateF')
 
 @section('title')
 {{$materiel->nom }}

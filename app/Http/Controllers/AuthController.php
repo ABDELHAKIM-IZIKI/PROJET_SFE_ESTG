@@ -9,53 +9,59 @@ class AuthController extends Controller
 {
 
 
-  public function loginpage(Request $request){
-    return view('Auth.login');
+  public function loginpage(Request $request)
+  {
+    
+    if (Auth::check()) {
+      return $this->redirectToRolePage($request);
+  }else{
+    return view('Auth.login');}
   }
 
 
   public function login(Request $request){
 
     $validator =  $request->validate([  'email' => 'required|max:50|email', 'password' => 'required|min:8|max:30']);
-
-        
-   if (Auth::attempt($request->only('email', 'password'))) {
-
-
-
-    if($request->user()->role->nom == 'Administrateur' ){
+   
+    if (Auth::attempt($request->only('email', 'password'))) {
+      return $this->redirectToRolePage($request);
+  } else {
+      return redirect()->route('Auth.loginpage')->with('success', 'Email ou mot de passe incorrect');
+  }
+}
+ 
+  protected function redirectToRolePage($user)
+  {
+    if($user->user()->role->nom == 'Administrateur' ){
       return redirect()->route('admin.index');
     }
 
-    if($request->user()->role->nom == 'Gestionnaire de stock' ){
+    if($user->user()->role->nom == 'Gestionnaire de stock' ){
       return redirect()->route('GestionnairesStock.index');
     }
 
-    if($request->user()->role->nom == 'Maintenancier' ){
+    if($user->user()->role->nom == 'Maintenancier' ){
        return redirect()->route('Maintenancier.index');
      }
 
-    if($request->user()->role->nom == 'Fonctionnaire' ){
+    if($user->user()->role->nom == 'Fonctionnaire' ){
       return redirect()->route('Fonctionnaire.index');
     }
 
-    if($request->user()->role->nom == 'Avec no role' ){
+    if($user->user()->role->nom == 'Avec no role' ){
       Auth::logout();
       return redirect()->route('Auth.loginpage')->with('success',"tu n'a pas autorisé pour connecter a votre compte");
     }
 
-  }else{   
- 
-    return redirect()->route('Auth.loginpage')->with('success','Email ou mot de passe par correcte');
- 
   }
-  }
- 
+
+
+
 
   public function logout(Request $request)
 {
     Auth::logout();
-    
+
     $request->session()->invalidate();
     $request->session()->regenerateToken();
     

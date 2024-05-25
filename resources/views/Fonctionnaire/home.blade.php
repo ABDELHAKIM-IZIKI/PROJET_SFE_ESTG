@@ -41,7 +41,7 @@ Mon équipement :
         @foreach($registres as $item)
 
             <div class="w-96  bg-white border border-gray-200  rounded-lg shadow   p-2 m-2">
-                <a href="{{route('GestionnairesStock.display',['id'=>$item->id])}}">
+                <a href="{{route('Fonctionnaire.displayM',['id'=>$item->id])}}">
                     <img class="p-8  object-contain w-64 h-64  rounded-t-lg" src="{{ asset($item->materiel->image) }}" alt="product image" />
                 </a>
                 <div class="px-5 pb-5 start-0 flex flex-col">

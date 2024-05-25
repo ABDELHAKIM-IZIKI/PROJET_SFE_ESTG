@@ -60,4 +60,14 @@ public function search(Request $r)
     return redirect()->back()->with('success','Supprimé avec succès');
 
    }
+
+   public function displayM(Request $r)
+   {
+      $registre=Registre::find($r['id']);
+      $materiel=Materiel::find($registre->materiels_id);
+ 
+     return view('Fonctionnaire.afiche',['materiel' => $materiel ]);
+   }
+
+
 }
