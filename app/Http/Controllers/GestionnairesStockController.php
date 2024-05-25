@@ -69,7 +69,9 @@ return view('gestionnairestock.home', ['materiels' =>$materiels,'marques'=>$marq
 public function destroy(Request $r)
   {
     $destroyMateriel=Materiel::find($r['id']);
-    Storage::delete($destroyMateriel->image);
+    
+    $filePath = str_replace('/storage/', '', $destroyMateriel->image);
+    Storage::disk('public')->delete($filePath );
     $destroyMateriel->delete();
     return redirect()->back()->with('success','Supprimé avec succès');
   }
@@ -193,6 +195,7 @@ public function destroy(Request $r)
 
   
   
+
   public function display(Request $r)
   {
 
