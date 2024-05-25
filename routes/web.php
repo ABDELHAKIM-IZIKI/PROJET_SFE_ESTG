@@ -15,8 +15,7 @@ use App\Http\Controllers\HomeController;
 
 //Home
 Route::get('/MonSite', [HomeController::class ,'index'])->name('home');
-//contact
-Route::get('/MonSite/Contact', [HomeController::class ,'contact'])->name('contact');
+
 
 
 //Administrateur
@@ -104,6 +103,7 @@ Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController
 //AUth
 Route::get('/MonSite/Connexion', [AuthController::class ,'loginpage'])->name('Auth.loginpage');   
 Route::post('/MonSite/Connexion/Login', [AuthController::class ,'login'])->name('Auth.login');
+Route::post('/MonSite/Connexion/Logout', [AuthController::class ,'Logout'])->name('Auth.Logout');
 Route::get('/MonSite/Modifie_MDP', [AuthController::class ,'Modifie_MDP'])->name('Auth.Modifie_MDP');  
 Route::get('/MonSite/MDP_Confirmation', [AuthController::class ,'MDP_Confirmation'])->name('Auth.MDP_Confirmation');
 

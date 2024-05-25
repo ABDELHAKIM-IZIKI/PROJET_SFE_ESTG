@@ -52,17 +52,17 @@ class AuthController extends Controller
   }
  
 
-
   public function logout(Request $request)
-  {
-      Auth::logout();
-   
-      $request->session()->invalidate();
-   
-      $request->session()->regenerateToken();
-   
-      return redirect()->route('home');
-  }
+{
+    Auth::logout();
+    
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    
+    return redirect()->route('home'); 
+}
+
+
 
   public function Modifie_MDP(){
 

@@ -44,10 +44,15 @@
             </a>
          </li>-->
          <li>
-           <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
-              <img src="https://super.so/icon/dark/log-out.svg" alt="">
-              <span class="flex-1 ms-3 whitespace-nowrap">Déconnecter</span>
-           </a>
+            <form method="POST" action="{{ route('Auth.Logout') }}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group ">
+                @csrf
+              
+                <button type="submit" class="flex">
+                  <img class="mr-2" src="https://super.so/icon/dark/log-out.svg" alt="">
+                  <span class="">Déconnecter</span>
+                </button>
+            
+            </form>  
         </li>
     </div>
  </aside>

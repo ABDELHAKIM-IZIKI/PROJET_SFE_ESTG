@@ -17,7 +17,7 @@ class Role
     public function handle(Request $request, Closure $next , $role ): Response   
     {
 
-        if ( !Auth::check() || Auth::user()->role !== $role || Auth::user()->role == 'Avec no role' ) {
+        if ( !Auth::check() || Auth::user()->role->nom !== $role || Auth::user()->role == 'Avec no role' ) {
              
             return redirect()->route('Banned');
         
