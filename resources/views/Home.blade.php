@@ -25,7 +25,7 @@
         </button>
         <div class="hidden w-full md:block md:w-auto " id="navbar-default">
           <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ">
-            <ul class="flex flex-col text-black no-italic">
+            <ul class="flex flex-col lg:flex-row  text-black no-italic">
               <li class="m-2 hover:bg-gray-200  rounded-lg p-2">
                 <a href="{{route('home')}}" class="flex"><img src="https://super.so/icon/dark/home.svg" class="mx-2" ><span>Accueil</span></a>
               </li>
@@ -36,17 +36,18 @@
           </ul>
         </div>
       </div>
+      <script>
+        document.querySelector('[data-collapse-toggle]').addEventListener('click', function() {
+            var navbar = document.getElementById('navbar-default');
+            if (navbar.classList.contains('hidden')) {
+                navbar.classList.remove('hidden');
+            } else {
+                navbar.classList.add('hidden');
+            }
+        });
+    </script>
     </nav>
-    <script>
-      document.querySelector('[data-collapse-toggle]').addEventListener('click', function() {
-          var navbar = document.getElementById('navbar-default');
-          if (navbar.classList.contains('hidden')) {
-              navbar.classList.remove('hidden');
-          } else {
-              navbar.classList.add('hidden');
-          }
-      });
-  </script>
+   
 
 
 <main class="h-screen">
