@@ -19,11 +19,12 @@
             <span class="text-red-600">{{ $message }}</span>
             @enderror
         </div>
-        
-        @if (session()->has('success'))
+
+        @if (session()->has('error'))
         <div class=" my-3 text-sm text-red-500 rounded-lg">
-            <span class="font-medium">{{ session('success')}}</span>
+            <span class="font-medium">{{ session('error')}}</span>
         </div>
+
         @endif
       
         <div class="flex items-center mb-5">

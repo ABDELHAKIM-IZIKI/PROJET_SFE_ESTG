@@ -14,6 +14,9 @@
             <div class="mb-10">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Code : </label>
                 <input type="number" id="email" name="code" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="123456" required>
+                @error('code')
+                <span class="text-red-600">{{ $message }}</span>    
+                @enderror
             </div>
 
                 @if (session()->has('success'))

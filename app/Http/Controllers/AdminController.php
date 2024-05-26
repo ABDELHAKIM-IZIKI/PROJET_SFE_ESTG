@@ -151,7 +151,7 @@ return redirect()->route('admin.index')
 }else{
  
         $roles=Role::all();
-        return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>"le mot de passe  c'est pas le méme" , 'hidden' =>null ,'adminpassword'=>null]);}
+        return view('admin.Modifie',['roles'=>$roles ,'user'=>  $user , 'CpasswordMessage' =>"le mot de passe  c'est pas le méme de mot passe confirmation" , 'hidden' =>null ,'adminpassword'=>null]);}
 
   
 
