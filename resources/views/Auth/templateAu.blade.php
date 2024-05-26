@@ -45,11 +45,11 @@
 </script>
 </nav>
 
-<div class=" h-screen  bg-gray-200 flex flex-col ">
+<main class="  bg-gray-200 flex flex-col ">
 
 @yield('content')
 
-</div>
+</main>
 
 </body>
 </html>
