@@ -44,36 +44,35 @@
         });
     </script>
 
-    <main class="container mx-auto p-4">
-        <div class="relative bg-cover bg-center bg-no-repeat rounded-lg shadow-md p-6" style="background-image: url('{{ asset('assets/images/Agadir_Areal_view_cropped.jpg') }}');">
-            <div class="flex items-center justify-center">
-                <div class="rounded-lg bg-white p-4 max-w-full h-auto">
-                    <img src="{{ asset('assets/images/Logo_Agadir.jpg') }}" alt="logo" class="max-w-full h-auto">
-                </div>
-            </div>
-        </div>
+<main class="container mx-auto lg:px-20 py-7 px-10">
+  <div class="relative bg-cover bg-center bg-no-repeat  rounded-lg shadow-md p-6" style="background-image: url('{{ asset('assets/images/Agadir_Areal_view_cropped.jpg') }}');">
+     <div class="flex items-center justify-center">
+      <div class="rounded-lg bg-white p-4  max-w-full h-auto">
+          <img src="{{ asset('assets/images/Logo_Agadir.jpg') }}" alt="logo" class="max-w-full h-auto">
+      </div>
+     </div>
+  </div>
 
-        <br/>
-
-        <!-- Features Section -->
-        <section class="mt-8">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Nos fonctionnalités</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Gestion de matériel</h3>
-                    <p class="text-gray-600">Suivez et gérez l'inventaire de votre matériel facilement.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Suivi des réparations</h3>
-                    <p class="text-gray-600">Gardez une trace des réparations et des maintenances.</p>
-                </div>
-                <div class="bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Rapports détaillés</h3>
-                    <p class="text-gray-600">Générez des rapports détaillés pour une meilleure analyse.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+  <br/>
+  <!-- Features Section -->
+  <section class="mt-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Nos fonctionnalités</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-lg shadow-md p-4">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Gestion de matériel</h3>
+              <p class="text-gray-600">Suivez et gérez l'inventaire de votre matériel facilement.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-4">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Suivi des réparations</h3>
+              <p class="text-gray-600">Gardez une trace des réparations et des maintenances.</p>
+          </div>
+          <div class="bg-white rounded-lg shadow-md p-4">
+              <h3 class="text-xl font-bold text-gray-800 mb-2">Rapports détaillés</h3>
+              <p class="text-gray-600">Générez des rapports détaillés pour une meilleure analyse.</p>
+          </div>
+      </div>
+  </section>
+</main>
 
 </body>
 </html>
