@@ -13,16 +13,16 @@
 
             <div class="mb-10">
                 <input type="hidden" name="email" value="{{ $email }}">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Code : </label>
-                <input type="number" id="email" name="code" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="123456" required>
+                <label  class="block mb-2 text-sm font-medium text-gray-900">Code : </label>
+                <input type="number"  name="code" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="123456" required>
                 @error('code')
                 <span class="text-red-600">{{ $message }}</span>    
                 @enderror
             </div>
 
-                @if (session()->has('success'))
+                @if (session()->has('error'))
                 <div class=" my-3  p-3 ">
-                <span class="font-medium text-red-600">* {{  session('success') }} *</span>
+                <span class="font-medium text-red-600">* {{  session('error') }} *</span>
                 </div>
                 @endif
 

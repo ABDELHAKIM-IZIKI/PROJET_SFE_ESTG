@@ -28,6 +28,12 @@
                   <span class="font-medium text-red-600">* {{  session('success') }} *</span>
                     </div>
                     @endif
+
+                    @if (session()->has('success1'))
+                    <div class=" my-3  p-3 ">
+                      <span class="font-medium text-green-600">* {{  session('success1') }} *</span>
+                        </div>
+                        @endif
       
 
             <div class="flex  mb-5">

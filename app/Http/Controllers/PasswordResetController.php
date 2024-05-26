@@ -20,7 +20,7 @@ class PasswordResetController extends Controller
    
     public function sendCode(Request $request)
     {
-       $request->validate(['email' => 'required|email']);
+      
     
         if(User::where('email', $request->email)->exists()) {
             $code = mt_rand(100000, 999999);
@@ -37,33 +37,25 @@ class PasswordResetController extends Controller
          
             return view('Auth.codereset')->with('email' , $request->email);
         } else {
-            return redirect()->back()->with('error', "Aucun compte n'utilise cette adresse e-mail");
+            return redirect()->route('Auth.pageReset')->with('error', "Aucun compte n'utilise cette adresse e-mail");
         }
     }
 
     
     public function MDP_change_page(Request $request ){
-        $request->validate(['email' => 'required|email', 'code' => 'required|numeric|max:6|min:3']);
 
         $reset = Password_resets::where('email', $request->email)
-                                ->where('token', $request->code)
-                                ->first();
+                                ->where('token', $request->code)->first();
 
         if($reset && $reset->created_at->diffInMinutes(now()) <= 10 ) {
-            return view('Auth.MDP_change');
+            return view('Auth.MDP_change')->with('email' , $request->email);
         } else {
-            return redirect()->route('Auth.pageReset')->with('error', "Code de réinitialisation expiré ");
+            return redirect()->back()->with('error', "Code de réinitialisation expiré ");
         }
     }
 
     
     public function MDP_change(Request $request){
-
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8|max:40',
-            'Cpassword' => 'required|min:8|max:40'
-        ]);
 
         if($request->password == $request->Cpassword){
         $user = User::where('email', $request->email)->first();
@@ -74,11 +66,10 @@ class PasswordResetController extends Controller
       
       Password_resets::where('email', $request->email)->delete();
 
-            return redirect()->route('Auth.loginpage')->with('success', "Mot de passe réinitialisé avec succès.");
+            return redirect()->route('Auth.loginpage')->with('success1', "Mot de passe réinitialisé avec succès.");
         
           } else {
-
-            return redirect()->route('Auth.pageReset')->with('error', "le mot de passe  c'est pas le méme de mot passe confirmation");
+            return redirect()->route('Auth.MDP_change')->with('error', 'le mot de passe  c est pas le méme de mot passe confirmation')->with('email' , $request->email);;
         }
     }
 }
