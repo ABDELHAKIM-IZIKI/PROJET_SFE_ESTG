@@ -103,7 +103,7 @@ Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::clas
 });
 
 // Authentication Routes
-Route::get('/MonSite/Connexion', [AuthController::class, 'loginpage'])->name('Auth.loginpage');
+Route::get('/MonSite/Connexion', [AuthController::class, 'loginpage'])->name('Auth.loginpage'); 
 Route::post('/MonSite/Connexion/Login', [AuthController::class, 'login'])->name('Auth.login');
 Route::post('/MonSite/Connexion/Logout', [AuthController::class, 'Logout'])->name('Auth.Logout');
 

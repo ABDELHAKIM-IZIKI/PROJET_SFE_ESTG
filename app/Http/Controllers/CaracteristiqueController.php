@@ -16,4 +16,4 @@ public function delete($id){
    return  redirect()->back()->with('success','le caracteristique a été supprimé avec succès');;
 }
 
-}
+} 
