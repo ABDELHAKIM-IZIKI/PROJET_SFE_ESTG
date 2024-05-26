@@ -18,8 +18,9 @@ class PasswordResetController extends Controller
     }
     
    
-    public function sendCode(Request $request){
-        $request->validate(['email' => 'required|email']);
+    public function sendCode(Request $request)
+    {
+       $request->validate(['email' => 'required|email']);
     
         if(User::where('email', $request->email)->exists()) {
             $code = mt_rand(100000, 999999);
@@ -33,29 +34,29 @@ class PasswordResetController extends Controller
 
             
             Mail::to($request->email)->send(new MyMail($code));
-
-            return view('Auth.codereset', ['email' => $request->email] );
+         
+            return view('Auth.codereset')->with('email' , $request->email);
         } else {
-            return redirect()->route('Auth.pageReset')->with('error', "Aucun compte n'utilise cette adresse e-mail");
+            return redirect()->back()->with('error', "Aucun compte n'utilise cette adresse e-mail");
         }
     }
 
-    // Show the page to enter the new password
-    public function MDP_change_page(Request $request){
-        $request->validate(['email' => 'required|email', 'code' => 'required|numeric|max:6']);
+    
+    public function MDP_change_page(Request $request ){
+        $request->validate(['email' => 'required|email', 'code' => 'required|numeric|max:6|min:3']);
 
         $reset = Password_resets::where('email', $request->email)
                                 ->where('token', $request->code)
                                 ->first();
 
         if($reset && $reset->created_at->diffInMinutes(now()) <= 10 ) {
-            return view('Auth.MDP_change' , ['email' => $request->email] );
+            return view('Auth.MDP_change');
         } else {
             return redirect()->route('Auth.pageReset')->with('error', "Code de réinitialisation expiré ");
         }
     }
 
-    // Handle the password change
+    
     public function MDP_change(Request $request){
 
         $request->validate([

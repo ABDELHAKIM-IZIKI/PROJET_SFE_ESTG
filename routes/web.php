@@ -102,17 +102,16 @@ Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController
 Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
 });
 
+// Authentication Routes
+Route::get('/MonSite/Connexion', [AuthController::class, 'loginpage'])->name('Auth.loginpage');
+Route::post('/MonSite/Connexion/Login', [AuthController::class, 'login'])->name('Auth.login');
+Route::post('/MonSite/Connexion/Logout', [AuthController::class, 'Logout'])->name('Auth.Logout');
 
- 
-
-//AUth
-Route::get('/MonSite/Connexion', [AuthController::class ,'loginpage'])->name('Auth.loginpage');   
-Route::post('/MonSite/Connexion/Login', [AuthController::class ,'login'])->name('Auth.login');
-Route::post('/MonSite/Connexion/Logout', [AuthController::class ,'Logout'])->name('Auth.Logout');
-Route::get('/MonSite/Modifie_MDP', [PasswordResetController::class ,'pageReset'])->name('Auth.pageReset');  
-Route::post('/MonSite/Modifie_MDP/Check', [PasswordResetController::class ,'sendCode'])->name('Auth.sendCode'); 
-Route::post('/MonSite/MDP_change_page', [PasswordResetController::class ,'MDP_change_page'])->name('Auth.MDP_change_page');
-Route::post('/MonSite/MDP_Confirmation', [PasswordResetController::class ,'MDP_change'])->name('Auth.MDP_change');
+// Password Reset Routes
+Route::get('/MonSite/ModifieMDP', [PasswordResetController::class, 'pageReset'])->name('Auth.pageReset');
+Route::post('/MonSite/CheckCode', [PasswordResetController::class, 'sendCode'])->name('Auth.sendCode');
+Route::post('/MonSite/MDPchangepage', [PasswordResetController::class, 'MDP_change_page'])->name('Auth.MDP_change_page');
+Route::post('/MonSite/MDPConfirmation', [PasswordResetController::class, 'MDP_change'])->name('Auth.MDP_change');
 
 //role Banned  
 Route::get('/MonSite/Error', [AuthController::class ,'Banned'])->name('Banned');

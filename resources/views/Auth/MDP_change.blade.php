@@ -4,12 +4,13 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-300">
    
 
-        <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.MDP_change') }}" method="POST" >
+        <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.MDP_change' ) }}" method="POST" >
             @csrf 
 
            
 
             <div class="mb-5">
+                <input type="hidden" name="email" value="{{ $email }}">
                 <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Votre nouveau mot de passe :</label>
                 <input type="search" name="password" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="*********" required>
                 @error('password')

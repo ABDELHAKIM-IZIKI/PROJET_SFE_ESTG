@@ -4,7 +4,7 @@
 <div class="min-h-screen flex items-center justify-center bg-gray-300 p-10">
    
 
-        <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.MDP_change_page') }}" method="POST" >
+        <form class="max-w-sm w-full p-6 bg-white rounded-lg shadow-md" action="{{ route('Auth.MDP_change_page' ) }}" method="post" >
             @csrf 
 
             <div class="block mb-10 text-sm font-medium text-gray-900">
@@ -12,6 +12,7 @@
             </div>
 
             <div class="mb-10">
+                <input type="hidden" name="email" value="{{ $email }}">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Code : </label>
                 <input type="number" id="email" name="code" class="w-full bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5" placeholder="123456" required>
                 @error('code')
