@@ -140,7 +140,7 @@ Modifier le  matériel ou l'équipement :
     
 
 <!--  max-w-sm  -->
-    <div class=" flex flex-col  mx-auto ">
+<div class=" flex flex-col  lg:mx-auto  md:mx-auto">
 
        
 <!--successajoute-->
@@ -196,8 +196,8 @@ Modifier le  matériel ou l'équipement :
   </div>
     
     
-    <div class=" overflow-x-auto ">
-        <table class=" text-sm text-left rtl:text-right text-gray-500 ">
+  <div class="overflow-x-auto">
+    <table class="text-sm text-left rtl:text-right text-gray-500">
             <thead class="text-xs text-gray-700 uppercase bg-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">Nom</th>
@@ -294,6 +294,7 @@ Modifier le  matériel ou l'équipement :
     
     </div>
 </div>
+
 <script>
     var modal = document.getElementById("Create");
     var btn = document.getElementById("openCreate");
