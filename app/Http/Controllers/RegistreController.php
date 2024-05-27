@@ -11,6 +11,7 @@ use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use App\Models\Registre;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegistreController extends Controller
 {
@@ -40,7 +41,14 @@ class RegistreController extends Controller
 
     $registre=Registre::find($id);
 
+    if(Auth::user()->role->nom == 'Gestionnaire de stock' ){
     return view('gestionnairestock.Registre.Affiche', ['registre'=>$registre ]);
+  }if ( Auth::user()->role->nom == 'Maintenancier') {
+    return view('Maintenancier.RegistreAffiche', ['registre'=>$registre ]);
+  } else {
+    return view('Auth.Banned');
+  }
+  
   }
 
   public function downloadQR($id){
