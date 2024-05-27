@@ -7,11 +7,12 @@ use App\Models\Materiel;
 use App\Models\Reclamation;
 use App\Models\Registre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FonctionnaireController extends Controller
 {
-   public function index($id=17)
-   { 
+   public function index()
+   {   $id=Auth::user()->id;
       return  view('Fonctionnaire.home',['registres' => Registre::where('users_id',$id)->orderBy('id')->paginate(10)]);
    }
 
@@ -27,7 +28,7 @@ public function Reclamé(ReclamationRequest $a){
 
 public function search(Request $r)
 { 
-    $id=17;
+    $id=Auth::user()->id;
     $q = Registre::where('users_id' , $id); 
  
     if($r->has('valeur') && ($r->input('valeur') != null)){
@@ -45,7 +46,8 @@ public function search(Request $r)
   return view('Fonctionnaire.home',['registres' =>  $q->paginate(10)]);
 
 }
-   public function indexReclamation($id=17){
+   public function indexReclamation(){
+      $id=Auth::user()->id;
       $reclamation=Reclamation::where('users_id',$id)->orderByDesc('id')->get();
    
     return view('Fonctionnaire.reclamation',['reclamation' => $reclamation ]);

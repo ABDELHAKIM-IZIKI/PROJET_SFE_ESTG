@@ -104,12 +104,12 @@ public function destroy(Request $r)
 
 
       foreach($r['caracteristiques'] as $item ){
-       Caracteristique::insert([
-        'materiels_id' =>  $materiel->id ,
-        'nom' =>  $item['nom'] ,
-        'valeur' =>  $item['valeur'] 
-       ]);
-
+        Caracteristique::insert([
+         'materiels_id' =>  $materiel->id ,
+         'nom' =>  $item['nom'] ,
+         'valeur' =>  $item['valeur'] 
+        ]);
+ 
       }
       
 
@@ -167,26 +167,7 @@ public function destroy(Request $r)
         'barcode'=>$r['barcode'],
         'date'=>$r['date'],
       ]);
-   
-
-      if($a->has('caracteristiques')){
-        foreach($a['caracteristiques'] as $item ){
-          
-          Caracteristique::insert([
-           'materiels_id' =>  $materiel->id ,
-           'nom' =>  $item['nom'] ,
-           'valeur' =>  $item['valeur'] 
-          ]);
-   
-         }
-      }
-
-
-
-
-
-
-
+  
 
       return redirect()->route('GestionnairesStock.index')
         ->with('success','modifié avec succès');
