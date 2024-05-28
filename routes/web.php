@@ -118,17 +118,21 @@ Route::post('/MonSite/MDPConfirmation', [PasswordResetController::class, 'MDP_ch
 //role Banned  
 Route::get('/MonSite/Error', [AuthController::class ,'Banned'])->name('Banned');
 
-Route::get('/test', function(){
-    
-    return null ; 
 
 
-});
-
-
+Route::middleware(['auth'])->group(function () {
 //profile
 Route::get('/MonSite/Profile', [ProfileController::class, 'index'])->name('profile.index');
 Route::get('/MonSite/Modifier_Profile', [ProfileController::class, 'filledit'])->name('profile.filledit');
 Route::get('/MonSite/Change_MDP_Profile', [ProfileController::class, 'filleditmdp'])->name('profile.filleditmdp');
 Route::post('/MonSite/Modifier_Profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/MonSite/Change_MDP_Profile/edit', [ProfileController::class, 'editmdp'])->name('profile.editmdp');
+});
+
+
+Route::get('/test', function(){
+    
+    return null ; 
+
+
+});
