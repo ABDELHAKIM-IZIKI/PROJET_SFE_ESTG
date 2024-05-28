@@ -8,11 +8,13 @@ use App\Http\Controllers\GestionnairesStockController;
 use App\Http\Controllers\MaintenancierController;
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistreController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 //Home
 Route::get('/MonSite', [HomeController::class ,'index'])->name('home');
@@ -117,6 +119,16 @@ Route::post('/MonSite/MDPConfirmation', [PasswordResetController::class, 'MDP_ch
 Route::get('/MonSite/Error', [AuthController::class ,'Banned'])->name('Banned');
 
 Route::get('/test', function(){
-    return view('test');
+    
+    return null ; 
+
+
 });
 
+
+//profile
+Route::get('/MonSite/Profile', [ProfileController::class, 'index'])->name('profile.index');
+Route::get('/MonSite/Modifier_Profile', [ProfileController::class, 'filledit'])->name('profile.filledit');
+Route::get('/MonSite/Change_MDP_Profile', [ProfileController::class, 'filleditmdp'])->name('profile.filleditmdp');
+Route::post('/MonSite/Modifier_Profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/MonSite/Change_MDP_Profile/edit', [ProfileController::class, 'editmdp'])->name('profile.editmdp');

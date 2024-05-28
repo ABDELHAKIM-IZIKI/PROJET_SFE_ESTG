@@ -7,6 +7,7 @@ use App\Http\Requests\UserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -49,7 +50,7 @@ class AdminController extends Controller
 
   public function create(UserRequest $r){
  
-    $useradmin=User::find($id=1);
+    $useradmin=User::find(Auth::user()->id);
 
     if(Hash::check($r['adminpassword'] ,$useradmin->password)){
     if($r['password']==$r['Cpassword'] ){
@@ -81,7 +82,7 @@ class AdminController extends Controller
   public function destroy(Request $r)
   {
     
-    $useradmin=User::find($id=1);
+    $useradmin=User::find(Auth::user()->id);
 
     if(Hash::check($r['adminpassword'] ,$useradmin->password)){
 
@@ -128,7 +129,7 @@ class AdminController extends Controller
       ->with('success','modifié avec succès');
 }
 
-$useradmin=User::find($id=1);
+$useradmin=User::find(Auth::user()->id);
 if(Hash::check($r['adminpassword'] ,$useradmin->password)){
 
 if($r['password']==$r['Cpassword']){

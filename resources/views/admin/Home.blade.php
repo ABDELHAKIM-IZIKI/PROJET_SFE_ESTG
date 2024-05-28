@@ -1,106 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Administrateurs</title>
-</head>
-<body>
- <!--button-->
- <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
-    <span class="sr-only">Open sidebar</span>
-    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-    <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-    </svg>
- </button>
+@extends('admin.tempalteAD')
 
+@section('content')
 
-  <!--sidebar-->
- <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full flex flex-col px-3 py-4 overflow-y-auto bg-gray-50 bg-white">
-        <div class="m-2 text-xl lg:hidden md:hidden"><button class="float-end" id="buttonx">X</button></div>
-        <div class="m-2 mb-5 text-xl text-black font-bold no-italic"><span>Service gestion des  matériels  et équipements</span></div>
-       <ul class="space-y-2 font-medium">
-          <li>
-            <a href="{{route('home')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
-                <img src="https://super.so/icon/dark/home.svg"/>
-                <span class="ms-3">Accueil</span>
-             </a>
-          </li>
-         <!--profile-->    
-         <li>
-            <div class="flex items-center hover:bg-gray-100 rounded-lg">
-                <button id="openandcloseProfile" class="w-full flex items-center p-2 text-gray-900 rounded-lg text-black hover:bg-gray-100 group">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
-                    <span class="ms-3">Profile</span> 
-                </button>
-                <svg class="ml-auto" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/></svg>    
-            </div> <!-- Moved the closing div tag here -->
-            <div id="profile" class="hidden">
-                <ul class="space-y-2 font-normal rounded-b-lg py-2 px-4 bg-gray-100">
-                    <li>
-                        <a href="{{route('admin.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black hover:bg-gray-200 group">
-                           <img src="https://super.so/icon/dark/users.svg" alt="">
-                           <span class="flex-1 ms-3 whitespace-nowrap">Mon profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black hover:bg-gray-200 group">
-                           <img src="https://super.so/icon/dark/users.svg" alt="">
-                           <span class="flex-1 ms-3 whitespace-nowrap">Modifier profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('admin.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black hover:bg-gray-200 group">
-                           <img src="https://super.so/icon/dark/users.svg" alt="">
-                           <span class="flex-1 ms-3 whitespace-nowrap">Change mot de passe</span>
-                        </a>
-                    </li>
-                </ul> 
-            </div> <!-- Moved the closing div tag here -->
-        </li>
-         <!--profile-->   
-         <li>
-            <a href="{{route('admin.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
-               <img src="https://super.so/icon/dark/users.svg" alt="">
-               <span class="flex-1 ms-3 whitespace-nowrap">Gérer les utilisateurs</span>
-               
-            </a>
-         </li>
-         <!--<li>
-            <a href="{{route('role.index')}}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group">
-               <img src="https://super.so/icon/dark/briefcase.svg" />
-               <span class="flex-1 ms-3 whitespace-nowrap">Gérer les roles</span>
-            </a>
-         </li>-->
-         <li>
-            <form method="POST" action="{{ route('Auth.Logout') }}" class="flex items-center p-2 text-gray-900 rounded-lg text-black  hover:bg-gray-100 group ">
-                @csrf
-              
-                <button type="submit" class="flex">
-                  <img class="mr-2" src="https://super.so/icon/dark/log-out.svg" alt="">
-                  <span class="">Déconnecter</span>
-                </button>
-            
-            </form>  
-        </li>
-    </div>
- </aside>
- 
-
-
-
-
-
-
-
- <div class="h-screen  sm:ml-64 bg-gray-300">
- <div class="p-4  h-fill flex flex-col bg-gray-300 ">
+ <div class="px-4  h-fill flex flex-col bg-gray-300 ">
  <!--titre-->
   <div><h1 class="text-4xl text-black font-bold no-italic ">Les utilisateurs : </h1><br/></div>
-
 
 
  <!--searchbar-->
@@ -293,28 +197,6 @@
 </div>
 
 </div>
+@endsection
 
 
-<script>
-    const profileButton = document.getElementById('openandcloseProfile');
-    const profileDiv = document.getElementById('profile');
-
-    profileButton.addEventListener('click', function() {
-        profileDiv.classList.toggle('hidden');
-    });
-</script>
- <script>
-
-document.getElementById('buttonx').addEventListener('click',function(){ document.getElementById('default-sidebar').classList.toggle('hidden'); });
-
-document.querySelector('[data-drawer-toggle="default-sidebar"]').addEventListener('click', function() {
-document.getElementById('default-sidebar').classList.toggle('-translate-x-full');
-
-document.querySelector('[data-drawer-target="default-sidebar"]').addEventListener('click', function() {
-document.getElementById('default-sidebar').classList.toggle('hidden');
-});
-});
-</script>
-    
-</body>
-</html>
