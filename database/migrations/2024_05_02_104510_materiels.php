@@ -10,8 +10,8 @@ return new class extends Migration
     public function  up(): void {
         Schema::create('materiels', function (Blueprint $table) {
         $table->id();
-        $table->foreignId('categories_id')->constrained('categories','id')->cascadeOnDelete()->cascadeOnUpdate();
-        $table->foreignId('marques_id')->constrained('marques','id')->cascadeOnDelete()->cascadeOnUpdate();
+        $table->foreignId('categories_id')->constrained('categories','id');
+        $table->foreignId('marques_id')->constrained('marques','id');
         $table->string('nom');
         $table->string('model');
         $table->text('description');
