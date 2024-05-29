@@ -14,15 +14,20 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next , $role ): Response   
+    public function handle(Request $request, Closure $next , ...$roles ): Response   
     {
-
-        if ( !Auth::check() || Auth::user()->role->nom !== $role || Auth::user()->role == 'Avec no role' ) {
-             
+        if (!Auth::check()) {
+            
             return redirect()->route('Banned');
-        
         }
-
+    
+        $userRole = Auth::user()->role->nom; 
+    
+        if (!in_array($userRole, $roles)) {
+           
+            return redirect()->route('Banned');
+        }
+    
         return $next($request);
     }
 }

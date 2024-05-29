@@ -43,6 +43,7 @@ class RegistreController extends Controller
 
     if(Auth::user()->role->nom == 'Gestionnaire de stock' ){
     return view('gestionnairestock.Registre.Affiche', ['registre'=>$registre ]);
+  
   }if ( Auth::user()->role->nom == 'Maintenancier') {
     return view('Maintenancier.RegistreAffiche', ['registre'=>$registre ]);
   } else {
@@ -110,7 +111,7 @@ public function filleAffectation($id){
   $registreUsersIds = Registre::where('materiels_id','=',$id)->pluck('users_id')->toArray();
 
   return view('gestionnairestock.Registre.Ajouter' , ['materiels_id' => $id , 
-                                                      'users' => User::orderBy('nom')->orderBy('prenom')->whereNotIn('id', $registreUsersIds )->paginate(5) ,
+                                                      'users' => User::orderBy('nom')->orderBy('prenom')->whereNotIn('id', $registreUsersIds )->where('roles_id','=','11')->paginate(5) ,
                                                        'etats'=>Etat::all()]);
 }
 

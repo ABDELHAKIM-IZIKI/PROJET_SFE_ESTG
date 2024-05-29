@@ -71,7 +71,7 @@ Route::post('/MonSite/GestionnaireStock/Marque/modifie', [MarqueController::clas
 //Registre   
 Route::get('/MonSite/GestionnaireStock/Registre', [RegistreController::class ,'index'])->name('Registre.index');
 Route::get('/MonSite/GestionnaireStock/Registre/recherche', [RegistreController::class ,'search'])->name('Registre.search');
-Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
+
 Route::get('/MonSite/GestionnaireStock/Registre/registre-downloadQR-{id}', [RegistreController::class ,'downloadQR'])->name('Registre.downloadQR');
 Route::delete('/MonSite/GestionnaireStock/Registre/supprimé-{id}', [RegistreController::class ,'destroy'])->name('Registre.destroy'); 
 Route::get('/MonSite/GestionnaireStock/Registre/remplir-modifie-{id}', [RegistreController::class ,'filledit'])->name('Registre.filledit');
@@ -92,7 +92,10 @@ Route::delete('/MonSite/Fonctionnaire/supprimé-{id}', [FonctionnaireController:
 Route::get('/MonSite/Fonctionnaire/Registre/Materiel-{id}', [FonctionnaireController::class ,'displayM'])->name('Fonctionnaire.displayM');
 });
 
-
+//registre display
+Route::middleware(['auth' , 'role:Maintenancier,Gestionnaire de stock' ])->group(function () {
+    Route::get('/MonSite/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
+});
 
 Route::middleware(['auth','role:Maintenancier'])->group(function () {
 //Maintenancier     
@@ -101,7 +104,7 @@ Route::delete('/MonSite/Maintenancier/supprimé-{id}', [MaintenancierController:
 Route::post('/MonSite/Maintenancier/vue', [MaintenancierController::class ,'vue'])->name('Maintenancier.vue');
 Route::delete('/MonSite/Maintenancier/remove', [MaintenancierController::class ,'remove'])->name('Maintenancier.remove');
 Route::get('/MonSite/Maintenancier/Registre/recherche', [MaintenancierController::class ,'search'])->name('Maintenancier.search');
-Route::get('/MonSite/GestionnaireStock/Registre-{id}', [RegistreController::class ,'display'])->name('Registre.display');
+
 });
 
 // Authentication Routes

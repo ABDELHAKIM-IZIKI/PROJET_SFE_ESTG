@@ -13,7 +13,12 @@ class FonctionnaireController extends Controller
 {
    public function index()
    {   $id=Auth::user()->id;
-      return  view('Fonctionnaire.home',['registres' => Registre::where('users_id',$id)->orderBy('id')->paginate(10)]);
+      $registres=Registre::where('users_id',$id)->orderBy('id')->paginate(10);
+      if ($registres->isEmpty()) {
+      return  view('Fonctionnaire.home',['registres' =>$registres , 'vide' => 'Aucune affectation matériel ou équipement']);
+   }else{
+      return  view('Fonctionnaire.home',['registres' =>$registres , 'vide' => null]);
+   }
    }
 
 public function Reclamé(ReclamationRequest $a){

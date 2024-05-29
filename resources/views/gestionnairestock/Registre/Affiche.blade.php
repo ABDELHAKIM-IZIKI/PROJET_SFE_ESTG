@@ -63,7 +63,7 @@ Le registre de #ID{{$registre->id}} :
 @endif
 </div>
 
-<div class="flex flex-row  ml-auto ">
+<div class="flex flex-row  ml-auto p-4 ">
 
    <a href="{{ route('Registre.filledit', $registre->id  ) }}" class="text-white font-medium rounded-lg text-sm h-9  p-1.5 my-3 mr-2 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800">
       <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>

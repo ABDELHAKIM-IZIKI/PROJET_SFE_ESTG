@@ -34,6 +34,12 @@ Mon équipement :
 </div>
 @endif
 
+@if ($vide)
+<div class=" mx-4 my-6 text-xl text-black rounded-lg bg-white p-4 items-center z-0">
+    <span class="font-normal"> {{ $vide }} !!!</span>
+</div>
+@endif
+
 <!--Display items-->
 <div class="justify-center  bg-gray-300  ">
     <div class="p-1.5  flex flex-wrap pr-0 ">
